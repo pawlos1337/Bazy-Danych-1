@@ -4,3 +4,6 @@
 [submodule "source/rozdzial_2/rozdzial_21"]
 	path = source/rozdzial_2/rozdzial_21
 	url = https://github.com/pawlos1337/Bazy-danych-temat
+[submodule "source/rozdzial_2/rozdzial_28"]
+	path = source/rozdzial_2/rozdzial_28
+	url = https://github.com/Koko9077/Sprawozdanie

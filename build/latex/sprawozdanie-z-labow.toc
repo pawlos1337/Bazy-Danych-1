@@ -1,0 +1,6 @@
+\babel@toc {english}{}\relax 
+\contentsline {chapter}{\numberline {1}Wprowadzenie}{3}{chapter.1}%
+\contentsline {chapter}{\numberline {2}Badania literaturowe}{5}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Kontrola i konserwacja}{5}{section.2.1}%
+\contentsline {chapter}{\numberline {3}Zadanie laboratoryjne}{7}{chapter.3}%
+\contentsline {chapter}{\numberline {4}Wnioski}{9}{chapter.4}%
