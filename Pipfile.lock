@@ -1,0 +1,25 @@
+{
+    "_meta": {
+        "hash": {
+            "sha256": "bfc21f42bc6d7ee13b3ac8e5efc3623cff8de367b07af6c67edb964b371dc020"
+        },
+        "pipfile-spec": 6,
+        "requires": {
+            "python_version": "3.14"
+        },
+        "sources": [
+            {
+                "name": "pypi",
+                "url": "https://pypi.org/simple",
+                "verify_ssl": true
+            }
+        ]
+    },
+    "default": {
+        "pakietdemo": {
+            "git": "https://github.com/piotrczaja/pakiet-demo.git",
+            "ref": "599c3bd21e666caaabb8ecd450862d1f3c2d21a0"
+        }
+    },
+    "develop": {}
+}
