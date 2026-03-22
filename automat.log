@@ -14499,3 +14499,25 @@ remote: Internal Server Error
 fatal: brak dostępu do „https://github.com/oski486/BazyDanych-Subject.git/”: The requested URL returned error: 500
 fatal: Unable to fetch in submodule path 'source/rozdzial_2/rozdzial_27'
 >>> Wykryto nowości. Aktualizuję spis treści i wysyłam na GitHuba...
+[main 7290296] Terminator: Globalna aktualizacja treści i submodułów
+ Committer: Łoćwin Paweł Tomasz <student15@VPS-IP>
+Twoja nazwa i adres e-mail zostały automatycznie skonfigurowane na podstawie
+ twojej nazwy użytkownika i nazwy hosta. Sprawdź, czy są one prawidłowe.
+Możesz ukryć tą wiadomość ustawiając je samodzielnie:
+
+    git config --global user.email "toja@example.com"
+    git config --global user.name "Twoje Imię Nazwisko"
+
+Po tym możesz poprawić podpis użyty w tym zapisie używając:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+To https://github.com/baguetedev/Bazy-Danych-1.git
+   b59d95d..7290296  main -> main
+>>> Wszystko zsynchronizowane!
+>>> Sprawdzam aktualizacje u wszystkich ziomków...
+error: wywołanie RPC nie powiodło się; HTTP 500 curl 22 The requested URL returned error: 500
+fatal: oczekiwano wypróżnienia po wypisaniu referencji
+fatal: Unable to fetch in submodule path 'source/rozdzial_2/rozdzial_25'
+>>> Wykryto nowości. Aktualizuję spis treści i wysyłam na GitHuba...
