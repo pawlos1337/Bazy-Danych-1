@@ -31431,3 +31431,22 @@ To https://github.com/baguetedev/Bazy-Danych-1.git
 >>> Wszystko zsynchronizowane!
 >>> Sprawdzam aktualizacje u wszystkich ziomków...
 >>> Wykryto nowości. Aktualizuję spis treści i wysyłam na GitHuba...
+[main 00e6627] Terminator: Globalna aktualizacja treści i submodułów
+ Committer: Łoćwin Paweł Tomasz <student15@VPS-IP>
+Twoja nazwa i adres e-mail zostały automatycznie skonfigurowane na podstawie
+ twojej nazwy użytkownika i nazwy hosta. Sprawdź, czy są one prawidłowe.
+Możesz ukryć tą wiadomość ustawiając je samodzielnie:
+
+    git config --global user.email "toja@example.com"
+    git config --global user.name "Twoje Imię Nazwisko"
+
+Po tym możesz poprawić podpis użyty w tym zapisie używając:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 19 insertions(+)
+To https://github.com/baguetedev/Bazy-Danych-1.git
+   c771cfb..00e6627  main -> main
+>>> Wszystko zsynchronizowane!
+>>> Sprawdzam aktualizacje u wszystkich ziomków...
+>>> Wykryto nowości. Aktualizuję spis treści i wysyłam na GitHuba...
