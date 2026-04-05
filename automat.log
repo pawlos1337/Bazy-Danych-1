@@ -93566,3 +93566,21 @@ To https://github.com/baguetedev/Bazy-Danych-1.git
 fatal: brak dostępu do „https://github.com/pawlos1337/Bazy-danych-temat/”: Recv failure: Połączenie zerwane przez drugą stronę
 fatal: Unable to fetch in submodule path 'source/rozdzial_2/rozdzial_21'
 >>> Wykryto nowości. Aktualizuję spis treści i wysyłam na GitHuba...
+[main 8075808] Terminator: Globalna aktualizacja treści i submodułów
+ Committer: Łoćwin Paweł Tomasz <student15@VPS-IP>
+Twoja nazwa i adres e-mail zostały automatycznie skonfigurowane na podstawie
+ twojej nazwy użytkownika i nazwy hosta. Sprawdź, czy są one prawidłowe.
+Możesz ukryć tą wiadomość ustawiając je samodzielnie:
+
+    git config --global user.email "toja@example.com"
+    git config --global user.name "Twoje Imię Nazwisko"
+
+Po tym możesz poprawić podpis użyty w tym zapisie używając:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 21 insertions(+)
+fatal: brak dostępu do „https://github.com/baguetedev/Bazy-Danych-1.git/”: Recv failure: Połączenie zerwane przez drugą stronę
+>>> Wszystko zsynchronizowane!
+>>> Sprawdzam aktualizacje u wszystkich ziomków...
+>>> Wykryto nowości. Aktualizuję spis treści i wysyłam na GitHuba...
