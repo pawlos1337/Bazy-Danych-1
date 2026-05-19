@@ -1,14 +1,13 @@
-=======================================================================
-Rozdzial 3: Projektowanie  Bazy Danych: System Zarządzania Biblioteką
-=======================================================================
+=====================================================================
+Rozdzial 3: Projektowanie Bazy Danych: System Zarządzania Biblioteką
+=====================================================================
 
 :Autorzy:
     1. Paweł Łoćwin
     2. Paweł Łosowski
 
-
 Wybór zagadnienia, opis procesów i danych
-============================================
+=========================================
 
 Wybrane zagadnienie:
 --------------------
@@ -33,7 +32,7 @@ Wykaz gromadzonych danych:
 * **Dane transakcyjne:** Data wypożyczenia, Data zwrotu (rzeczywista).
 
 Prototyp CSV
-===============
+============
 Aby zweryfikować kompletność przetwarzanych informacji, przygotowano "płaską" (nieznormalizowaną) reprezentację danych dla operacji wypożyczenia, bazującą na pierwotnych wytycznych.
 
 ::
@@ -44,7 +43,7 @@ Aby zweryfikować kompletność przetwarzanych informacji, przygotowano "płask�
     Anna,Nowak,Polna 2,31-444,Kraków,2023-11-05,Lśnienie,Stephen,King,Horror,2024-02-20,2024-03-05
 
 Model Konceptualny (Pojęciowy)
-=================================
+==============================
 Na podstawie analizy procesów i zebranych danych opracowano model pojęciowy, identyfikując obiekty, ich cechy oraz powiązania.
 
 Zidentyfikowane encje
@@ -81,10 +80,10 @@ Schemat w notacji Chena
    :alt: Model konceptualny bazy danych biblioteki (Schemat Chena).
 
 Model logiczny i proces normalizacji
-=======================================
+====================================
 
 Przebieg procesu normalizacji
-----------------------------------
+-----------------------------
 **Krok 1: Pierwsza Postać Normalna (1NF)**
 Wiersze są unikalne, tworzymy sztuczne klucze główne (ID_Wypozyczenia). Wartości w komórkach są atomowe. Pojawia się duża redundancja danych adresowych i książkowych.
 
@@ -97,7 +96,7 @@ Tworzymy bazowe tabele: ``Czytelnicy`` oraz ``Ksiazki``. Powstaje tabela ``Wypoz
 Eliminacja zależności przechodnich. Z tabeli ``Ksiazki`` wydzielamy powtarzające się nazwy gatunków do tabeli ``Kategorie`` (klucz: ID_Kategorii) oraz dane twórców do tabeli ``Autorzy`` (klucz: ID_Autora).
 
 Ostateczna struktura tabel (3NF)
--------------------------------------
+--------------------------------
 * **Czytelnicy:** ID_Czytelnika (PK), Imie, Nazwisko, Ulica, Kod_Pocztowy, Miasto, Data_Zapisu
 * **Autorzy:** ID_Autora (PK), Imie, Nazwisko
 * **Kategorie:** ID_Kategorii (PK), Nazwa_Kategorii
@@ -105,16 +104,16 @@ Ostateczna struktura tabel (3NF)
 * **Wypozyczenia:** ID_Wypozyczenia (PK), ID_Czytelnika (FK), ID_Ksiazki (FK), Data_Wypozyczenia, Data_Zwrotu
 
 Diagram ERD (Model Logiczny)
----------------------------------
+----------------------------
 .. image:: erd_logiczny_biblioteka.png
    :alt: Diagram logiczny ERD bazy danych biblioteki (Postać 3NF).
 
 Model fizyczny bazy danych
-=============================
+==========================
 Różnice implementacyjne między modelami fizycznymi wynikają wprost z silników RDBMS – ograniczeń typowania SQLite oraz bogatych możliwości deklaratywnych PostgreSQL.
 
 Model fizyczny dla środowiska SQLite
------------------------------------------
+------------------------------------
 Z uwagi na okrojony zestaw typów, daty są mapowane jako TEXT.
 
 * **Czytelnicy:** ID_Czytelnika : INTEGER PRIMARY KEY, Imie : TEXT, Nazwisko : TEXT, Ulica : TEXT, Kod_Pocztowy : TEXT, Miasto : TEXT, Data_Zapisu : TEXT
@@ -127,7 +126,7 @@ Z uwagi na okrojony zestaw typów, daty są mapowane jako TEXT.
    :alt: Fizyczny schemat bazy danych dla silnika SQLite.
 
 Model fizyczny dla środowiska PostgreSQL
----------------------------------------------
+----------------------------------------
 PostgreSQL umożliwia zastosowanie precyzyjnych i natywnych typów, w tym rygorystycznych typów daty (DATE) oraz optymalizacji pamięciowej dla ciągów znaków (VARCHAR).
 
 * **Czytelnicy:** ID_Czytelnika : SERIAL PRIMARY KEY, Imie : VARCHAR(50), Nazwisko : VARCHAR(50), Ulica : VARCHAR(100), Kod_Pocztowy : VARCHAR(6), Miasto : VARCHAR(50), Data_Zapisu : DATE DEFAULT CURRENT_DATE
