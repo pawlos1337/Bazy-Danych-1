@@ -6,7 +6,7 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'Sprawozdanie-z-labow'
+project = 'Sprawozdanie-z-laboratoriów'
 copyright = '2026, Paweł Łoćwin'
 author = 'Paweł Łoćwin'
 
