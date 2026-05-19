@@ -1,15 +1,16 @@
-.. Sprawozdanie-z-labow documentation master file, created by
-   sphinx-quickstart on Thu Mar 19 13:34:25 2026.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+================================================
+Sprawozdanie z Laboratorium: Bazy Danych
+================================================
 
-Sprawozdanie-z-labow documentation
-==================================
+:Autorzy:
+    1. Paweł Łoćwin
+    2. Paweł Łosowski
 
-Add your content using ``reStructuredText`` syntax. See the
-`reStructuredText <https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html>`_
-documentation for details.
+Wprowadzenie
+============
+Niniejsza dokumentacja stanowi kompletne sprawozdanie z laboratorium przedmiotu Bazy Danych. Projekt kompleksowo obejmuje aspekty związane z zarządzaniem środowiskiem bazodanowym, projektowaniem struktury relacyjnej oraz implementacją fizyczną.
 
+Dokumentacja została podzielona na cztery główne sekcje tematyczne, począwszy od teoretycznych aspektów konserwacji systemów, poprzez badania  aż po wdrożenie bazy danych dla systemu zarządzania biblioteką.
 
 .. toctree::
    :maxdepth: 2
