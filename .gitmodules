@@ -25,6 +25,3 @@
 [submodule "source/rozdzial_2/rozdzial_21"]
 	path = source/rozdzial_2/rozdzial_21
 	url = https://github.com/karaskamil/Sprzet-dla-bazy-danych.git
-[submodule "source/Kopie-zapasowe-i-odzyskiwanie-danych"]
-	path = source/Kopie-zapasowe-i-odzyskiwanie-danych
-	url = https://github.com/Koko9077/Kopie-zapasowe-i-odzyskiwanie-danych.git
