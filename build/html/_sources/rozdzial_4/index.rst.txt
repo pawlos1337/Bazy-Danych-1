@@ -8,11 +8,11 @@ Rozdział 4: Implementacja fizyczna i zasilanie bazy danych
 
 
 
-1. Definicja fizyczna bazy danych (Zadanie 1)
+Definicja fizyczna bazy danych (Zadanie 1)
 =============================================
 Na podstawie opracowanych wcześniej modeli logicznych przygotowano skrypty DDL (Data Definition Language) dla dwóch docelowych silników relacyjnych baz danych: PostgreSQL oraz SQLite. Kody te posłużyły do utworzenia struktur w bazach dostępnych na serwerze laboratoryjnym oraz przez sieć Internet.
 
-1.1. Skrypt dla środowiska PostgreSQL
+Skrypt dla środowiska PostgreSQL
 -------------------------------------
 Środowisko PostgreSQL pozwala na wykorzystanie zaawansowanych, natywnych typów danych oraz rygorystyczne egzekwowanie więzów integralności. W poniższym skrypcie kluczowym elementem jest użycie pseudo-typu ``SERIAL`` dla automatycznej generacji kluczy głównych oraz typów o stałej lub ograniczonej długości (``VARCHAR``, ``SMALLINT``, ``DATE``) dla optymalizacji przechowywania danych. Relacje między tabelami zapewniane są przez twarde klauzule ``REFERENCES``.
 
@@ -35,7 +35,7 @@ Na podstawie opracowanych wcześniej modeli logicznych przygotowano skrypty DDL 
         Data_Zwrotu DATE
     );
 
-1.2. Skrypt dla środowiska SQLite
+Skrypt dla środowiska SQLite
 ---------------------------------
 W silniku SQLite struktura ulega pewnemu uproszczeniu z powodu mniejszej rygorystyczności typowania oraz bardzo ograniczonej liczby wbudowanych klas typów danych (np. brak odrębnego typu daty). Z tego względu zastosowano typ ``TEXT`` dla dat i łańcuchów znaków. Ponadto w SQLite relacje kluczy obcych deklaruje się w osobnej klauzuli ``FOREIGN KEY`` na końcu definicji tabeli, a automatyczna inkrementacja klucza realizowana jest atrybutem ``AUTOINCREMENT``.
 
@@ -52,11 +52,11 @@ W silniku SQLite struktura ulega pewnemu uproszczeniu z powodu mniejszej rygorys
         FOREIGN KEY(ID_Ksiazki) REFERENCES Ksiazki(ID_Ksiazki)
     );
 
-2. Mechanizm zasilania bazy danych (Zadanie 2)
+Mechanizm zasilania bazy danych (Zadanie 2)
 ==============================================
 Posiadając gotową strukturę bazy, należało wyposażyć ją w dane demonstracyjne. Przygotowano zbiór danych testowych, które zostały poddane wsadowemu ładowaniu (batch import).
 
-2.1. Formatyzacja danych (Pliki CSV)
+Formatyzacja danych (Pliki CSV)
 ------------------------------------
 Dane do importu przygotowano w niezależnym formacie płaskim CSV (Comma-Separated Values). Takie podejście pozwala na łatwą edycję danych poza systemem bazodanowym. Poniżej zaprezentowano wycinek pliku ``dane_kategorie.csv``:
 
@@ -69,7 +69,7 @@ Dane do importu przygotowano w niezależnym formacie płaskim CSV (Comma-Separat
     Poezja
     Horror
 
-2.2. Implementacja mechanizmu importu 
+Implementacja mechanizmu importu 
 -------------------------------------
 Do zaimportowania powyższych danych wybrano mechanizm wprowadzania wielowartościowego oparty na technice **INSERT (multi-value/batch)**. Rozwiązanie zrealizowano z wykorzystaniem języka Python oraz dedykowanego sterownika ``psycopg``.
 
@@ -110,7 +110,7 @@ Poniżej przedstawiono fragment skryptu aplikacyjnego odpowiedzialnego za odczyt
         except Exception as e:
             print(f"Wystąpił błąd operacji wsadowej: {e}")
 
-3. Podsumowanie
+Podsumowanie
 ===============
 Niniejszy rozdział wieńczy etap projektowania i wdrażania struktury relacyjnej bazy danych dla systemu zarządzania biblioteką. Poprzez transformację modelu logicznego do postaci fizycznej, udało się z powodzeniem zaimplementować docelowe schematy w dwóch niezależnych środowiskach bazodanowych: produkcyjnym (PostgreSQL) oraz lokalnym/testowym (SQLite). Opracowane skrypty DDL poprawnie uwzględniają specyfikę obu silników, zachowując przy tym pożądaną architekturę relacyjną.
 

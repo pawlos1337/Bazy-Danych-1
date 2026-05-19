@@ -47,7 +47,7 @@
 <p>Współczesne systemy relacyjnych baz danych to wysoce skomplikowane środowiska, które wymagają ciągłego i proaktywnego nadzoru, aby zagwarantować wysoką dostępność, niezawodność oraz optymalny czas odpowiedzi na zapytania klientów. Wraz z rosnącym wolumenem przetwarzanych informacji, zarządzanie cyklem życia danych staje się wyzwaniem równie ważnym, co sam projekt struktury relacyjnej. Rozdział ten poświęcony jest nowoczesnym mechanizmom kontroli i konserwacji, ze szczególnym uwzględnieniem architektury silnika PostgreSQL. Procesy te obejmują zaawansowane zarządzanie przestrzenią dyskową, analizę i optymalizację planów zapytań, rygorystyczną kontrolę dostępu oraz wielowarstwowe strategie zabezpieczania danych przed ich bezpowrotną utratą.</p>
 </section>
 <section id="zarzadzanie-przestrzenia-i-mechanizm-wspolbieznosci">
-<h2>1.1. Zarządzanie przestrzenią i mechanizm współbieżności<a class="headerlink" href="#zarzadzanie-przestrzenia-i-mechanizm-wspolbieznosci" title="Link to this heading">¶</a></h2>
+<h2>Zarządzanie przestrzenią i mechanizm współbieżności<a class="headerlink" href="#zarzadzanie-przestrzenia-i-mechanizm-wspolbieznosci" title="Link to this heading">¶</a></h2>
 <p>PostgreSQL opiera swoje działanie na zaawansowanej architekturze określanej jako Multi-Version Concurrency Control. Technologia ta pozwala na równoległy odczyt i zapis danych bez wzajemnego blokowania się transakcji, co drastycznie zwiększa przepustowość systemu przy dużej liczbie jednoczesnych połączeń. Skutkiem ubocznym tego bezkolizyjnego mechanizmu jest jednak powstawanie martwych krotek, czyli przestarzałych wersji wierszy. Wiersze te, choć zostały już zaktualizowane lub usunięte przez aplikację, wciąż fizycznie zajmują przestrzeń na dysku ze względu na to, że inne, wciąż otwarte transakcje, mogą potrzebować dostępu do ich historycznego stanu.</p>
 <p>Aby zapobiec zjawisku drastycznego puchnięcia tabel oraz degradacji wydajności operacji wejścia i wyjścia, konieczna jest regularna konserwacja na poziomie nośnika danych:</p>
 <ul class="simple">
@@ -62,7 +62,7 @@
 </div>
 </section>
 <section id="optymalizacja-i-statystyki-planisty-zapytan">
-<h2>1.2. Optymalizacja i statystyki planisty zapytań<a class="headerlink" href="#optymalizacja-i-statystyki-planisty-zapytan" title="Link to this heading">¶</a></h2>
+<h2>Optymalizacja i statystyki planisty zapytań<a class="headerlink" href="#optymalizacja-i-statystyki-planisty-zapytan" title="Link to this heading">¶</a></h2>
 <p>Kolejnym filarem utrzymania sprawności systemu jest kontrola nad optymalizatorem, zwanym planistą zapytań. Silnik bazy danych przed wykonaniem jakiejkolwiek skomplikowanej kwerendy analizuje dziesiątki możliwych ścieżek jej realizacji. Decyzje takie jak wybór między skanowaniem sekwencyjnym całego zbioru a użyciem konkretnego indeksu podejmowane są na podstawie modelu matematycznego opartego o szacowany koszt operacji.</p>
 <p>Aby planista mógł podejmować optymalne decyzje, musi opierać się na wysoce dokładnych i aktualnych statystykach dotyczących rozkładu danych. Obejmują one między innymi histogramy wartości, listy najczęściej występujących elementów oraz współczynniki korelacji między kolumnami.</p>
 <ul class="simple">
@@ -80,7 +80,7 @@
 </div>
 </section>
 <section id="bezpieczenstwo-i-rygorystyczna-kontrola-dostepu">
-<h2>1.3. Bezpieczeństwo i rygorystyczna kontrola dostępu<a class="headerlink" href="#bezpieczenstwo-i-rygorystyczna-kontrola-dostepu" title="Link to this heading">¶</a></h2>
+<h2>Bezpieczeństwo i rygorystyczna kontrola dostępu<a class="headerlink" href="#bezpieczenstwo-i-rygorystyczna-kontrola-dostepu" title="Link to this heading">¶</a></h2>
 <p>Bezpieczeństwo danych stanowi absolutny priorytet każdej administracji systemami informatycznymi. Nowoczesne podejście do ochrony baz danych całkowicie odchodzi od wykorzystywania globalnych kont administracyjnych, takich jak domyślny użytkownik instalacyjny, do codziennych operacji na poziomie aplikacji. Zamiast tego wdraża się model kontroli dostępu opartej na rolach, który znacząco ogranicza ryzyko kompromitacji całego systemu w przypadku wycieku pojedynczego poświadczenia.</p>
 <p>System zabezpieczeń środowiska PostgreSQL pozwala na niezwykle elastyczną gradację uprawnień. Definiuje się dedykowane role systemowe przypisane do konkretnych mikrousług lub modułów aplikacyjnych. Poświadczenia dostępowe szyfrowane są przy wykorzystaniu najnowocześniejszych standardów kryptograficznych, takich jak algorytm SCRAM-SHA-256, odporny na ataki słownikowe i nasłuchiwanie ruchu sieciowego.</p>
 <p>Kluczowym konceptem jest wdrożenie zasady najmniejszych uprawnień. Rola wykorzystywana przez aplikację powinna dysponować prawami pozwalającymi wyłącznie na modyfikację danych niezbędnych do jej funkcjonowania. W praktyce oznacza to celowe przyznawanie praw do wykonywania selekcji czy dodawania rekordów, przy jednoczesnym blokowaniu możliwości ich usuwania lub modyfikacji struktury tabel.</p>
@@ -93,7 +93,7 @@
 </div>
 </section>
 <section id="strategie-zabezpieczania-przed-utrata-danych">
-<h2>1.4. Strategie zabezpieczania przed utratą danych<a class="headerlink" href="#strategie-zabezpieczania-przed-utrata-danych" title="Link to this heading">¶</a></h2>
+<h2>Strategie zabezpieczania przed utratą danych<a class="headerlink" href="#strategie-zabezpieczania-przed-utrata-danych" title="Link to this heading">¶</a></h2>
 <p>Nawet najlepiej zoptymalizowany i zabezpieczony system informatyczny jest narażony na błędy ludzkie lub awarie infrastruktury sprzętowej. Dlatego odpowiednia polityka wykonywania kopii zapasowych oraz odtwarzania środowiska po awarii jest krytycznym elementem konserwacji relacyjnych baz danych. Zarządzanie tym procesem opiera się na dwóch uzupełniających się podejściach.</p>
 <p>Kopie logiczne polegają na ekstrakcji danych z bazy do postaci czystego skryptu języka SQL lub dedykowanego formatu archiwalnego. Narzędzia realizujące to zadanie gwarantują przenośność danych pomiędzy różnymi wersjami silnika bazy czy architekturami sprzętowymi. Proces tworzenia kopii logicznej potrafi być jednak bardzo obciążający dla procesora, a czas odtwarzania z takiego pliku w przypadku wieloterabajtowych struktur jest często nieakceptowalnie długi z biznesowego punktu widzenia.</p>
 <p>Dlatego w krytycznych środowiskach produkcyjnych stosuje się kopie fizyczne połączone z archiwizacją dzienników wyprzedzających. Dzienniki te rejestrują absolutnie każdą zmianę bajtu na dysku jeszcze przed jej ostatecznym zatwierdzeniem. Odpowiednio skonfigurowany mechanizm ciągłej archiwizacji tych strumieni pozwala na odtworzenie całej bazy danych z chirurgiczną precyzją, do konkretnej sekundy w przeszłości. Taka funkcjonalność pozwala cofnąć skutki przypadkowego usunięcia danych bez utraty tysięcy transakcji, które miały miejsce od czasu wykonania ostatniej pełnej kopii zapasowej.</p>
@@ -127,10 +127,10 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Rozdział 1: Kontrola i konserwacja</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#wprowadzenie">Wprowadzenie</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#zarzadzanie-przestrzenia-i-mechanizm-wspolbieznosci">1.1. Zarządzanie przestrzenią i mechanizm współbieżności</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#optymalizacja-i-statystyki-planisty-zapytan">1.2. Optymalizacja i statystyki planisty zapytań</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#bezpieczenstwo-i-rygorystyczna-kontrola-dostepu">1.3. Bezpieczeństwo i rygorystyczna kontrola dostępu</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#strategie-zabezpieczania-przed-utrata-danych">1.4. Strategie zabezpieczania przed utratą danych</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#zarzadzanie-przestrzenia-i-mechanizm-wspolbieznosci">Zarządzanie przestrzenią i mechanizm współbieżności</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#optymalizacja-i-statystyki-planisty-zapytan">Optymalizacja i statystyki planisty zapytań</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bezpieczenstwo-i-rygorystyczna-kontrola-dostepu">Bezpieczeństwo i rygorystyczna kontrola dostępu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#strategie-zabezpieczania-przed-utrata-danych">Strategie zabezpieczania przed utratą danych</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#podsumowanie">Podsumowanie</a></li>
 </ul>
 </li>

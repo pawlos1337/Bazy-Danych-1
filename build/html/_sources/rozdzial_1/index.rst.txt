@@ -12,7 +12,7 @@ Wprowadzenie
 ============
 Współczesne systemy relacyjnych baz danych to wysoce skomplikowane środowiska, które wymagają ciągłego i proaktywnego nadzoru, aby zagwarantować wysoką dostępność, niezawodność oraz optymalny czas odpowiedzi na zapytania klientów. Wraz z rosnącym wolumenem przetwarzanych informacji, zarządzanie cyklem życia danych staje się wyzwaniem równie ważnym, co sam projekt struktury relacyjnej. Rozdział ten poświęcony jest nowoczesnym mechanizmom kontroli i konserwacji, ze szczególnym uwzględnieniem architektury silnika PostgreSQL. Procesy te obejmują zaawansowane zarządzanie przestrzenią dyskową, analizę i optymalizację planów zapytań, rygorystyczną kontrolę dostępu oraz wielowarstwowe strategie zabezpieczania danych przed ich bezpowrotną utratą.
 
-1.1. Zarządzanie przestrzenią i mechanizm współbieżności
+Zarządzanie przestrzenią i mechanizm współbieżności
 ========================================================
 PostgreSQL opiera swoje działanie na zaawansowanej architekturze określanej jako Multi-Version Concurrency Control. Technologia ta pozwala na równoległy odczyt i zapis danych bez wzajemnego blokowania się transakcji, co drastycznie zwiększa przepustowość systemu przy dużej liczbie jednoczesnych połączeń. Skutkiem ubocznym tego bezkolizyjnego mechanizmu jest jednak powstawanie martwych krotek, czyli przestarzałych wersji wierszy. Wiersze te, choć zostały już zaktualizowane lub usunięte przez aplikację, wciąż fizycznie zajmują przestrzeń na dysku ze względu na to, że inne, wciąż otwarte transakcje, mogą potrzebować dostępu do ich historycznego stanu.
 
@@ -29,7 +29,7 @@ Zaniedbanie procesu czyszczenia w systemach o wysokiej rotacji danych może dopr
     -- Przykładowe wymuszenie manualnej konserwacji z analizą statystyk dla tabeli
     VACUUM (VERBOSE, ANALYZE) Wypozyczenia;
 
-1.2. Optymalizacja i statystyki planisty zapytań
+Optymalizacja i statystyki planisty zapytań
 ================================================
 Kolejnym filarem utrzymania sprawności systemu jest kontrola nad optymalizatorem, zwanym planistą zapytań. Silnik bazy danych przed wykonaniem jakiejkolwiek skomplikowanej kwerendy analizuje dziesiątki możliwych ścieżek jej realizacji. Decyzje takie jak wybór między skanowaniem sekwencyjnym całego zbioru a użyciem konkretnego indeksu podejmowane są na podstawie modelu matematycznego opartego o szacowany koszt operacji.
 
@@ -48,7 +48,7 @@ Aby planista mógł podejmować optymalne decyzje, musi opierać się na wysoce 
     JOIN Ksiazki k ON w.ID_Ksiazki = k.ID_Ksiazki
     WHERE w.Data_Zwrotu IS NULL;
 
-1.3. Bezpieczeństwo i rygorystyczna kontrola dostępu
+Bezpieczeństwo i rygorystyczna kontrola dostępu
 ====================================================
 Bezpieczeństwo danych stanowi absolutny priorytet każdej administracji systemami informatycznymi. Nowoczesne podejście do ochrony baz danych całkowicie odchodzi od wykorzystywania globalnych kont administracyjnych, takich jak domyślny użytkownik instalacyjny, do codziennych operacji na poziomie aplikacji. Zamiast tego wdraża się model kontroli dostępu opartej na rolach, który znacząco ogranicza ryzyko kompromitacji całego systemu w przypadku wycieku pojedynczego poświadczenia.
 
@@ -64,7 +64,7 @@ Kluczowym konceptem jest wdrożenie zasady najmniejszych uprawnień. Rola wykorz
     GRANT USAGE ON SCHEMA public TO app_user;
     GRANT SELECT, INSERT ON Wypozyczenia TO app_user;
 
-1.4. Strategie zabezpieczania przed utratą danych
+Strategie zabezpieczania przed utratą danych
 =================================================
 Nawet najlepiej zoptymalizowany i zabezpieczony system informatyczny jest narażony na błędy ludzkie lub awarie infrastruktury sprzętowej. Dlatego odpowiednia polityka wykonywania kopii zapasowych oraz odtwarzania środowiska po awarii jest krytycznym elementem konserwacji relacyjnych baz danych. Zarządzanie tym procesem opiera się na dwóch uzupełniających się podejściach.
 

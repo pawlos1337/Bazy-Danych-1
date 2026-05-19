@@ -42,10 +42,10 @@
 </dd>
 </dl>
 <section id="definicja-fizyczna-bazy-danych-zadanie-1">
-<h2>1. Definicja fizyczna bazy danych (Zadanie 1)<a class="headerlink" href="#definicja-fizyczna-bazy-danych-zadanie-1" title="Link to this heading">¶</a></h2>
+<h2>Definicja fizyczna bazy danych (Zadanie 1)<a class="headerlink" href="#definicja-fizyczna-bazy-danych-zadanie-1" title="Link to this heading">¶</a></h2>
 <p>Na podstawie opracowanych wcześniej modeli logicznych przygotowano skrypty DDL (Data Definition Language) dla dwóch docelowych silników relacyjnych baz danych: PostgreSQL oraz SQLite. Kody te posłużyły do utworzenia struktur w bazach dostępnych na serwerze laboratoryjnym oraz przez sieć Internet.</p>
 <section id="skrypt-dla-srodowiska-postgresql">
-<h3>1.1. Skrypt dla środowiska PostgreSQL<a class="headerlink" href="#skrypt-dla-srodowiska-postgresql" title="Link to this heading">¶</a></h3>
+<h3>Skrypt dla środowiska PostgreSQL<a class="headerlink" href="#skrypt-dla-srodowiska-postgresql" title="Link to this heading">¶</a></h3>
 <p>Środowisko PostgreSQL pozwala na wykorzystanie zaawansowanych, natywnych typów danych oraz rygorystyczne egzekwowanie więzów integralności. W poniższym skrypcie kluczowym elementem jest użycie pseudo-typu <code class="docutils literal notranslate"><span class="pre">SERIAL</span></code> dla automatycznej generacji kluczy głównych oraz typów o stałej lub ograniczonej długości (<code class="docutils literal notranslate"><span class="pre">VARCHAR</span></code>, <code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">DATE</span></code>) dla optymalizacji przechowywania danych. Relacje między tabelami zapewniane są przez twarde klauzule <code class="docutils literal notranslate"><span class="pre">REFERENCES</span></code>.</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Fragment kodu definicji kluczowych tabel (PostgreSQL)</span>
 <span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">Ksiazki</span><span class="w"> </span><span class="p">(</span>
@@ -67,7 +67,7 @@
 </div>
 </section>
 <section id="skrypt-dla-srodowiska-sqlite">
-<h3>1.2. Skrypt dla środowiska SQLite<a class="headerlink" href="#skrypt-dla-srodowiska-sqlite" title="Link to this heading">¶</a></h3>
+<h3>Skrypt dla środowiska SQLite<a class="headerlink" href="#skrypt-dla-srodowiska-sqlite" title="Link to this heading">¶</a></h3>
 <p>W silniku SQLite struktura ulega pewnemu uproszczeniu z powodu mniejszej rygorystyczności typowania oraz bardzo ograniczonej liczby wbudowanych klas typów danych (np. brak odrębnego typu daty). Z tego względu zastosowano typ <code class="docutils literal notranslate"><span class="pre">TEXT</span></code> dla dat i łańcuchów znaków. Ponadto w SQLite relacje kluczy obcych deklaruje się w osobnej klauzuli <code class="docutils literal notranslate"><span class="pre">FOREIGN</span> <span class="pre">KEY</span></code> na końcu definicji tabeli, a automatyczna inkrementacja klucza realizowana jest atrybutem <code class="docutils literal notranslate"><span class="pre">AUTOINCREMENT</span></code>.</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Fragment kodu definicji kluczowych tabel (SQLite)</span>
 <span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">Wypozyczenia</span><span class="w"> </span><span class="p">(</span>
@@ -84,10 +84,10 @@
 </section>
 </section>
 <section id="mechanizm-zasilania-bazy-danych-zadanie-2">
-<h2>2. Mechanizm zasilania bazy danych (Zadanie 2)<a class="headerlink" href="#mechanizm-zasilania-bazy-danych-zadanie-2" title="Link to this heading">¶</a></h2>
+<h2>Mechanizm zasilania bazy danych (Zadanie 2)<a class="headerlink" href="#mechanizm-zasilania-bazy-danych-zadanie-2" title="Link to this heading">¶</a></h2>
 <p>Posiadając gotową strukturę bazy, należało wyposażyć ją w dane demonstracyjne. Przygotowano zbiór danych testowych, które zostały poddane wsadowemu ładowaniu (batch import).</p>
 <section id="formatyzacja-danych-pliki-csv">
-<h3>2.1. Formatyzacja danych (Pliki CSV)<a class="headerlink" href="#formatyzacja-danych-pliki-csv" title="Link to this heading">¶</a></h3>
+<h3>Formatyzacja danych (Pliki CSV)<a class="headerlink" href="#formatyzacja-danych-pliki-csv" title="Link to this heading">¶</a></h3>
 <p>Dane do importu przygotowano w niezależnym formacie płaskim CSV (Comma-Separated Values). Takie podejście pozwala na łatwą edycję danych poza systemem bazodanowym. Poniżej zaprezentowano wycinek pliku <code class="docutils literal notranslate"><span class="pre">dane_kategorie.csv</span></code>:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Nazwa_Kategorii
 Fantastyka
@@ -99,7 +99,7 @@ Horror
 </div>
 </section>
 <section id="implementacja-mechanizmu-importu">
-<h3>2.2. Implementacja mechanizmu importu<a class="headerlink" href="#implementacja-mechanizmu-importu" title="Link to this heading">¶</a></h3>
+<h3>Implementacja mechanizmu importu<a class="headerlink" href="#implementacja-mechanizmu-importu" title="Link to this heading">¶</a></h3>
 <p>Do zaimportowania powyższych danych wybrano mechanizm wprowadzania wielowartościowego oparty na technice <strong>INSERT (multi-value/batch)</strong>. Rozwiązanie zrealizowano z wykorzystaniem języka Python oraz dedykowanego sterownika <code class="docutils literal notranslate"><span class="pre">psycopg</span></code>.</p>
 <p>Wybór tego mechanizmu podyktowany jest kompromisem między uniwersalnością a wydajnością. Użycie metody <code class="docutils literal notranslate"><span class="pre">executemany()</span></code> na obiekcie kursora bazy danych pozwala na szybkie wstawienie wielu rekordów w ramach pojedynczej transakcji sieciowej. Jest to rozwiązanie znacznie bardziej optymalne czasowo i obciążeniowo niż wykonywanie pojedynczych instrukcji <code class="docutils literal notranslate"><span class="pre">INSERT</span></code> iteracyjnie w pętli. Opcjonalna klauzula <code class="docutils literal notranslate"><span class="pre">COPY</span></code> byłaby szybsza, jednak rozwiązanie oparte o wsadowy <code class="docutils literal notranslate"><span class="pre">INSERT</span></code> jest bardziej uniwersalne w architekturze klient-serwer.</p>
 <p>Poniżej przedstawiono fragment skryptu aplikacyjnego odpowiedzialnego za odczyt z pliku i zasilenie tabel:</p>
@@ -138,7 +138,7 @@ Horror
 </section>
 </section>
 <section id="podsumowanie">
-<h2>3. Podsumowanie<a class="headerlink" href="#podsumowanie" title="Link to this heading">¶</a></h2>
+<h2>Podsumowanie<a class="headerlink" href="#podsumowanie" title="Link to this heading">¶</a></h2>
 <p>Niniejszy rozdział wieńczy etap projektowania i wdrażania struktury relacyjnej bazy danych dla systemu zarządzania biblioteką. Poprzez transformację modelu logicznego do postaci fizycznej, udało się z powodzeniem zaimplementować docelowe schematy w dwóch niezależnych środowiskach bazodanowych: produkcyjnym (PostgreSQL) oraz lokalnym/testowym (SQLite). Opracowane skrypty DDL poprawnie uwzględniają specyfikę obu silników, zachowując przy tym pożądaną architekturę relacyjną.</p>
 <p>Dodatkowo, proces inicjalizacji systemu został zautomatyzowany dzięki przygotowaniu skryptu w języku Python. Wykorzystanie plików CSV oraz mechanizmu wsadowego wstawiania danych (batch insert) udowodniło, że możliwe jest szybkie i skalowalne zasilenie bazy niezbędnymi danymi demonstracyjnymi. Wdrożone rozwiązania stanowią solidny, zoptymalizowany fundament do dalszych prac nad logiką biznesową i warstwą aplikacyjną całego projektu.</p>
 </section>
@@ -167,9 +167,9 @@ Horror
 <li class="toctree-l1"><a class="reference internal" href="../rozdzial_2/index.html">Badania literaturowe</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rozdzial_3/index.html">Rozdzial 3: Projektowanie  Bazy Danych: System Zarządzania Biblioteką</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Rozdział 4: Implementacja fizyczna i zasilanie bazy danych</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#definicja-fizyczna-bazy-danych-zadanie-1">1. Definicja fizyczna bazy danych (Zadanie 1)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#mechanizm-zasilania-bazy-danych-zadanie-2">2. Mechanizm zasilania bazy danych (Zadanie 2)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#podsumowanie">3. Podsumowanie</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#definicja-fizyczna-bazy-danych-zadanie-1">Definicja fizyczna bazy danych (Zadanie 1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mechanizm-zasilania-bazy-danych-zadanie-2">Mechanizm zasilania bazy danych (Zadanie 2)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#podsumowanie">Podsumowanie</a></li>
 </ul>
 </li>
 </ul>

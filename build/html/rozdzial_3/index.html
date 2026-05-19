@@ -43,7 +43,7 @@
 </dd>
 </dl>
 <section id="wybor-zagadnienia-opis-procesow-i-danych">
-<h2>1. Wybór zagadnienia, opis procesów i danych<a class="headerlink" href="#wybor-zagadnienia-opis-procesow-i-danych" title="Link to this heading">¶</a></h2>
+<h2>Wybór zagadnienia, opis procesów i danych<a class="headerlink" href="#wybor-zagadnienia-opis-procesow-i-danych" title="Link to this heading">¶</a></h2>
 <section id="wybrane-zagadnienie">
 <h3>Wybrane zagadnienie:<a class="headerlink" href="#wybrane-zagadnienie" title="Link to this heading">¶</a></h3>
 <p>System zarządzania wypożyczeniami w bibliotece.
@@ -71,7 +71,7 @@ Projekt obejmuje obsługę bazy czytelników, katalogu zbiorów bibliotecznych (
 </section>
 </section>
 <section id="prototyp-csv">
-<h2>2. Prototyp CSV<a class="headerlink" href="#prototyp-csv" title="Link to this heading">¶</a></h2>
+<h2>Prototyp CSV<a class="headerlink" href="#prototyp-csv" title="Link to this heading">¶</a></h2>
 <p>Aby zweryfikować kompletność przetwarzanych informacji, przygotowano “płaską” (nieznormalizowaną) reprezentację danych dla operacji wypożyczenia, bazującą na pierwotnych wytycznych.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Imie</span><span class="p">,</span><span class="n">Nazwisko</span><span class="p">,</span><span class="n">Ulica</span><span class="p">,</span><span class="n">Kod_Pocztowy</span><span class="p">,</span><span class="n">Miasto</span><span class="p">,</span><span class="n">Data_Zapisu</span><span class="p">,</span><span class="n">Tytul_Ksiazki</span><span class="p">,</span><span class="n">Imie_Autora</span><span class="p">,</span><span class="n">Nazwisko_Autora</span><span class="p">,</span><span class="n">Kategoria</span><span class="p">,</span><span class="n">Data_Wypozyczenia</span><span class="p">,</span><span class="n">Data_Zwrotu</span>
 <span class="n">Jan</span><span class="p">,</span><span class="n">Kowalski</span><span class="p">,</span><span class="n">Kwiatowa</span> <span class="mi">1</span><span class="p">,</span><span class="mi">00</span><span class="o">-</span><span class="mi">001</span><span class="p">,</span><span class="n">Warszawa</span><span class="p">,</span><span class="mi">2024</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span><span class="n">Wiedźmin</span><span class="p">,</span><span class="n">Andrzej</span><span class="p">,</span><span class="n">Sapkowski</span><span class="p">,</span><span class="n">Fantastyka</span><span class="p">,</span><span class="mi">2024</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">01</span><span class="p">,</span><span class="mi">2024</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">15</span>
@@ -81,7 +81,7 @@ Projekt obejmuje obsługę bazy czytelników, katalogu zbiorów bibliotecznych (
 </div>
 </section>
 <section id="model-konceptualny-pojeciowy">
-<h2>3. Model Konceptualny (Pojęciowy)<a class="headerlink" href="#model-konceptualny-pojeciowy" title="Link to this heading">¶</a></h2>
+<h2>Model Konceptualny (Pojęciowy)<a class="headerlink" href="#model-konceptualny-pojeciowy" title="Link to this heading">¶</a></h2>
 <p>Na podstawie analizy procesów i zebranych danych opracowano model pojęciowy, identyfikując obiekty, ich cechy oraz powiązania.</p>
 <section id="zidentyfikowane-encje">
 <h3>Zidentyfikowane encje<a class="headerlink" href="#zidentyfikowane-encje" title="Link to this heading">¶</a></h3>
@@ -123,9 +123,9 @@ Projekt obejmuje obsługę bazy czytelników, katalogu zbiorów bibliotecznych (
 </section>
 </section>
 <section id="model-logiczny-i-proces-normalizacji">
-<h2>4. Model logiczny i proces normalizacji<a class="headerlink" href="#model-logiczny-i-proces-normalizacji" title="Link to this heading">¶</a></h2>
+<h2>Model logiczny i proces normalizacji<a class="headerlink" href="#model-logiczny-i-proces-normalizacji" title="Link to this heading">¶</a></h2>
 <section id="przebieg-procesu-normalizacji">
-<h3>4.1. Przebieg procesu normalizacji<a class="headerlink" href="#przebieg-procesu-normalizacji" title="Link to this heading">¶</a></h3>
+<h3>Przebieg procesu normalizacji<a class="headerlink" href="#przebieg-procesu-normalizacji" title="Link to this heading">¶</a></h3>
 <p><strong>Krok 1: Pierwsza Postać Normalna (1NF)</strong>
 Wiersze są unikalne, tworzymy sztuczne klucze główne (ID_Wypozyczenia). Wartości w komórkach są atomowe. Pojawia się duża redundancja danych adresowych i książkowych.</p>
 <p><strong>Krok 2: Druga Postać Normalna (2NF)</strong>
@@ -136,7 +136,7 @@ Tworzymy bazowe tabele: <code class="docutils literal notranslate"><span class="
 Eliminacja zależności przechodnich. Z tabeli <code class="docutils literal notranslate"><span class="pre">Ksiazki</span></code> wydzielamy powtarzające się nazwy gatunków do tabeli <code class="docutils literal notranslate"><span class="pre">Kategorie</span></code> (klucz: ID_Kategorii) oraz dane twórców do tabeli <code class="docutils literal notranslate"><span class="pre">Autorzy</span></code> (klucz: ID_Autora).</p>
 </section>
 <section id="ostateczna-struktura-tabel-3nf">
-<h3>4.2. Ostateczna struktura tabel (3NF)<a class="headerlink" href="#ostateczna-struktura-tabel-3nf" title="Link to this heading">¶</a></h3>
+<h3>Ostateczna struktura tabel (3NF)<a class="headerlink" href="#ostateczna-struktura-tabel-3nf" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong>Czytelnicy:</strong> ID_Czytelnika (PK), Imie, Nazwisko, Ulica, Kod_Pocztowy, Miasto, Data_Zapisu</p></li>
 <li><p><strong>Autorzy:</strong> ID_Autora (PK), Imie, Nazwisko</p></li>
@@ -146,15 +146,15 @@ Eliminacja zależności przechodnich. Z tabeli <code class="docutils literal not
 </ul>
 </section>
 <section id="diagram-erd-model-logiczny">
-<h3>4.3. Diagram ERD (Model Logiczny)<a class="headerlink" href="#diagram-erd-model-logiczny" title="Link to this heading">¶</a></h3>
+<h3>Diagram ERD (Model Logiczny)<a class="headerlink" href="#diagram-erd-model-logiczny" title="Link to this heading">¶</a></h3>
 <img alt="Diagram logiczny ERD bazy danych biblioteki (Postać 3NF)." src="../_images/erd_logiczny_biblioteka1.png" />
 </section>
 </section>
 <section id="model-fizyczny-bazy-danych">
-<h2>5. Model fizyczny bazy danych<a class="headerlink" href="#model-fizyczny-bazy-danych" title="Link to this heading">¶</a></h2>
+<h2>Model fizyczny bazy danych<a class="headerlink" href="#model-fizyczny-bazy-danych" title="Link to this heading">¶</a></h2>
 <p>Różnice implementacyjne między modelami fizycznymi wynikają wprost z silników RDBMS – ograniczeń typowania SQLite oraz bogatych możliwości deklaratywnych PostgreSQL.</p>
 <section id="model-fizyczny-dla-srodowiska-sqlite">
-<h3>5.1. Model fizyczny dla środowiska SQLite<a class="headerlink" href="#model-fizyczny-dla-srodowiska-sqlite" title="Link to this heading">¶</a></h3>
+<h3>Model fizyczny dla środowiska SQLite<a class="headerlink" href="#model-fizyczny-dla-srodowiska-sqlite" title="Link to this heading">¶</a></h3>
 <p>Z uwagi na okrojony zestaw typów, daty są mapowane jako TEXT.</p>
 <ul class="simple">
 <li><p><strong>Czytelnicy:</strong> ID_Czytelnika : INTEGER PRIMARY KEY, Imie : TEXT, Nazwisko : TEXT, Ulica : TEXT, Kod_Pocztowy : TEXT, Miasto : TEXT, Data_Zapisu : TEXT</p></li>
@@ -166,7 +166,7 @@ Eliminacja zależności przechodnich. Z tabeli <code class="docutils literal not
 <img alt="Fizyczny schemat bazy danych dla silnika SQLite." src="../_images/fizyczny_sqlite_biblioteka1.png" />
 </section>
 <section id="model-fizyczny-dla-srodowiska-postgresql">
-<h3>5.2. Model fizyczny dla środowiska PostgreSQL<a class="headerlink" href="#model-fizyczny-dla-srodowiska-postgresql" title="Link to this heading">¶</a></h3>
+<h3>Model fizyczny dla środowiska PostgreSQL<a class="headerlink" href="#model-fizyczny-dla-srodowiska-postgresql" title="Link to this heading">¶</a></h3>
 <p>PostgreSQL umożliwia zastosowanie precyzyjnych i natywnych typów, w tym rygorystycznych typów daty (DATE) oraz optymalizacji pamięciowej dla ciągów znaków (VARCHAR).</p>
 <ul class="simple">
 <li><p><strong>Czytelnicy:</strong> ID_Czytelnika : SERIAL PRIMARY KEY, Imie : VARCHAR(50), Nazwisko : VARCHAR(50), Ulica : VARCHAR(100), Kod_Pocztowy : VARCHAR(6), Miasto : VARCHAR(50), Data_Zapisu : DATE DEFAULT CURRENT_DATE</p></li>
@@ -202,11 +202,11 @@ Eliminacja zależności przechodnich. Z tabeli <code class="docutils literal not
 <li class="toctree-l1"><a class="reference internal" href="../rozdzial_1/index.html">Rozdział 1: Kontrola i konserwacja</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rozdzial_2/index.html">Badania literaturowe</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Rozdzial 3: Projektowanie  Bazy Danych: System Zarządzania Biblioteką</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#wybor-zagadnienia-opis-procesow-i-danych">1. Wybór zagadnienia, opis procesów i danych</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#prototyp-csv">2. Prototyp CSV</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#model-konceptualny-pojeciowy">3. Model Konceptualny (Pojęciowy)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#model-logiczny-i-proces-normalizacji">4. Model logiczny i proces normalizacji</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#model-fizyczny-bazy-danych">5. Model fizyczny bazy danych</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#wybor-zagadnienia-opis-procesow-i-danych">Wybór zagadnienia, opis procesów i danych</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#prototyp-csv">Prototyp CSV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#model-konceptualny-pojeciowy">Model Konceptualny (Pojęciowy)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#model-logiczny-i-proces-normalizacji">Model logiczny i proces normalizacji</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#model-fizyczny-bazy-danych">Model fizyczny bazy danych</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../rozdzial_4/index.html">Rozdział 4: Implementacja fizyczna i zasilanie bazy danych</a></li>
