@@ -1,6 +1,10 @@
 ======================
-Badania literaturowe
+Rozdział 2
 ======================
+
+:Autorzy:
+    1. Paweł Łoćwin
+    2. Paweł Łosowski
 
 Wprowadzenie
 ============
