@@ -1,6 +1,6 @@
-=====================================================================
-Rozdzial 3: Projektowanie Bazy Danych: System Zarządzania Biblioteką
-=====================================================================
+================================================
+Rozdział 3: Projektowanie Bazy Danych: System Zarządzania Biblioteką
+================================================
 
 :Autorzy:
     1. Paweł Łoćwin
@@ -12,16 +12,16 @@ Wybór zagadnienia, opis procesów i danych
 Wybrane zagadnienie:
 --------------------
 System zarządzania wypożyczeniami w bibliotece.
-Projekt obejmuje obsługę bazy czytelników, katalogu zbiorów bibliotecznych (z uwzględnieniem autorów i kategorii literackich), a także pełen proces ewidencji wypożyczeń, zwrotów oraz historii aktywności czytelnika.
+Projekt obejmuje obsługę bazy czytelników, katalogu zbiorów bibliotecznych (z uwzględnieniem autorów i kategorii literackich), a także pełen proces ewidencji wypożyczeń, zwrotów oraz hi[...]
 
 Opis procesów i więzy integralności:
 ------------------------------------
 Głównym procesem w systemie jest obieg książki między biblioteką a czytelnikiem.
 
 * **Rejestracja:** Czytelnik zapisuje się do biblioteki, podając swoje dane osobowe oraz adresowe. System automatycznie rejestruje datę zapisu.
-* **Katalogowanie:** Książki są kategoryzowane (np. Fantastyka, Kryminał, Literatura faktu) i przypisane do konkretnych autorów. Każdy fizyczny egzemplarz książki posiada swój unikalny identyfikator.
-* **Wypożyczenia i Zwroty:** Proces wypożyczenia łączy czytelnika z konkretnym egzemplarzem książki w czasie. Rejestrowana jest data wypożyczenia. System zakłada konieczność ewidencji daty zwrotu, by w przyszłości móc naliczać ewentualne kary.
-* **Statystyki (Więzy integralności):** Pola takie jak "aktualne wypożyczenia" i "suma wypożyczeń" z pierwotnego prototypu są wartościami wyliczalnymi (pochodnymi) na podstawie historii transakcji, co w docelowym modelu gwarantuje spójność danych.
+* **Katalogowanie:** Książki są kategoryzowane (np. Fantastyka, Kryminał, Literatura faktu) i przypisane do konkretnych autorów. Każdy fizyczny egzemplarz książki posiada swój unikalny id[...]
+* **Wypożyczenia i Zwroty:** Proces wypożyczenia łączy czytelnika z konkretnym egzemplarzem książki w czasie. Rejestrowana jest data wypożyczenia. System zakłada konieczność ewidencji da[...]
+* **Statystyki (Więzy integralności):** Pola takie jak "aktualne wypożyczenia" i "suma wypożyczeń" z pierwotnego prototypu są wartościami wyliczalnymi (pochodnymi) na podstawie historii tra[...]
 
 Wykaz gromadzonych danych:
 --------------------------
@@ -71,7 +71,7 @@ Opis związków
 
 Identyfikacja encji słabych
 ---------------------------
-Występuje relacja wiele-do-wielu (M:N) między Czytelnikiem a Książką (czytelnik czyta wiele książek, książka jest czytana przez wielu czytelników). Związek ten rozwiązywany jest przez encję asocjacyjną (słabą) **Wypożyczenie**.
+Występuje relacja wiele-do-wielu (M:N) między Czytelnikiem a Książką (czytelnik czyta wiele książek, książka jest czytana przez wielu czytelników). Związek ten rozwiązywany jest przez [...]
 * **Uzasadnienie:** Byt ten nie istnieje samodzielnie w oderwaniu od konkretnego Czytelnika i konkretnej Książki.
 
 Schemat w notacji Chena
@@ -90,10 +90,10 @@ Wiersze są unikalne, tworzymy sztuczne klucze główne (ID_Wypozyczenia). Warto
 **Krok 2: Druga Postać Normalna (2NF)**
 Rozbijamy płaską strukturę względem częściowych zależności. Oddzielamy encje twarde od operacji.
 Tworzymy bazowe tabele: ``Czytelnicy`` oraz ``Ksiazki``. Powstaje tabela ``Wypozyczenia`` przechowująca klucze obce ID_Czytelnika oraz ID_Ksiazki, a także daty transakcji.
-*Uwaga:* Dynamiczne atrybuty takie jak "suma wypożyczeń" z pierwotnego zadania są usuwane ze schematu, ponieważ łamią zasady normalizacji – można je obliczyć zapytaniem SQL typu ``COUNT()``.
+*Uwaga:* Dynamiczne atrybuty takie jak "suma wypożyczeń" z pierwotnego zadania są usuwane ze schematu, ponieważ łamią zasady normalizacji – można je obliczyć zapytaniem SQL typu ``COUNT([...]
 
 **Krok 3: Trzecia Postać Normalna (3NF)**
-Eliminacja zależności przechodnich. Z tabeli ``Ksiazki`` wydzielamy powtarzające się nazwy gatunków do tabeli ``Kategorie`` (klucz: ID_Kategorii) oraz dane twórców do tabeli ``Autorzy`` (klucz: ID_Autora).
+Eliminacja zależności przechodnich. Z tabeli ``Ksiazki`` wydzielamy powtarzające się nazwy gatunków do tabeli ``Kategorie`` (klucz: ID_Kategorii) oraz dane twórców do tabeli ``Autorzy`` (kl[...]
 
 Ostateczna struktura tabel (3NF)
 --------------------------------
@@ -129,11 +129,11 @@ Model fizyczny dla środowiska PostgreSQL
 ----------------------------------------
 PostgreSQL umożliwia zastosowanie precyzyjnych i natywnych typów, w tym rygorystycznych typów daty (DATE) oraz optymalizacji pamięciowej dla ciągów znaków (VARCHAR).
 
-* **Czytelnicy:** ID_Czytelnika : SERIAL PRIMARY KEY, Imie : VARCHAR(50), Nazwisko : VARCHAR(50), Ulica : VARCHAR(100), Kod_Pocztowy : VARCHAR(6), Miasto : VARCHAR(50), Data_Zapisu : DATE DEFAULT CURRENT_DATE
+* **Czytelnicy:** ID_Czytelnika : SERIAL PRIMARY KEY, Imie : VARCHAR(50), Nazwisko : VARCHAR(50), Ulica : VARCHAR(100), Kod_Pocztowy : VARCHAR(6), Miasto : VARCHAR(50), Data_Zapisu : DATE DEFAULT[...]
 * **Autorzy:** ID_Autora : SERIAL PRIMARY KEY, Imie : VARCHAR(50), Nazwisko : VARCHAR(50)
 * **Kategorie:** ID_Kategorii : SERIAL PRIMARY KEY, Nazwa_Kategorii : VARCHAR(50)
 * **Ksiazki:** ID_Ksiazki : SERIAL PRIMARY KEY, ID_Autora : INTEGER REFERENCES Autorzy, ID_Kategorii : INTEGER REFERENCES Kategorie, Tytul : VARCHAR(150), Rok_Wydania : SMALLINT
-* **Wypozyczenia:** ID_Wypozyczenia : SERIAL PRIMARY KEY, ID_Czytelnika : INTEGER REFERENCES Czytelnicy, ID_Ksiazki : INTEGER REFERENCES Ksiazki, Data_Wypozyczenia : DATE DEFAULT CURRENT_DATE, Data_Zwrotu : DATE
+* **Wypozyczenia:** ID_Wypozyczenia : SERIAL PRIMARY KEY, ID_Czytelnika : INTEGER REFERENCES Czytelnicy, ID_Ksiazki : INTEGER REFERENCES Ksiazki, Data_Wypozyczenia : DATE DEFAULT CURRENT_DATE, Da[...]
 
 .. image:: fizyczny_postgres_biblioteka.drawio.png
    :alt: Fizyczny schemat bazy danych opracowany dla silnika PostgreSQL.
