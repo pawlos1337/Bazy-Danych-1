@@ -31,10 +31,6 @@ latex_elements = {
     'pointsize': '11pt',
     'fncychap': '\\usepackage[Bjarne]{fncychap}',
     'preamble': r'''
-\usepackage[utf-8]{inputenc}
-\usepackage{babel}
-\usepackage{graphicx}
-\usepackage{hyperref}
 \setcounter{tocdepth}{2}
 \raggedbottom
 ''',
