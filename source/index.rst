@@ -9,8 +9,8 @@ Niniejsza dokumentacja stanowi kompletne sprawozdanie z laboratorium przedmiotu 
 Dokumentacja została podzielona na cztery główne sekcje tematyczne, począwszy od teoretycznych aspektów konserwacji systemów, poprzez badania literaturowe, aż po praktyczny projekt i wdroże[...]
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Spis Treści:
+   :maxdepth: 1
+   :numbered:
 
    rozdzial_1/index
    rozdzial_2/index
