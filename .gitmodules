@@ -1,10 +1,6 @@
 [submodule "rozdzial_23"]
 	path = rozdzial_23
 	url = git@github.com:pawlos1337/Bazy-danych-temat.git
-[submodule "source/rozdzial_2/rozdzial_28"]
-	path = source/rozdzial_2/rozdzial_28
-	url = https://github.com/Koko9077/Kopie-zapasowe-i-odzyskiwanie-danych.git
-	branch = main
 [submodule "source/rozdzial_2/rozdzial_22"]
 	path = source/rozdzial_2/rozdzial_22
 	url = https://github.com/Youarecheck/Bazy_Danych_Tematyczne_Repo_MK.git
@@ -26,3 +22,6 @@
 [submodule "source/rozdzial_2/rozdzial_21"]
 	path = source/rozdzial_2/rozdzial_21
 	url = https://github.com/karaskamil/Sprzet-dla-bazy-danych.git
+[submodule "source/rozdzial_2/rozdzial_28"]
+	path = source/rozdzial_2/rozdzial_28
+	url = https://github.com/Koko9077/Kopie-zapasowe-i-odzyskiwanie-danych.git
