@@ -1,4 +1,4 @@
-k#!/bin/bash
+#!/bin/bash
 
 # Ustawienie ścieżki do Twojego projektu
 PROJEKT_DIR="/home/student15/gitstuiff/Bazy-Danych-1"
