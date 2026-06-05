@@ -841,4 +841,212 @@ tawesome5
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring ON on inp
+Package hyperref Info: Link coloring ON on input line 85.
+(./sprawozdanie-z-laboratoriow.out) (./sprawozdanie-z-laboratoriow.out)
+\@outlinefile=\write5
+\openout5 = `sprawozdanie-z-laboratoriow.out'.
+
+Package hyperref Info: Option `pageanchor' set `false' on input line 93.
+LaTeX Font Info:    Trying to load font information for T1+qhv on input line 93
+.
+
+(/usr/share/texmf/tex/latex/tex-gyre/t1qhv.fd
+File: t1qhv.fd 2009/09/25 v1.2 font definition file for T1/qhv
+)<<ot1.cmap>><<oml.cmap>><<oms.cmap>><<omx.cmap>>
+LaTeX Font Info:    Trying to load font information for U+msa on input line 93.
+
+ (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 93.
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+
+[1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texmf/fonts/enc/
+dvips/tex-gyre/q-ec.enc}] (./sprawozdanie-z-laboratoriow.toc
+
+[1
+
+
+
+])
+\tf@toc=\write6
+\openout6 = `sprawozdanie-z-laboratoriow.toc'.
+
+
+
+[2]
+
+[1
+
+]
+Chapter 1.
+LaTeX Font Info:    Trying to load font information for TS1+qtm on input line 1
+43.
+(/usr/share/texmf/tex/latex/tex-gyre/ts1qtm.fd
+File: ts1qtm.fd 2009/09/25 v1.2 font definition file for TS1/qtm
+)
+LaTeX Font Info:    Trying to load font information for T1+txtt on input line 1
+60.
+
+(/usr/share/texlive/texmf-dist/tex/latex/txfonts/t1txtt.fd
+File: t1txtt.fd 2000/12/15 v3.1
+)
+LaTeX Font Info:    Font shape `T1/txtt/m/it' in size <10.95> not available
+(Font)              Font shape `T1/txtt/m/sl' tried instead on input line 161.
+LaTeX Font Info:    Font shape `T1/txtt/b/n' in size <10.95> not available
+(Font)              Font shape `T1/txtt/bx/n' tried instead on input line 162.
+
+
+[2
+
+{/usr/share/texmf/fonts/enc/dvips/tex-gyre/q-ts1.enc}]
+Underfull \hbox (badness 10000) in paragraph at lines 197--199
+\T1/qtm/m/n/10.95 Bez-piecze«stwo danych stanowi ab-so-lutny pri-o-ry-tet ka»de
+j ad-min-is-tracji sys-temami in-for-maty-cznymi.
+ []
+
+LaTeX Font Info:    Trying to load font information for TS1+txtt on input line 
+208.
+(/usr/share/texlive/texmf-dist/tex/latex/txfonts/ts1txtt.fd
+File: ts1txtt.fd 2000/12/15 v3.1
+)
+
+[3]
+Chapter 2.
+
+
+[4
+
+]
+
+[5]
+
+[6]
+
+[7]
+
+[8]
+
+[9]
+
+[10]
+LaTeX Font Info:    Trying to load font information for U+fontawesomefree1 on i
+nput line 1154.
+ (/usr/share/texlive/texmf-dist/tex/latex/fontawesome5/ufontawesomefree1.fd)
+
+[11{/usr/share/texlive/texmf-dist/fonts/enc/dvips/fontawesome5/fa5free1.enc}]
+Underfull \hbox (badness 10000) in paragraph at lines 1250--1252
+\T1/qtm/m/n/10.95 Bez-piecze«stwo danych stanowi ab-so-lutny pri-o-ry-tet ka»de
+j ad-min-is-tracji sys-temami in-for-maty-cznymi.
+ []
+
+
+
+[12]
+Underfull \hbox (badness 10000) in paragraph at lines 1333--1336
+[][][][][]\T1/qtm/m/n/9 Oracle Doc-u-men-ta-tion, \T1/qtm/m/it/9 AU-DIT_TRAIL \
+T1/qtm/m/n/9 oraz in-for-ma-cje o uni-fied au-dit-ing, [][]$https : / / docs . 
+oracle . com / en / database / oracle /
+ []
+
+
+
+[13]
+
+[14]
+
+[15]
+
+[16]
+
+[17]
+
+[18]
+Chapter 3.
+
+
+[19
+
+]
+<model_konceptualny_biblioteka.png, id=625, 1891.065pt x 1276.77pt>
+File: model_konceptualny_biblioteka.png Graphic file (type png)
+<use model_konceptualny_biblioteka.png>
+Package pdftex.def Info: model_konceptualny_biblioteka.png  used on input line 
+1821.
+(pdftex.def)             Requested size: 397.06577pt x 268.07117pt.
+
+
+[20]
+<erd_logiczny_biblioteka.png, id=631, 712.91344pt x 181.42781pt>
+File: erd_logiczny_biblioteka.png Graphic file (type png)
+<use erd_logiczny_biblioteka.png>
+Package pdftex.def Info: erd_logiczny_biblioteka.png  used on input line 1871.
+(pdftex.def)             Requested size: 397.06577pt x 101.04797pt.
+
+
+[21 <./model_konceptualny_biblioteka.png>]
+<fizyczny_sqlite_biblioteka.png, id=638, 828.84656pt x 181.42781pt>
+File: fizyczny_sqlite_biblioteka.png Graphic file (type png)
+<use fizyczny_sqlite_biblioteka.png>
+Package pdftex.def Info: fizyczny_sqlite_biblioteka.png  used on input line 190
+7.
+(pdftex.def)             Requested size: 397.06577pt x 86.91272pt.
+<fizyczny_postgres_biblioteka.drawio.png, id=639, 889.07156pt x 181.42781pt>
+File: fizyczny_postgres_biblioteka.drawio.png Graphic file (type png)
+<use fizyczny_postgres_biblioteka.drawio.png>
+Package pdftex.def Info: fizyczny_postgres_biblioteka.drawio.png  used on input
+ line 1937.
+(pdftex.def)             Requested size: 397.06577pt x 81.02718pt.
+
+
+[22 <./erd_logiczny_biblioteka.png> <./fizyczny_sqlite_biblioteka.png> <./fizyc
+zny_postgres_biblioteka.drawio.png>]
+Chapter 4.
+
+
+[23
+
+]
+
+[24] (./sprawozdanie-z-laboratoriow.ind)
+
+[25] (./sprawozdanie-z-laboratoriow.aux)
+ ***********
+LaTeX2e <2024-11-01> patch level 2
+L3 programming layer <2025-01-18>
+ ***********
+Package rerunfilecheck Info: File `sprawozdanie-z-laboratoriow.out' has not cha
+nged.
+(rerunfilecheck)             Checksum: 9352974923C05AAA3683D9FDE3F39CFD;20078.
+ ) 
+Here is how much of TeX's memory you used:
+ 20661 strings out of 473197
+ 371940 string characters out of 5718606
+ 803165 words of memory out of 5000000
+ 43310 multiletter control sequences out of 15000+600000
+ 628017 words of font info for 105 fonts, out of 8000000 for 9000
+ 1142 hyphenation exceptions out of 8191
+ 72i,12n,82p,1216b,674s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/fontawesome5/FontAwesome5Fr
+ee-Solid.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi
+6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><
+/usr/share/texmf/fonts/type1/public/tex-gyre/qhvb.pfb></usr/share/texmf/fonts/t
+ype1/public/tex-gyre/qhvr.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qtm
+b.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qtmr.pfb></usr/share/texmf/
+fonts/type1/public/tex-gyre/qtmri.pfb></usr/share/texlive/texmf-dist/fonts/type
+1/public/txfonts/t1xbtt.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/t
+xfonts/t1xtt.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/t1xt
+t.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/tcxtt.pfb>
+Output written on sprawozdanie-z-laboratoriow.pdf (28 pages, 2512225 bytes).
+PDF statistics:
+ 748 PDF objects out of 1000 (max. 8388607)
+ 682 compressed objects within 7 object streams
+ 168 named destinations out of 1000 (max. 500000)
+ 793 words of extra memory for PDF output out of 10000 (max. 10000000)
+
