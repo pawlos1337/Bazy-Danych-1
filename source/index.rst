@@ -3,8 +3,7 @@ Sprawozdanie z Laboratorium: Bazy Danych
 
 **Autorzy projektu:** Paweł Łoćwin, Paweł Łosowski
 
-Wprowadzenie
-~~~~~~~~~~~~
+Wprowadzenie:
 
 Niniejsza dokumentacja stanowi kompletne sprawozdanie z laboratorium przedmiotu Bazy Danych. Projekt obejmuje całościową analizę procesów związanych z administracją i projektowaniem relacyjnych baz danych.
 
