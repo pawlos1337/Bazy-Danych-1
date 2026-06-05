@@ -1,1 +1,0 @@
-Tego typu jakis tekst

@@ -1,96 +1,95 @@
 \babel@toc {english}{}\relax 
-\contentsline {chapter}{\numberline {1}Wprowadzenie}{2}{chapter.1}%
-\contentsline {section}{\numberline {1.1}Rozdział 1: Kontrola i konserwacja}{2}{section.1.1}%
-\contentsline {subsection}{\numberline {1.1.1}Wprowadzenie}{2}{subsection.1.1.1}%
-\contentsline {subsection}{\numberline {1.1.2}Zarządzanie przestrzenią i mechanizm współbieżności}{2}{subsection.1.1.2}%
-\contentsline {subsection}{\numberline {1.1.3}Optymalizacja i statystyki planisty zapytań}{3}{subsection.1.1.3}%
-\contentsline {subsection}{\numberline {1.1.4}Bezpieczeństwo i rygorystyczna kontrola dostępu}{3}{subsection.1.1.4}%
-\contentsline {subsection}{\numberline {1.1.5}Strategie zabezpieczania przed utratą danych}{3}{subsection.1.1.5}%
-\contentsline {subsection}{\numberline {1.1.6}Podsumowanie}{3}{subsection.1.1.6}%
-\contentsline {section}{\numberline {1.2}Badania literaturowe}{4}{section.1.2}%
-\contentsline {subsection}{\numberline {1.2.1}Sprzęt dla bazy danych}{4}{subsection.1.2.1}%
-\contentsline {subsection}{\numberline {1.2.2}Konfiguracja bazy danych PostgreSQL}{4}{subsection.1.2.2}%
-\contentsline {subsubsection}{Wstęp}{4}{subsubsection*.3}%
-\contentsline {subsubsection}{Podstawowe parametry}{4}{subsubsection*.4}%
-\contentsline {subsubsection}{Lokalizacja i struktura katalogów PostgreSQL}{4}{subsubsection*.5}%
-\contentsline {subsubsection}{Środowiska i profile}{5}{subsubsection*.6}%
-\contentsline {subsubsection}{Automatyzacja}{5}{subsubsection*.7}%
-\contentsline {subsubsection}{Przykłady}{5}{subsubsection*.8}%
-\contentsline {subsubsection}{Najlepsze praktyki}{5}{subsubsection*.9}%
-\contentsline {subsubsection}{Podsumowanie}{6}{subsubsection*.10}%
-\contentsline {subsubsection}{Szczegółowe omówienie plików konfiguracyjnych}{6}{subsubsection*.11}%
-\contentsline {subsubsection}{postgresql.conf}{6}{subsubsection*.12}%
-\contentsline {paragraph}{Najważniejsze parametry}{6}{paragraph*.13}%
-\contentsline {subparagraph}{Połączenia sieciowe}{6}{subparagraph*.14}%
-\contentsline {subparagraph}{Pamięć i wydajność}{6}{subparagraph*.15}%
-\contentsline {subparagraph}{Logowanie}{7}{subparagraph*.16}%
-\contentsline {subparagraph}{Bezpieczeństwo}{7}{subparagraph*.17}%
-\contentsline {subparagraph}{Replikacja i WAL}{7}{subparagraph*.18}%
-\contentsline {paragraph}{Przykładowa konfiguracja}{8}{paragraph*.19}%
-\contentsline {paragraph}{Weryfikacja konfiguracji}{8}{paragraph*.20}%
-\contentsline {subsubsection}{pg\_hba.conf}{8}{subsubsection*.21}%
-\contentsline {paragraph}{Składnia wpisu}{8}{paragraph*.22}%
-\contentsline {paragraph}{Najczęściej używane metody uwierzytelniania}{9}{paragraph*.23}%
-\contentsline {paragraph}{Przykładowa konfiguracja}{9}{paragraph*.24}%
-\contentsline {paragraph}{Najlepsze praktyki}{10}{paragraph*.25}%
-\contentsline {subsubsection}{pg\_ident.conf}{10}{subsubsection*.26}%
-\contentsline {paragraph}{Zastosowanie}{10}{paragraph*.27}%
-\contentsline {paragraph}{Składnia wpisu}{10}{paragraph*.28}%
-\contentsline {paragraph}{Przykładowa konfiguracja}{10}{paragraph*.29}%
-\contentsline {paragraph}{Najlepsze praktyki}{11}{paragraph*.30}%
-\contentsline {subsection}{\numberline {1.2.3}Rozdział 1: Kontrola i konserwacja}{11}{subsection.1.2.3}%
-\contentsline {subsubsection}{Wprowadzenie}{11}{subsubsection*.31}%
-\contentsline {subsubsection}{Zarządzanie przestrzenią i mechanizm współbieżności}{11}{subsubsection*.32}%
-\contentsline {subsubsection}{Optymalizacja i statystyki planisty zapytań}{11}{subsubsection*.33}%
-\contentsline {subsubsection}{Bezpieczeństwo i rygorystyczna kontrola dostępu}{12}{subsubsection*.34}%
-\contentsline {subsubsection}{Strategie zabezpieczania przed utratą danych}{12}{subsubsection*.35}%
-\contentsline {subsubsection}{Podsumowanie}{12}{subsubsection*.36}%
-\contentsline {subsection}{\numberline {1.2.4}Monitorowanie i diagnostyka}{12}{subsection.1.2.4}%
-\contentsline {subsubsection}{Wstęp}{12}{subsubsection*.37}%
-\contentsline {subsubsection}{Sesje i użytkownicy}{13}{subsubsection*.38}%
-\contentsline {subsubsection}{Śledzenie dostępu użytkowników do tabel}{13}{subsubsection*.41}%
-\contentsline {subsubsection}{Błędy dziennika, logi i raporty}{13}{subsubsection*.43}%
-\contentsline {subsubsection}{Monitorowanie na poziomie systemu operacyjnego}{14}{subsubsection*.46}%
-\contentsline {subsubsection}{Monitorowanie serwera}{14}{subsubsection*.47}%
-\contentsline {subsubsection}{Znaczenie monitorowania i diagnostyki w bazach danych}{14}{subsubsection*.50}%
-\contentsline {subsubsection}{Podsumowanie}{14}{subsubsection*.51}%
-\contentsline {subsubsection}{Źródła}{15}{subsubsection*.52}%
-\contentsline {subsection}{\numberline {1.2.5}Partycjonowanie danych}{15}{subsection.1.2.5}%
-\contentsline {subsection}{\numberline {1.2.6}Bezpieczeństwo Baz Danych}{15}{subsection.1.2.6}%
-\contentsline {subsubsection}{1. Model bezpieczeństwa CIA i ochrona infrastruktury}{15}{subsubsection*.53}%
-\contentsline {paragraph}{Triada CIA w środowisku bazodanowym}{15}{paragraph*.54}%
-\contentsline {paragraph}{Izolacja sieciowa i architektura chmurowa (VPC)}{15}{paragraph*.55}%
-\contentsline {paragraph}{Konteneryzacja a bezpieczeństwo bazy}{16}{paragraph*.56}%
-\contentsline {subsubsection}{2. Ataki na bazy danych i luki w zabezpieczeniach}{16}{subsubsection*.57}%
-\contentsline {paragraph}{Wstrzykiwanie kodu SQL (SQL Injection)}{16}{paragraph*.58}%
-\contentsline {paragraph}{Ataki NoSQL Injection}{17}{paragraph*.59}%
-\contentsline {paragraph}{Przepełnienie bufora (Buffer Overflow) w DBMS}{17}{paragraph*.60}%
-\contentsline {paragraph}{Odmowa Usługi (DoS) na poziomie bazy danych}{17}{paragraph*.61}%
-\contentsline {paragraph}{Automatyzacja ataków: Narzędzia audytowe}{18}{paragraph*.62}%
-\contentsline {section}{\numberline {1.3}Rozdział 3: Projektowanie Bazy Danych: System Zarządzania Biblioteką}{18}{section.1.3}%
-\contentsline {subsection}{\numberline {1.3.1}Wybór zagadnienia, opis procesów i danych}{18}{subsection.1.3.1}%
-\contentsline {subsubsection}{Wybrane zagadnienie:}{18}{subsubsection*.63}%
-\contentsline {subsubsection}{Opis procesów i więzy integralności:}{18}{subsubsection*.64}%
-\contentsline {subsubsection}{Wykaz gromadzonych danych:}{18}{subsubsection*.65}%
-\contentsline {subsection}{\numberline {1.3.2}Prototyp CSV}{18}{subsection.1.3.2}%
-\contentsline {subsection}{\numberline {1.3.3}Model Konceptualny (Pojęciowy)}{19}{subsection.1.3.3}%
-\contentsline {subsubsection}{Zidentyfikowane encje}{19}{subsubsection*.66}%
-\contentsline {subsubsection}{Zdefiniowane atrybuty/własności}{19}{subsubsection*.67}%
-\contentsline {subsubsection}{Opis związków}{19}{subsubsection*.68}%
-\contentsline {subsubsection}{Identyfikacja encji słabych}{19}{subsubsection*.69}%
-\contentsline {subsubsection}{Schemat w notacji Chena}{20}{subsubsection*.70}%
-\contentsline {subsection}{\numberline {1.3.4}Model logiczny i proces normalizacji}{20}{subsection.1.3.4}%
-\contentsline {subsubsection}{Przebieg procesu normalizacji}{20}{subsubsection*.71}%
-\contentsline {subsubsection}{Ostateczna struktura tabel (3NF)}{20}{subsubsection*.72}%
-\contentsline {subsubsection}{Diagram ERD (Model Logiczny)}{21}{subsubsection*.73}%
-\contentsline {subsection}{\numberline {1.3.5}Model fizyczny bazy danych}{21}{subsection.1.3.5}%
-\contentsline {subsubsection}{Model fizyczny dla środowiska SQLite}{21}{subsubsection*.74}%
-\contentsline {subsubsection}{Model fizyczny dla środowiska PostgreSQL}{21}{subsubsection*.75}%
-\contentsline {section}{\numberline {1.4}Rozdział 4: Implementacja fizyczna i zasilanie bazy danych}{22}{section.1.4}%
-\contentsline {subsection}{\numberline {1.4.1}Definicja fizyczna bazy danych (Zadanie 1)}{22}{subsection.1.4.1}%
-\contentsline {subsubsection}{Skrypt dla środowiska PostgreSQL}{22}{subsubsection*.76}%
-\contentsline {subsubsection}{Skrypt dla środowiska SQLite}{22}{subsubsection*.77}%
-\contentsline {subsection}{\numberline {1.4.2}Mechanizm zasilania bazy danych (Zadanie 2)}{22}{subsection.1.4.2}%
-\contentsline {subsubsection}{Formatyzacja danych (Pliki CSV)}{23}{subsubsection*.78}%
-\contentsline {subsubsection}{Implementacja mechanizmu importu}{23}{subsubsection*.79}%
-\contentsline {subsection}{\numberline {1.4.3}Podsumowanie}{24}{subsection.1.4.3}%
+\contentsline {chapter}{\numberline {1}Rozdział 1: Kontrola i konserwacja}{2}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Wprowadzenie}{2}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Zarządzanie przestrzenią i mechanizm współbieżności}{2}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Optymalizacja i statystyki planisty zapytań}{2}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Bezpieczeństwo i rygorystyczna kontrola dostępu}{3}{section.1.4}%
+\contentsline {section}{\numberline {1.5}Strategie zabezpieczania przed utratą danych}{3}{section.1.5}%
+\contentsline {section}{\numberline {1.6}Podsumowanie}{3}{section.1.6}%
+\contentsline {chapter}{\numberline {2}Badania literaturowe}{4}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Sprzęt dla bazy danych}{4}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Konfiguracja bazy danych PostgreSQL}{4}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Wstęp}{4}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Podstawowe parametry}{4}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}Lokalizacja i struktura katalogów PostgreSQL}{4}{subsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.2.4}Środowiska i profile}{5}{subsection.2.2.4}%
+\contentsline {subsection}{\numberline {2.2.5}Automatyzacja}{5}{subsection.2.2.5}%
+\contentsline {subsection}{\numberline {2.2.6}Przykłady}{5}{subsection.2.2.6}%
+\contentsline {subsection}{\numberline {2.2.7}Najlepsze praktyki}{6}{subsection.2.2.7}%
+\contentsline {subsection}{\numberline {2.2.8}Podsumowanie}{6}{subsection.2.2.8}%
+\contentsline {subsection}{\numberline {2.2.9}Szczegółowe omówienie plików konfiguracyjnych}{6}{subsection.2.2.9}%
+\contentsline {subsection}{\numberline {2.2.10}postgresql.conf}{6}{subsection.2.2.10}%
+\contentsline {subsubsection}{Najważniejsze parametry}{6}{subsubsection*.3}%
+\contentsline {paragraph}{Połączenia sieciowe}{6}{paragraph*.4}%
+\contentsline {paragraph}{Pamięć i wydajność}{6}{paragraph*.5}%
+\contentsline {paragraph}{Logowanie}{7}{paragraph*.6}%
+\contentsline {paragraph}{Bezpieczeństwo}{7}{paragraph*.7}%
+\contentsline {paragraph}{Replikacja i WAL}{7}{paragraph*.8}%
+\contentsline {subsubsection}{Przykładowa konfiguracja}{8}{subsubsection*.9}%
+\contentsline {subsubsection}{Weryfikacja konfiguracji}{8}{subsubsection*.10}%
+\contentsline {subsection}{\numberline {2.2.11}pg\_hba.conf}{8}{subsection.2.2.11}%
+\contentsline {subsubsection}{Składnia wpisu}{9}{subsubsection*.11}%
+\contentsline {subsubsection}{Najczęściej używane metody uwierzytelniania}{9}{subsubsection*.12}%
+\contentsline {subsubsection}{Przykładowa konfiguracja}{9}{subsubsection*.13}%
+\contentsline {subsubsection}{Najlepsze praktyki}{10}{subsubsection*.14}%
+\contentsline {subsection}{\numberline {2.2.12}pg\_ident.conf}{10}{subsection.2.2.12}%
+\contentsline {subsubsection}{Zastosowanie}{10}{subsubsection*.15}%
+\contentsline {subsubsection}{Składnia wpisu}{10}{subsubsection*.16}%
+\contentsline {subsubsection}{Przykładowa konfiguracja}{11}{subsubsection*.17}%
+\contentsline {subsubsection}{Najlepsze praktyki}{11}{subsubsection*.18}%
+\contentsline {section}{\numberline {2.3}Rozdział 1: Kontrola i konserwacja}{11}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Wprowadzenie}{11}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Zarządzanie przestrzenią i mechanizm współbieżności}{11}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}Optymalizacja i statystyki planisty zapytań}{12}{subsection.2.3.3}%
+\contentsline {subsection}{\numberline {2.3.4}Bezpieczeństwo i rygorystyczna kontrola dostępu}{12}{subsection.2.3.4}%
+\contentsline {subsection}{\numberline {2.3.5}Strategie zabezpieczania przed utratą danych}{12}{subsection.2.3.5}%
+\contentsline {subsection}{\numberline {2.3.6}Podsumowanie}{12}{subsection.2.3.6}%
+\contentsline {section}{\numberline {2.4}Monitorowanie i diagnostyka}{13}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}Wstęp}{13}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}Sesje i użytkownicy}{13}{subsection.2.4.2}%
+\contentsline {subsection}{\numberline {2.4.3}Śledzenie dostępu użytkowników do tabel}{13}{subsection.2.4.3}%
+\contentsline {subsection}{\numberline {2.4.4}Błędy dziennika, logi i raporty}{14}{subsection.2.4.4}%
+\contentsline {subsection}{\numberline {2.4.5}Monitorowanie na poziomie systemu operacyjnego}{14}{subsection.2.4.5}%
+\contentsline {subsection}{\numberline {2.4.6}Monitorowanie serwera}{14}{subsection.2.4.6}%
+\contentsline {subsection}{\numberline {2.4.7}Znaczenie monitorowania i diagnostyki w bazach danych}{15}{subsection.2.4.7}%
+\contentsline {subsection}{\numberline {2.4.8}Podsumowanie}{15}{subsection.2.4.8}%
+\contentsline {subsection}{\numberline {2.4.9}Źródła}{15}{subsection.2.4.9}%
+\contentsline {section}{\numberline {2.5}Partycjonowanie danych}{15}{section.2.5}%
+\contentsline {section}{\numberline {2.6}Bezpieczeństwo Baz Danych}{15}{section.2.6}%
+\contentsline {subsection}{\numberline {2.6.1}1. Model bezpieczeństwa CIA i ochrona infrastruktury}{15}{subsection.2.6.1}%
+\contentsline {subsubsection}{Triada CIA w środowisku bazodanowym}{15}{subsubsection*.26}%
+\contentsline {subsubsection}{Izolacja sieciowa i architektura chmurowa (VPC)}{16}{subsubsection*.27}%
+\contentsline {subsubsection}{Konteneryzacja a bezpieczeństwo bazy}{16}{subsubsection*.28}%
+\contentsline {subsection}{\numberline {2.6.2}2. Ataki na bazy danych i luki w zabezpieczeniach}{16}{subsection.2.6.2}%
+\contentsline {subsubsection}{Wstrzykiwanie kodu SQL (SQL Injection)}{16}{subsubsection*.29}%
+\contentsline {subsubsection}{Ataki NoSQL Injection}{17}{subsubsection*.30}%
+\contentsline {subsubsection}{Przepełnienie bufora (Buffer Overflow) w DBMS}{17}{subsubsection*.31}%
+\contentsline {subsubsection}{Odmowa Usługi (DoS) na poziomie bazy danych}{18}{subsubsection*.32}%
+\contentsline {subsubsection}{Automatyzacja ataków: Narzędzia audytowe}{18}{subsubsection*.33}%
+\contentsline {chapter}{\numberline {3}Rozdział 3: Projektowanie Bazy Danych: System Zarządzania Biblioteką}{19}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Wybór zagadnienia, opis procesów i danych}{19}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Wybrane zagadnienie:}{19}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Opis procesów i więzy integralności:}{19}{subsection.3.1.2}%
+\contentsline {subsection}{\numberline {3.1.3}Wykaz gromadzonych danych:}{19}{subsection.3.1.3}%
+\contentsline {section}{\numberline {3.2}Prototyp CSV}{19}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Model Konceptualny (Pojęciowy)}{20}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Zidentyfikowane encje}{20}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Zdefiniowane atrybuty/własności}{20}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.3}Opis związków}{20}{subsection.3.3.3}%
+\contentsline {subsection}{\numberline {3.3.4}Identyfikacja encji słabych}{20}{subsection.3.3.4}%
+\contentsline {subsection}{\numberline {3.3.5}Schemat w notacji Chena}{21}{subsection.3.3.5}%
+\contentsline {section}{\numberline {3.4}Model logiczny i proces normalizacji}{21}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Przebieg procesu normalizacji}{21}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Ostateczna struktura tabel (3NF)}{21}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.4.3}Diagram ERD (Model Logiczny)}{22}{subsection.3.4.3}%
+\contentsline {section}{\numberline {3.5}Model fizyczny bazy danych}{22}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}Model fizyczny dla środowiska SQLite}{22}{subsection.3.5.1}%
+\contentsline {subsection}{\numberline {3.5.2}Model fizyczny dla środowiska PostgreSQL}{22}{subsection.3.5.2}%
+\contentsline {chapter}{\numberline {4}Rozdział 4: Implementacja fizyczna i zasilanie bazy danych}{23}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Definicja fizyczna bazy danych (Zadanie 1)}{23}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Skrypt dla środowiska PostgreSQL}{23}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Skrypt dla środowiska SQLite}{23}{subsection.4.1.2}%
+\contentsline {section}{\numberline {4.2}Mechanizm zasilania bazy danych (Zadanie 2)}{24}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Formatyzacja danych (Pliki CSV)}{24}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Implementacja mechanizmu importu}{24}{subsection.4.2.2}%
+\contentsline {section}{\numberline {4.3}Podsumowanie}{25}{section.4.3}%
