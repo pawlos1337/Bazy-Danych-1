@@ -25,14 +25,23 @@ html_theme = 'alabaster'
 html_static_path = ['_static']
 
 # -- Options for LaTeX output ------------------------------------------------
-# Optymalizacja generowania PDF
+# Optymalizacja generowania PDF - eliminacja pustych stron między rozdziałami
 latex_elements = {
     'papersize': 'a4paper',
     'pointsize': '11pt',
     'fncychap': '\\usepackage[Bjarne]{fncychap}',
+    'extraclassoptions': 'openany,oneside',  # KLUCZOWE: wyłącza openright i twoside
     'preamble': r'''
+\usepackage[utf-8]{inputenc}
+\usepackage{babel}
+\usepackage{graphicx}
+\usepackage{hyperref}
 \setcounter{tocdepth}{2}
 \raggedbottom
+
+% Zmniejszenie przestrzeni przed nagłówkami
+\setlength{\parskip}{0pt plus 1pt}
+\setlength{\parindent}{0pt}
 ''',
     'sphinxsetup': 'hmargin={0.7in,0.7in}, vmargin={0.7in,0.7in}, verbatimwithframe=false',
 }
@@ -42,9 +51,6 @@ latex_documents = [
      'Paweł Łoćwin', 'manual'),
 ]
 
-# Zmniejszenie głębi spisu treści w PDF
 latex_show_urls = 'footnote'
 latex_show_pagerefs = False
-
-# Ustawienia dla obrazów w PDF
 latex_max_embed_pages = 0
