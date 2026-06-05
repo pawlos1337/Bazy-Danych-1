@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2025/dev/Debian) (preloaded format=pdflatex 2026.3.1)  5 JUN 2026 17:55
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2025/dev/Debian) (preloaded format=pdflatex 2026.3.1)  5 JUN 2026 17:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -884,42 +884,38 @@ dvips/tex-gyre/q-ec.enc}] (./sprawozdanie-z-laboratoriow.toc)
 
 ]
 Chapter 1.
-
-
-[2
-
-]
-Chapter 2.
 LaTeX Font Info:    Trying to load font information for TS1+qtm on input line 1
-68.
+65.
 (/usr/share/texmf/tex/latex/tex-gyre/ts1qtm.fd
 File: ts1qtm.fd 2009/09/25 v1.2 font definition file for TS1/qtm
 )
 LaTeX Font Info:    Trying to load font information for T1+txtt on input line 1
-85.
+82.
 
 (/usr/share/texlive/texmf-dist/tex/latex/txfonts/t1txtt.fd
 File: t1txtt.fd 2000/12/15 v3.1
 )
 LaTeX Font Info:    Font shape `T1/txtt/m/it' in size <10.95> not available
-(Font)              Font shape `T1/txtt/m/sl' tried instead on input line 186.
+(Font)              Font shape `T1/txtt/m/sl' tried instead on input line 183.
 LaTeX Font Info:    Font shape `T1/txtt/b/n' in size <10.95> not available
-(Font)              Font shape `T1/txtt/bx/n' tried instead on input line 187.
+(Font)              Font shape `T1/txtt/bx/n' tried instead on input line 184.
 
 
-[3
+[2
 
 {/usr/share/texmf/fonts/enc/dvips/tex-gyre/q-ts1.enc}]
-Underfull \hbox (badness 10000) in paragraph at lines 222--224
+Underfull \hbox (badness 10000) in paragraph at lines 219--221
 \T1/qtm/m/n/10.95 Bez-piecze«stwo danych stanowi ab-so-lutny pri-o-ry-tet ka»de
 j ad-min-is-tracji sys-temami in-for-maty-cznymi.
  []
 
 LaTeX Font Info:    Trying to load font information for TS1+txtt on input line 
-233.
+230.
 (/usr/share/texlive/texmf-dist/tex/latex/txfonts/ts1txtt.fd
 File: ts1txtt.fd 2000/12/15 v3.1
 )
+
+[3]
 
 [4]
 
@@ -934,28 +930,28 @@ File: ts1txtt.fd 2000/12/15 v3.1
 [9]
 
 [10]
-
-[11]
 LaTeX Font Info:    Trying to load font information for U+fontawesomefree1 on i
-nput line 1179.
+nput line 1176.
  (/usr/share/texlive/texmf-dist/tex/latex/fontawesome5/ufontawesomefree1.fd)
 
-[12{/usr/share/texlive/texmf-dist/fonts/enc/dvips/fontawesome5/fa5free1.enc}]
-Underfull \hbox (badness 10000) in paragraph at lines 1275--1277
+[11{/usr/share/texlive/texmf-dist/fonts/enc/dvips/fontawesome5/fa5free1.enc}]
+Underfull \hbox (badness 10000) in paragraph at lines 1272--1274
 \T1/qtm/m/n/10.95 Bez-piecze«stwo danych stanowi ab-so-lutny pri-o-ry-tet ka»de
 j ad-min-is-tracji sys-temami in-for-maty-cznymi.
  []
 
 
 
-[13]
-Underfull \hbox (badness 10000) in paragraph at lines 1358--1361
+[12]
+Underfull \hbox (badness 10000) in paragraph at lines 1355--1358
 [][][][][]\T1/qtm/m/n/9 Oracle Doc-u-men-ta-tion, \T1/qtm/m/it/9 AU-DIT_TRAIL \
 T1/qtm/m/n/9 oraz in-for-ma-cje o uni-fied au-dit-ing, [][]$https : / / docs . 
 oracle . com / en / database / oracle /
  []
 
 
+
+[13]
 
 [14]
 
@@ -966,60 +962,58 @@ oracle . com / en / database / oracle /
 [17]
 
 [18]
-
-[19]
-<model_konceptualny_biblioteka.png, id=589, 1891.065pt x 1276.77pt>
+<model_konceptualny_biblioteka.png, id=580, 1891.065pt x 1276.77pt>
 File: model_konceptualny_biblioteka.png Graphic file (type png)
 <use model_konceptualny_biblioteka.png>
 Package pdftex.def Info: model_konceptualny_biblioteka.png  used on input line 
-1846.
+1843.
 (pdftex.def)             Requested size: 397.06577pt x 268.07117pt.
 
 
-[20]
-<erd_logiczny_biblioteka.png, id=595, 712.91344pt x 181.42781pt>
+[19]
+<erd_logiczny_biblioteka.png, id=586, 712.91344pt x 181.42781pt>
 File: erd_logiczny_biblioteka.png Graphic file (type png)
 <use erd_logiczny_biblioteka.png>
-Package pdftex.def Info: erd_logiczny_biblioteka.png  used on input line 1896.
+Package pdftex.def Info: erd_logiczny_biblioteka.png  used on input line 1893.
 (pdftex.def)             Requested size: 397.06577pt x 101.04797pt.
 
 
-[21 <./model_konceptualny_biblioteka.png>]
-<fizyczny_sqlite_biblioteka.png, id=602, 828.84656pt x 181.42781pt>
+[20 <./model_konceptualny_biblioteka.png>]
+<fizyczny_sqlite_biblioteka.png, id=593, 828.84656pt x 181.42781pt>
 File: fizyczny_sqlite_biblioteka.png Graphic file (type png)
 <use fizyczny_sqlite_biblioteka.png>
-Package pdftex.def Info: fizyczny_sqlite_biblioteka.png  used on input line 193
-2.
+Package pdftex.def Info: fizyczny_sqlite_biblioteka.png  used on input line 192
+9.
 (pdftex.def)             Requested size: 397.06577pt x 86.91272pt.
-<fizyczny_postgres_biblioteka.drawio.png, id=603, 889.07156pt x 181.42781pt>
+<fizyczny_postgres_biblioteka.drawio.png, id=594, 889.07156pt x 181.42781pt>
 File: fizyczny_postgres_biblioteka.drawio.png Graphic file (type png)
 <use fizyczny_postgres_biblioteka.drawio.png>
 Package pdftex.def Info: fizyczny_postgres_biblioteka.drawio.png  used on input
- line 1962.
+ line 1959.
 (pdftex.def)             Requested size: 397.06577pt x 81.02718pt.
 
 
-[22 <./erd_logiczny_biblioteka.png> <./fizyczny_sqlite_biblioteka.png> <./fizyc
+[21 <./erd_logiczny_biblioteka.png> <./fizyczny_sqlite_biblioteka.png> <./fizyc
 zny_postgres_biblioteka.drawio.png>]
 
-[23]
+[22]
 
-[24] (./sprawozdanie-z-laboratoriow.ind)
+[23] (./sprawozdanie-z-laboratoriow.ind)
 
-[25] (./sprawozdanie-z-laboratoriow.aux)
+[24] (./sprawozdanie-z-laboratoriow.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
 Package rerunfilecheck Info: File `sprawozdanie-z-laboratoriow.out' has not cha
 nged.
-(rerunfilecheck)             Checksum: BC658DAF28F2A50D18382A6DDF7FA149;20728.
+(rerunfilecheck)             Checksum: A688F4AC6FFACD9A6E407A11B1A52196;20571.
  ) 
 Here is how much of TeX's memory you used:
- 20673 strings out of 473197
- 372278 string characters out of 5718606
- 806434 words of memory out of 5000000
- 43317 multiletter control sequences out of 15000+600000
+ 20669 strings out of 473197
+ 372221 string characters out of 5718606
+ 806387 words of memory out of 5000000
+ 43315 multiletter control sequences out of 15000+600000
  628017 words of font info for 105 fonts, out of 8000000 for 9000
  1142 hyphenation exceptions out of 8191
  72i,11n,82p,1216b,659s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1033,10 +1027,10 @@ fonts/type1/public/tex-gyre/qtmri.pfb></usr/share/texlive/texmf-dist/fonts/type
 1/public/txfonts/t1xbtt.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/t
 xfonts/t1xtt.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/t1xt
 t.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/tcxtt.pfb>
-Output written on sprawozdanie-z-laboratoriow.pdf (27 pages, 2508588 bytes).
+Output written on sprawozdanie-z-laboratoriow.pdf (26 pages, 2507781 bytes).
 PDF statistics:
- 713 PDF objects out of 1000 (max. 8388607)
- 648 compressed objects within 7 object streams
- 173 named destinations out of 1000 (max. 500000)
- 809 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 704 PDF objects out of 1000 (max. 8388607)
+ 640 compressed objects within 7 object streams
+ 171 named destinations out of 1000 (max. 500000)
+ 801 words of extra memory for PDF output out of 10000 (max. 10000000)
 

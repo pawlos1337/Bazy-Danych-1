@@ -9,9 +9,6 @@ Wprowadzenie
 
 Niniejsza dokumentacja stanowi kompletne sprawozdanie z laboratorium przedmiotu Bazy Danych. Projekt obejmuje całościową analizę procesów związanych z administracją i projektowaniem relacyjnych systemów baz danych, od teoretycznych aspektów konserwacji i optymalizacji, poprzez badania literaturowe, aż po praktyczną implementację systemu zarządzania biblioteką.
 
-Struktura dokumentacji
-======================
-
 Dokumentacja została podzielona na cztery główne sekcje:
 
 1. **Rozdział 1: Kontrola i konserwacja** – Analiza fundamentalnych procesów administracyjnych niezbędnych do utrzymania wysokiej dostępności i wydajności systemu bazodanowego. Obejmuje VACUUM, optymalizację planisty zapytań, bezpieczeństwo oraz strategie zabezpieczania przed utratą danych.
