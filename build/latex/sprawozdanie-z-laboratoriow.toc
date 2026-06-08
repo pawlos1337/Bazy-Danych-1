@@ -37,7 +37,7 @@
 \contentsline {subsubsection}{Składnia wpisu}{10}{subsubsection*.16}%
 \contentsline {subsubsection}{Przykładowa konfiguracja}{11}{subsubsection*.17}%
 \contentsline {subsubsection}{Najlepsze praktyki}{11}{subsubsection*.18}%
-\contentsline {section}{\numberline {2.3}Rozdział 1: Kontrola i konserwacja}{11}{section.2.3}%
+\contentsline {section}{\numberline {2.3}Kontrola i konserwacja}{11}{section.2.3}%
 \contentsline {subsection}{\numberline {2.3.1}Wprowadzenie}{11}{subsection.2.3.1}%
 \contentsline {subsection}{\numberline {2.3.2}Zarządzanie przestrzenią i mechanizm współbieżności}{11}{subsection.2.3.2}%
 \contentsline {subsection}{\numberline {2.3.3}Optymalizacja i statystyki planisty zapytań}{12}{subsection.2.3.3}%
