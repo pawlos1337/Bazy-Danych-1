@@ -93,7 +93,7 @@ Poniżej przedstawiono fragment skryptu aplikacyjnego odpowiedzialnego za odczyt
     # 2. Właściwy proces wsadowego importu do bazy PostgreSQL
     def importuj_do_postgres(kategorie_do_importu, db_config):
         try:
-            # U��ycie Context Managera dla bezpiecznego zarządzania transakcjami
+            # Użycie Context Managera dla bezpiecznego zarządzania transakcjami
             with psycopg.connect(**db_config) as conn:
                 with conn.cursor() as cursor:
 
