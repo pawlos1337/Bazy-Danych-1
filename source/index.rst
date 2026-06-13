@@ -9,7 +9,7 @@ Niniejsza dokumentacja stanowi kompletne sprawozdanie z laboratorium przedmiotu 
 
 Dokumentacja została podzielona na pięć głównych sekcji:
 
-1. **Rozdział 1: Kontrola i konserwacja** – Analiza fundamentalnych procesów administracyjnych niezbędnych do utrzymania wysokiej dostępności i wydajności systemu bazodanowego. Obejmuje VACUUM, REINDEX, kopie zapasowe i monitoring.
+1. **Rozdział 1: Wstęp oraz linki** – Wstęp do sprawozdania oraz linki.
 
 2. **Rozdział 2: Badania literaturowe** – Przegląd źródeł akademickich i naukowo-technicznych dotyczących baz danych, ich architektury, optymalizacji i bezpieczeństwa.
 
