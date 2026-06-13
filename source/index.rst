@@ -2,8 +2,6 @@
 Sprawozdanie z Laboratorium: Bazy Danych
 ========================================
 
-**Autorzy projektu:** Paweł Łoćwin, Paweł Łosowski
-
 Wprowadzenie
 ============
 
