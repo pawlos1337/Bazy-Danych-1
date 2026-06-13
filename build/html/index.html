@@ -34,25 +34,57 @@
   <section id="sprawozdanie-z-laboratorium-bazy-danych">
 <h1>Sprawozdanie z Laboratorium: Bazy Danych<a class="headerlink" href="#sprawozdanie-z-laboratorium-bazy-danych" title="Link to this heading">¶</a></h1>
 <p><strong>Autorzy projektu:</strong> Paweł Łoćwin, Paweł Łosowski</p>
-<p><strong>Wprowadzenie:</strong></p>
+<section id="wprowadzenie">
+<h2>Wprowadzenie<a class="headerlink" href="#wprowadzenie" title="Link to this heading">¶</a></h2>
 <p>Niniejsza dokumentacja stanowi kompletne sprawozdanie z laboratorium przedmiotu Bazy Danych. Projekt obejmuje całościową analizę procesów związanych z administracją i projektowaniem relacyjnych baz danych.</p>
 <p>Dokumentacja została podzielona na pięć głównych sekcji:</p>
-<ol class="arabic simple">
-<li><p><strong>Rozdział 1: Wstęp oraz linki</strong> – Wstęp do sprawozdania oraz linki.</p></li>
-<li><p><strong>Rozdział 2: Badania literaturowe</strong> – Przegląd źródeł akademickich i naukowo-technicznych dotyczących baz danych, ich architektury, optymalizacji i bezpieczeństwa.</p></li>
-<li><p><strong>Rozdział 3: Projektowanie bazy danych</strong> – Praktyczne modelowanie systemu zarządzania bibliotecznym katalogiem wypożyczeń. Sekcja obejmuje analizę wymagań, model konceptualny (notacja E-R) oraz model logiczny.</p></li>
-<li><p><strong>Rozdział 4: Implementacja fizyczna i zasilanie bazy</strong> – Realizacja fizycznego schematu bazy danych poprzez skrypty DDL, mechanizmy importu danych oraz automatyzacja zasilania bazy.</p></li>
-<li><p><strong>Rozdział 5: Zapytania do bazy danych</strong> – Zaawansowane funkcje SQL w Python, selekcje, agregacje, złączenia, operatory zbiorowe i podzapytania z pełną dokumentacją Sphinx.</p></li>
-</ol>
+<ul class="simple">
+<li><p><strong>Rozdział 1:</strong> Wstęp do sprawozdania oraz wykaz repozytoriów z plikami projektowymi i submodułami.</p></li>
+<li><p><strong>Rozdział 2:</strong> Przegląd źródeł akademickich i naukowo-technicznych dotyczących baz danych, ich architektury, optymalizacji i bezpieczeństwa.</p></li>
+<li><p><strong>Rozdział 3:</strong> Praktyczne modelowanie systemu zarządzania bibliotecznym katalogiem wypożyczeń (analiza wymagań, model konceptualny E-R, model logiczny).</p></li>
+<li><p><strong>Rozdział 4:</strong> Realizacja fizycznego schematu bazy danych poprzez skrypty DDL, mechanizmy importu danych oraz automatyzacja zasilania bazy w środowiskach PostgreSQL i SQLite.</p></li>
+<li><p><strong>Rozdział 5:</strong> Zaawansowane funkcje SQL w Pythonie, selekcje, agregacje, złączenia, operatory zbiorowe i podzapytania.</p></li>
+</ul>
+</section>
+<section id="spis-tresci">
+<h2>Spis treści<a class="headerlink" href="#spis-tresci" title="Link to this heading">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="rozdzial_1/index.html">1. Rozdział 1: Wstęp oraz linki</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rozdzial_2/index.html">2. Badania literaturowe</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rozdzial_3/index.html">3. Rozdział 3: Projektowanie Bazy Danych: System Zarządzania Biblioteką</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rozdzial_4/index.html">4. Rozdział 4: Implementacja fizyczna i zasilanie bazy danych</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rozdzial_5/index.html">5. Rozdział 5: Komunikacja i operacje na danych</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rozdzial_1/index.html">1. Rozdział 1: Wstęp oraz linki</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rozdzial_1/index.html#wstep-do-sprawozdania">1.1. Wstęp do sprawozdania</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rozdzial_1/index.html#wykaz-repozytoriow-linki">1.2. Wykaz repozytoriów (Linki)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rozdzial_2/index.html">2. Badania literaturowe</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rozdzial_2/rozdzial_21/index.html">2.1. Sprzęt dla bazy danych</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rozdzial_2/rozdzial_22/index.html">2.2. Konfiguracja bazy danych PostgreSQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rozdzial_2/rozdzial_23/index.html">2.3. Kontrola i konserwacja</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rozdzial_2/rozdzial_26/index.html">2.4. Partycjonowanie danych</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rozdzial_2/rozdzial_27/index.html">2.5. Bezpieczeństwo Baz Danych</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rozdzial_3/index.html">3. Rozdział 3: Projektowanie Bazy Danych: System Zarządzania Biblioteką</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rozdzial_3/index.html#wybor-zagadnienia-opis-procesow-i-danych">3.1. Wybór zagadnienia, opis procesów i danych</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rozdzial_3/index.html#prototyp-csv">3.2. Prototyp CSV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rozdzial_3/index.html#model-konceptualny-pojeciowy">3.3. Model Konceptualny (Pojęciowy)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rozdzial_3/index.html#model-logiczny-i-proces-normalizacji">3.4. Model logiczny i proces normalizacji</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rozdzial_3/index.html#model-fizyczny-bazy-danych">3.5. Model fizyczny bazy danych</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rozdzial_4/index.html">4. Rozdział 4: Implementacja fizyczna i zasilanie bazy danych</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rozdzial_4/index.html#definicja-fizyczna-bazy-danych-zadanie-1">4.1. Definicja fizyczna bazy danych (Zadanie 1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rozdzial_4/index.html#mechanizm-zasilania-bazy-danych-zadanie-2">4.2. Mechanizm zasilania bazy danych (Zadanie 2)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rozdzial_4/index.html#podsumowanie">4.3. Podsumowanie</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rozdzial_5/index.html">5. Rozdział 5: Komunikacja i operacje na danych</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rozdzial_5/index.html#wstep">5.1. Wstęp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rozdzial_5/index.html#pelna-specyfikacja-stworzonego-api">5.2. Pełna specyfikacja stworzonego API</a></li>
+</ul>
+</li>
 </ul>
 </div>
+</section>
 </section>
 
 

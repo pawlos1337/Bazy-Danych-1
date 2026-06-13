@@ -58,7 +58,7 @@
 
 
 \usepackage{sphinxmessages}
-\setcounter{tocdepth}{0}
+\setcounter{tocdepth}{1}
 
 
 \usepackage{babel}
@@ -103,42 +103,44 @@
 \sphinxAtStartPar
 \sphinxstylestrong{Autorzy projektu:} Paweł Łoćwin, Paweł Łosowski
 
-\sphinxAtStartPar
-\sphinxstylestrong{Wprowadzenie:}
 
+\chapter{Wprowadzenie}
+\label{\detokenize{index:wprowadzenie}}
 \sphinxAtStartPar
 Niniejsza dokumentacja stanowi kompletne sprawozdanie z laboratorium przedmiotu Bazy Danych. Projekt obejmuje całościową analizę procesów związanych z administracją i projektowaniem relacyjnych baz danych.
 
 \sphinxAtStartPar
 Dokumentacja została podzielona na pięć głównych sekcji:
-\begin{enumerate}
-\sphinxsetlistlabels{\arabic}{enumi}{enumii}{}{.}%
+\begin{itemize}
 \item {} 
 \sphinxAtStartPar
-\sphinxstylestrong{Rozdział 1: Wstęp oraz linki} \textendash{} Wstęp do sprawozdania oraz linki.
-
-\item {} 
-\sphinxAtStartPar
-\sphinxstylestrong{Rozdział 2: Badania literaturowe} \textendash{} Przegląd źródeł akademickich i naukowo\sphinxhyphen{}technicznych dotyczących baz danych, ich architektury, optymalizacji i bezpieczeństwa.
+\sphinxstylestrong{Rozdział 1:} Wstęp do sprawozdania oraz wykaz repozytoriów z plikami projektowymi i submodułami.
 
 \item {} 
 \sphinxAtStartPar
-\sphinxstylestrong{Rozdział 3: Projektowanie bazy danych} \textendash{} Praktyczne modelowanie systemu zarządzania bibliotecznym katalogiem wypożyczeń. Sekcja obejmuje analizę wymagań, model konceptualny (notacja E\sphinxhyphen{}R) oraz model logiczny.
+\sphinxstylestrong{Rozdział 2:} Przegląd źródeł akademickich i naukowo\sphinxhyphen{}technicznych dotyczących baz danych, ich architektury, optymalizacji i bezpieczeństwa.
 
 \item {} 
 \sphinxAtStartPar
-\sphinxstylestrong{Rozdział 4: Implementacja fizyczna i zasilanie bazy} \textendash{} Realizacja fizycznego schematu bazy danych poprzez skrypty DDL, mechanizmy importu danych oraz automatyzacja zasilania bazy.
+\sphinxstylestrong{Rozdział 3:} Praktyczne modelowanie systemu zarządzania bibliotecznym katalogiem wypożyczeń (analiza wymagań, model konceptualny E\sphinxhyphen{}R, model logiczny).
 
 \item {} 
 \sphinxAtStartPar
-\sphinxstylestrong{Rozdział 5: Zapytania do bazy danych} \textendash{} Zaawansowane funkcje SQL w Python, selekcje, agregacje, złączenia, operatory zbiorowe i podzapytania z pełną dokumentacją Sphinx.
+\sphinxstylestrong{Rozdział 4:} Realizacja fizycznego schematu bazy danych poprzez skrypty DDL, mechanizmy importu danych oraz automatyzacja zasilania bazy w środowiskach PostgreSQL i SQLite.
 
-\end{enumerate}
+\item {} 
+\sphinxAtStartPar
+\sphinxstylestrong{Rozdział 5:} Zaawansowane funkcje SQL w Pythonie, selekcje, agregacje, złączenia, operatory zbiorowe i podzapytania.
 
+\end{itemize}
+
+
+\chapter{Spis treści}
+\label{\detokenize{index:spis-tresci}}
 \sphinxstepscope
 
 
-\chapter{Rozdział 1: Wstęp oraz linki}
+\section{Rozdział 1: Wstęp oraz linki}
 \label{\detokenize{rozdzial_1/index:rozdzial-1-wstep-oraz-linki}}\label{\detokenize{rozdzial_1/index::doc}}\begin{quote}\begin{description}
 \sphinxlineitem{Autorzy}\begin{enumerate}
 \sphinxsetlistlabels{\arabic}{enumi}{enumii}{}{.}%
@@ -155,7 +157,7 @@ Paweł Łosowski
 \end{description}\end{quote}
 
 
-\section{Wstęp do sprawozdania}
+\subsection{Wstęp do sprawozdania}
 \label{\detokenize{rozdzial_1/index:wstep-do-sprawozdania}}
 \sphinxAtStartPar
 Niniejsze sprawozdanie dokumentuje przebieg prac laboratoryjnych z przedmiotu Bazy Danych. Celem projektu jest praktyczne zastosowanie wiedzy z zakresu projektowania, wdrażania oraz obsługi systemów relacyjnych baz danych.
@@ -164,13 +166,13 @@ Niniejsze sprawozdanie dokumentuje przebieg prac laboratoryjnych z przedmiotu Ba
 Praca obejmuje pełen cykl życia bazy: od analizy teoretycznej, poprzez stworzenie modelu pojęciowego i logicznego, aż po fizyczną implementację w środowiskach PostgreSQL i SQLite, a także realizację procesów wsadowego zasilania danymi.
 
 
-\section{Wykaz repozytoriów (Linki)}
+\subsection{Wykaz repozytoriów (Linki)}
 \label{\detokenize{rozdzial_1/index:wykaz-repozytoriow-linki}}
 \sphinxAtStartPar
 Projekt został podzielony na odpowiednie repozytoria w systemie kontroli wersji Git, zapewniając porządek między dokumentacją a fizycznymi plikami środowiska bazodanowego.
 
 
-\subsection{1. Główne repozytorium sprawozdania (Dokumentacja Sphinx)}
+\subsubsection{1. Główne repozytorium sprawozdania (Dokumentacja Sphinx)}
 \label{\detokenize{rozdzial_1/index:glowne-repozytorium-sprawozdania-dokumentacja-sphinx}}
 \sphinxAtStartPar
 Tutaj znajduje się struktura całej dokumentacji tekstowej, konfiguracja kompilatora Sphinx oraz historia zmian.
@@ -182,7 +184,7 @@ Tutaj znajduje się struktura całej dokumentacji tekstowej, konfiguracja kompil
 \end{itemize}
 
 
-\subsection{2. Repozytorium z plikami projektowymi}
+\subsubsection{2. Repozytorium z plikami projektowymi}
 \label{\detokenize{rozdzial_1/index:repozytorium-z-plikami-projektowymi}}
 \sphinxAtStartPar
 W tym repozytorium umieszczono kody źródłowe, skrypty DDL dla silników PostgreSQL i SQLite, wygenerowany plik bazy oraz pliki CSV wykorzystywane do zasilania bazy danych.
@@ -198,7 +200,7 @@ W tym repozytorium umieszczono kody źródłowe, skrypty DDL dla silników Postg
 \end{itemize}
 
 
-\subsection{3. Repozytoria reszty grupy}
+\subsubsection{3. Repozytoria reszty grupy}
 \label{\detokenize{rozdzial_1/index:repozytoria-reszty-grupy}}
 \sphinxAtStartPar
 Poniżej znajdują się odnośniki do repozytoriów reszty grupy, które zostały zintegrowane z niniejszym sprawozdaniem w postaci submodułów w Rozdziale 2:
@@ -240,20 +242,20 @@ Poniżej znajdują się odnośniki do repozytoriów reszty grupy, które został
 \sphinxstepscope
 
 
-\chapter{Badania literaturowe}
+\section{Badania literaturowe}
 \label{\detokenize{rozdzial_2/index:badania-literaturowe}}\label{\detokenize{rozdzial_2/index::doc}}
 \sphinxstepscope
 
 
-\section{Sprzęt dla bazy danych}
+\subsection{Sprzęt dla bazy danych}
 \label{\detokenize{rozdzial_2/rozdzial_21/index:sprzet-dla-bazy-danych}}\label{\detokenize{rozdzial_2/rozdzial_21/index::doc}}
 \sphinxstepscope
 
 
-\section{Konfiguracja bazy danych PostgreSQL}
+\subsection{Konfiguracja bazy danych PostgreSQL}
 \label{\detokenize{rozdzial_2/rozdzial_22/index:konfiguracja-bazy-danych-postgresql}}\label{\detokenize{rozdzial_2/rozdzial_22/index::doc}}
 
-\subsection{Wstęp}
+\subsubsection{Wstęp}
 \label{\detokenize{rozdzial_2/rozdzial_22/index:wstep}}
 \sphinxAtStartPar
 Rozdział opisuje konfigurację połączenia z bazą danych \sphinxstylestrong{PostgreSQL} \textendash{} dojrzałym, open\sphinxhyphen{}source’owym systemem zarządzania relacyjnymi bazami danych (RDBMS), który wyróżnia się pełną zgodnością ze standardem SQL oraz silnym naciskiem na rozszerzalność i niezawodność.
@@ -276,7 +278,7 @@ narzędzia projektowe (np. \sphinxcode{\sphinxupquote{psql}}, \sphinxcode{\sphin
 \end{itemize}
 
 
-\subsection{Podstawowe parametry}
+\subsubsection{Podstawowe parametry}
 \label{\detokenize{rozdzial_2/rozdzial_22/index:podstawowe-parametry}}
 \sphinxAtStartPar
 Każde połączenie z PostgreSQL wymaga:
@@ -301,7 +303,7 @@ Pamiętaj: zmienne środowiskowe nie są mechanizmem bezpieczeństwa; w produkcj
 zarządzanie sekretami (np. HashiCorp Vault, AWS Secrets Manager).
 
 
-\subsection{Lokalizacja i struktura katalogów PostgreSQL}
+\subsubsection{Lokalizacja i struktura katalogów PostgreSQL}
 \label{\detokenize{rozdzial_2/rozdzial_22/index:lokalizacja-i-struktura-katalogow-postgresql}}
 \sphinxAtStartPar
 Pliki konfiguracyjne PostgreSQL znajdują się w katalogu danych (\sphinxcode{\sphinxupquote{PGDATA}}).
@@ -412,7 +414,7 @@ pg\PYGZus{}ctl\PYG{+w}{ }\PYGZhy{}D\PYG{+w}{ }/ścieżka/do/katalogu\PYG{+w}{ }s
 \end{sphinxVerbatim}
 
 
-\subsection{Środowiska i profile}
+\subsubsection{Środowiska i profile}
 \label{\detokenize{rozdzial_2/rozdzial_22/index:srodowiska-i-profile}}
 \sphinxAtStartPar
 Przełączanie środowisk PostgreSQL (dev/test/prod) realizuj przez:
@@ -432,7 +434,7 @@ osobne pliki \sphinxcode{\sphinxupquote{.env}} dla każdego środowiska.
 \end{itemize}
 
 
-\subsection{Automatyzacja}
+\subsubsection{Automatyzacja}
 \label{\detokenize{rozdzial_2/rozdzial_22/index:automatyzacja}}
 \sphinxAtStartPar
 Zalecenia dla PostgreSQL:
@@ -455,7 +457,7 @@ integracja z CI/CD (np. GitHub Actions, GitLab CI).
 Dokumentację generuj automatycznie (Sphinx).
 
 
-\subsection{Przykłady}
+\subsubsection{Przykłady}
 \label{\detokenize{rozdzial_2/rozdzial_22/index:przyklady}}
 \sphinxAtStartPar
 \sphinxstylestrong{PostgreSQL \textendash{} zmienne środowiskowe (.env)}
@@ -483,7 +485,7 @@ pg\PYGZus{}isready \PYGZhy{}h \PYGZdl{}\PYGZob{}PGHOST\PYGZcb{} \PYGZhy{}p \PYGZ
 \end{sphinxVerbatim}
 
 
-\subsection{Najlepsze praktyki}
+\subsubsection{Najlepsze praktyki}
 \label{\detokenize{rozdzial_2/rozdzial_22/index:najlepsze-praktyki}}\begin{enumerate}
 \sphinxsetlistlabels{\arabic}{enumi}{enumii}{}{.}%
 \item {} 
@@ -509,13 +511,13 @@ W środowiskach produkcyjnych używaj połączeń SSL/TLS (\sphinxcode{\sphinxup
 \end{enumerate}
 
 
-\subsection{Podsumowanie}
+\subsubsection{Podsumowanie}
 \label{\detokenize{rozdzial_2/rozdzial_22/index:podsumowanie}}
 \sphinxAtStartPar
 Poprawna konfiguracja połączenia z PostgreSQL zwiększa bezpieczeństwo i przenośność aplikacji między środowiskami. Standardowe zmienne środowiskowe oraz narzędzia takie jak \sphinxcode{\sphinxupquote{pg\_isready}} ułatwiają automatyzację i walidację.
 
 
-\subsection{Szczegółowe omówienie plików konfiguracyjnych}
+\subsubsection{Szczegółowe omówienie plików konfiguracyjnych}
 \label{\detokenize{rozdzial_2/rozdzial_22/index:szczegolowe-omowienie-plikow-konfiguracyjnych}}
 \sphinxAtStartPar
 Po omówieniu podstawowych wymagań środowiskowych można przejść do szczegółowej konfiguracji PostgreSQL.
@@ -538,7 +540,7 @@ W kolejnych sekcjach przedstawiono najważniejsze parametry konfiguracyjne dost�
 \end{itemize}
 
 
-\subsection{postgresql.conf}
+\subsubsection{postgresql.conf}
 \label{\detokenize{rozdzial_2/rozdzial_22/index:postgresql-conf}}
 \sphinxAtStartPar
 Plik \sphinxcode{\sphinxupquote{postgresql.conf}} jest głównym plikiem konfiguracyjnym klastra PostgreSQL.
@@ -552,10 +554,10 @@ Lokalizację aktywnego pliku można sprawdzić poleceniem:
 \end{sphinxVerbatim}
 
 
-\subsubsection{Najważniejsze parametry}
+\paragraph{Najważniejsze parametry}
 \label{\detokenize{rozdzial_2/rozdzial_22/index:najwazniejsze-parametry}}
 
-\paragraph{Połączenia sieciowe}
+\subparagraph{Połączenia sieciowe}
 \label{\detokenize{rozdzial_2/rozdzial_22/index:polaczenia-sieciowe}}\begin{description}
 \sphinxlineitem{\sphinxcode{\sphinxupquote{listen\_addresses}}}
 \sphinxAtStartPar
@@ -599,7 +601,7 @@ Zbyt wysoka wartość może zwiększać zużycie pamięci.
 \end{description}
 
 
-\paragraph{Pamięć i wydajność}
+\subparagraph{Pamięć i wydajność}
 \label{\detokenize{rozdzial_2/rozdzial_22/index:pamiec-i-wydajnosc}}\begin{description}
 \sphinxlineitem{\sphinxcode{\sphinxupquote{shared\_buffers}}}
 \sphinxAtStartPar
@@ -653,7 +655,7 @@ Parametr pomaga optymalizatorowi zapytań wybierać odpowiednie plany wykonania.
 \end{description}
 
 
-\paragraph{Logowanie}
+\subparagraph{Logowanie}
 \label{\detokenize{rozdzial_2/rozdzial_22/index:logowanie}}\begin{description}
 \sphinxlineitem{\sphinxcode{\sphinxupquote{logging\_collector}}}
 \sphinxAtStartPar
@@ -704,7 +706,7 @@ Wartość \sphinxcode{\sphinxupquote{1000}} oznacza logowanie zapytań trwający
 \end{description}
 
 
-\paragraph{Bezpieczeństwo}
+\subparagraph{Bezpieczeństwo}
 \label{\detokenize{rozdzial_2/rozdzial_22/index:bezpieczenstwo}}\begin{description}
 \sphinxlineitem{\sphinxcode{\sphinxupquote{password\_encryption}}}
 \sphinxAtStartPar
@@ -741,7 +743,7 @@ Dostępne wartości:
 \end{description}
 
 
-\paragraph{Replikacja i WAL}
+\subparagraph{Replikacja i WAL}
 \label{\detokenize{rozdzial_2/rozdzial_22/index:replikacja-i-wal}}\begin{description}
 \sphinxlineitem{\sphinxcode{\sphinxupquote{wal\_level}}}
 \sphinxAtStartPar
@@ -779,7 +781,7 @@ Polecenie wykonywane podczas archiwizacji plików WAL.
 \end{description}
 
 
-\subsubsection{Przykładowa konfiguracja}
+\paragraph{Przykładowa konfiguracja}
 \label{\detokenize{rozdzial_2/rozdzial_22/index:przykladowa-konfiguracja}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n+na}{listen\PYGZus{}addresses}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZsq{}*\PYGZsq{}}
@@ -801,7 +803,7 @@ Polecenie wykonywane podczas archiwizacji plików WAL.
 \end{sphinxVerbatim}
 
 
-\subsubsection{Weryfikacja konfiguracji}
+\paragraph{Weryfikacja konfiguracji}
 \label{\detokenize{rozdzial_2/rozdzial_22/index:weryfikacja-konfiguracji}}
 \sphinxAtStartPar
 Po zmianie parametrów konfigurację można przeładować bez restartu serwera:
@@ -823,7 +825,7 @@ Aktualne wartości parametrów można sprawdzić poleceniem:
 \end{sphinxVerbatim}
 
 
-\subsection{pg\_hba.conf}
+\subsubsection{pg\_hba.conf}
 \label{\detokenize{rozdzial_2/rozdzial_22/index:pg-hba-conf}}
 \sphinxAtStartPar
 Plik \sphinxcode{\sphinxupquote{pg\_hba.conf}} (Host\sphinxhyphen{}Based Authentication) odpowiada za kontrolę dostępu do serwera PostgreSQL.
@@ -857,7 +859,7 @@ Lokalizację aktywnego pliku można sprawdzić poleceniem:
 \end{sphinxVerbatim}
 
 
-\subsubsection{Składnia wpisu}
+\paragraph{Składnia wpisu}
 \label{\detokenize{rozdzial_2/rozdzial_22/index:skladnia-wpisu}}
 \sphinxAtStartPar
 Każdy wpis w \sphinxcode{\sphinxupquote{pg\_hba.conf}} ma następującą strukturę:
@@ -947,7 +949,7 @@ Metoda uwierzytelniania użytkownika.
 \end{description}
 
 
-\subsubsection{Najczęściej używane metody uwierzytelniania}
+\paragraph{Najczęściej używane metody uwierzytelniania}
 \label{\detokenize{rozdzial_2/rozdzial_22/index:najczesciej-uzywane-metody-uwierzytelniania}}\begin{description}
 \sphinxlineitem{\sphinxcode{\sphinxupquote{trust}}}
 \sphinxAtStartPar
@@ -988,7 +990,7 @@ Mapowanie użytkownika systemowego przy użyciu \sphinxcode{\sphinxupquote{pg\_i
 \end{description}
 
 
-\subsubsection{Przykładowa konfiguracja}
+\paragraph{Przykładowa konfiguracja}
 \label{\detokenize{rozdzial_2/rozdzial_22/index:id1}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{c+c1}{\PYGZsh{} Połączenia lokalne}
@@ -1005,7 +1007,7 @@ Mapowanie użytkownika systemowego przy użyciu \sphinxcode{\sphinxupquote{pg\_i
 \end{sphinxVerbatim}
 
 
-\subsubsection{Najlepsze praktyki}
+\paragraph{Najlepsze praktyki}
 \label{\detokenize{rozdzial_2/rozdzial_22/index:id2}}\begin{enumerate}
 \sphinxsetlistlabels{\arabic}{enumi}{enumii}{}{.}%
 \item {} 
@@ -1035,7 +1037,7 @@ Po zmianie konfiguracji wykonuj reload konfiguracji:
 \end{sphinxVerbatim}
 
 
-\subsection{pg\_ident.conf}
+\subsubsection{pg\_ident.conf}
 \label{\detokenize{rozdzial_2/rozdzial_22/index:pg-ident-conf}}
 \sphinxAtStartPar
 Plik \sphinxcode{\sphinxupquote{pg\_ident.conf}} umożliwia mapowanie użytkowników systemowych na role PostgreSQL.
@@ -1061,7 +1063,7 @@ Lokalizację aktywnego pliku można sprawdzić poleceniem:
 \end{sphinxVerbatim}
 
 
-\subsubsection{Zastosowanie}
+\paragraph{Zastosowanie}
 \label{\detokenize{rozdzial_2/rozdzial_22/index:zastosowanie}}
 \sphinxAtStartPar
 Mechanizm mapowania pozwala określić, który użytkownik systemowy może zostać powiązany z konkretną rolą PostgreSQL.
@@ -1084,7 +1086,7 @@ dla lokalnych połączeń bez użycia haseł.
 \end{itemize}
 
 
-\subsubsection{Składnia wpisu}
+\paragraph{Składnia wpisu}
 \label{\detokenize{rozdzial_2/rozdzial_22/index:id3}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{MAPNAME}    \PYG{n}{SYSTEM}\PYG{o}{\PYGZhy{}}\PYG{n}{USERNAME}    \PYG{n}{PG}\PYG{o}{\PYGZhy{}}\PYG{n}{USERNAME}
@@ -1108,7 +1110,7 @@ Rola PostgreSQL, na którą użytkownik ma zostać zmapowany.
 \end{description}
 
 
-\subsubsection{Przykładowa konfiguracja}
+\paragraph{Przykładowa konfiguracja}
 \label{\detokenize{rozdzial_2/rozdzial_22/index:id4}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{c+c1}{\PYGZsh{} MAPNAME    SYSTEM\PYGZhy{}USERNAME    PG\PYGZhy{}USERNAME}
@@ -1128,7 +1130,7 @@ Przykład użycia w \sphinxcode{\sphinxupquote{pg\_hba.conf}}:
 W powyższym przykładzie użytkownicy systemowi zdefiniowani w \sphinxcode{\sphinxupquote{admin\_map}} mogą logować się jako odpowiadające im role PostgreSQL.
 
 
-\subsubsection{Najlepsze praktyki}
+\paragraph{Najlepsze praktyki}
 \label{\detokenize{rozdzial_2/rozdzial_22/index:id5}}\begin{enumerate}
 \sphinxsetlistlabels{\arabic}{enumi}{enumii}{}{.}%
 \item {} 
@@ -1164,7 +1166,7 @@ Regularnie przeglądaj konfigurację dostępu.
 \sphinxstepscope
 
 
-\section{Kontrola i konserwacja}
+\subsection{Kontrola i konserwacja}
 \label{\detokenize{rozdzial_2/rozdzial_23/index:kontrola-i-konserwacja}}\label{\detokenize{rozdzial_2/rozdzial_23/index::doc}}\begin{quote}\begin{description}
 \sphinxlineitem{Autorzy}\begin{enumerate}
 \sphinxsetlistlabels{\arabic}{enumi}{enumii}{}{.}%
@@ -1181,13 +1183,13 @@ Paweł Łosowski
 \end{description}\end{quote}
 
 
-\subsection{Wprowadzenie}
+\subsubsection{Wprowadzenie}
 \label{\detokenize{rozdzial_2/rozdzial_23/index:wprowadzenie}}
 \sphinxAtStartPar
 Współczesne systemy relacyjnych baz danych to wysoce skomplikowane środowiska, które wymagają ciągłego i proaktywnego nadzoru, aby zagwarantować wysoką dostępność, niezawodność oraz wydajność. Administracja takimi systemami stanowi złożone zagadnienie wymagające zarówno wiedzy teoretycznej, jak i praktycznego doświadczenia w zarządzaniu infrastrukturą informatyczną.
 
 
-\subsection{Zarządzanie przestrzenią i mechanizm współbieżności}
+\subsubsection{Zarządzanie przestrzenią i mechanizm współbieżności}
 \label{\detokenize{rozdzial_2/rozdzial_23/index:zarzadzanie-przestrzenia-i-mechanizm-wspolbieznosci}}
 \sphinxAtStartPar
 PostgreSQL opiera swoje działanie na zaawansowanej architekturze określanej jako Multi\sphinxhyphen{}Version Concurrency Control (MVCC). Technologia ta pozwala na równoległy odczyt i zapis danych bez wzajemnego blokowania się transakcji, co stanowi fundamentalną zaletę w środowiskach wieloużytkownikowych o wysokim natężeniu operacji.
@@ -1218,7 +1220,7 @@ Zaniedbanie procesu czyszczenia w systemach o wysokiej rotacji danych może dopr
 \end{sphinxVerbatim}
 
 
-\subsection{Optymalizacja i statystyki planisty zapytań}
+\subsubsection{Optymalizacja i statystyki planisty zapytań}
 \label{\detokenize{rozdzial_2/rozdzial_23/index:optymalizacja-i-statystyki-planisty-zapytan}}
 \sphinxAtStartPar
 Kolejnym filarem utrzymania sprawności systemu jest kontrola nad optymalizatorem, zwanym planistą zapytań. Silnik bazy danych przed wykonaniem jakiejkolwiek skomplikowanej kwerendy analizuje dostępne drogi realizacji i wybiera najefektywniejszą z punktu widzenia kosztów obliczeniowych.
@@ -1247,7 +1249,7 @@ Bieżące profilowanie wydajności realizowane jest natomiast przy pomocy instru
 \end{sphinxVerbatim}
 
 
-\subsection{Bezpieczeństwo i rygorystyczna kontrola dostępu}
+\subsubsection{Bezpieczeństwo i rygorystyczna kontrola dostępu}
 \label{\detokenize{rozdzial_2/rozdzial_23/index:bezpieczenstwo-i-rygorystyczna-kontrola-dostepu}}
 \sphinxAtStartPar
 Bezpieczeństwo danych stanowi absolutny priorytet każdej administracji systemami informatycznymi. Nowoczesne podejście do ochrony baz danych całkowicie odchodzi od wykorzystywania globalnych kont administratora na rzecz zaawansowanego systemu uprawnień opartego na rolach (RBAC \textendash{} Role\sphinxhyphen{}Based Access Control).
@@ -1267,7 +1269,7 @@ Kluczowym konceptem jest wdrożenie zasady najmniejszych uprawnień (Principle o
 \end{sphinxVerbatim}
 
 
-\subsection{Strategie zabezpieczania przed utratą danych}
+\subsubsection{Strategie zabezpieczania przed utratą danych}
 \label{\detokenize{rozdzial_2/rozdzial_23/index:strategie-zabezpieczania-przed-utrata-danych}}
 \sphinxAtStartPar
 Nawet najlepiej zoptymalizowany i zabezpieczony system informatyczny jest narażony na błędy ludzkie lub awarie infrastruktury sprzętowej. Dlatego odpowiednia polityka wykonywania kopii zapasowych stanowi ostateczną linię obrony i jest absolutnie niezbędna dla każdej produkcyjnej instancji bazy danych.
@@ -1279,7 +1281,7 @@ Kopie logiczne polegają na ekstrakcji danych z bazy do postaci czystego skryptu
 Dlatego w krytycznych środowiskach produkcyjnych stosuje się kopie fizyczne połączone z archiwizacją dzienników wyprzedzających. Dzienniki te rejestrują absolutnie każdą zmianę bajtu na poziomie magazynu, co umożliwia odtworzenie bazy do dowolnego punktu w przeszłości z dokładnością do sekundy.
 
 
-\subsection{Podsumowanie}
+\subsubsection{Podsumowanie}
 \label{\detokenize{rozdzial_2/rozdzial_23/index:podsumowanie}}
 \sphinxAtStartPar
 Prawidłowa kontrola i konserwacja środowiska bazodanowego to wielowymiarowy proces, który nie ma punktu końcowego, lecz trwa przez cały cykl życia oprogramowania. Złożoność nowoczesnych systemów relacyjnych wymaga holistycznego podejścia łączącego automatyzację, monitoring i ciągłe doskonalenie.
@@ -1298,12 +1300,12 @@ Tego typu jakis tekst
 \sphinxstepscope
 
 
-\section{Partycjonowanie danych}
+\subsection{Partycjonowanie danych}
 \label{\detokenize{rozdzial_2/rozdzial_26/index:partycjonowanie-danych}}\label{\detokenize{rozdzial_2/rozdzial_26/index::doc}}
 \sphinxstepscope
 
 
-\section{Bezpieczeństwo Baz Danych}
+\subsection{Bezpieczeństwo Baz Danych}
 \label{\detokenize{rozdzial_2/rozdzial_27/index:bezpieczenstwo-baz-danych}}\label{\detokenize{rozdzial_2/rozdzial_27/index::doc}}
 \sphinxAtStartPar
 Dział 7 przeglądu literaturowego poświęcony architekturze bezpieczeństwa, mechanizmom ochrony oraz analizie podatności w nowoczesnych systemach zarządzania bazami danych.
@@ -1311,13 +1313,13 @@ Dział 7 przeglądu literaturowego poświęcony architekturze bezpieczeństwa, m
 \sphinxstepscope
 
 
-\subsection{1. Model bezpieczeństwa CIA i ochrona infrastruktury}
+\subsubsection{1. Model bezpieczeństwa CIA i ochrona infrastruktury}
 \label{\detokenize{rozdzial_2/rozdzial_27/rozdzial_1:model-bezpieczenstwa-cia-i-ochrona-infrastruktury}}\label{\detokenize{rozdzial_2/rozdzial_27/rozdzial_1::doc}}
 \sphinxAtStartPar
 Rozważając bezpieczeństwo systemów bazodanowych, należy spojrzeć na problem warstwowo. Najniższą, a zarazem najbardziej fundamentalną warstwą jest ochrona samej infrastruktury sprzętowej i sieciowej, na której operuje silnik bazy danych (DBMS). Zanim przejdziemy do szczegółowych konfiguracji silnika, konieczne jest zdefiniowanie nadrzędnych celów bezpieczeństwa oraz zapewnienie izolacji środowiska uruchomieniowego.
 
 
-\subsubsection{Triada CIA w środowisku bazodanowym}
+\paragraph{Triada CIA w środowisku bazodanowym}
 \label{\detokenize{rozdzial_2/rozdzial_27/rozdzial_1:triada-cia-w-srodowisku-bazodanowym}}
 \sphinxAtStartPar
 Model \sphinxstylestrong{CIA} (ang. \sphinxstyleemphasis{Confidentiality, Integrity, Availability}) to klasyczny paradygmat bezpieczeństwa informacji. W kontekście relacyjnych i nierelacyjnych baz danych każdy z tych elementów realizowany jest przez specyficzne mechanizmy:
@@ -1337,7 +1339,7 @@ Model \sphinxstylestrong{CIA} (ang. \sphinxstyleemphasis{Confidentiality, Integr
 \end{itemize}
 
 
-\subsubsection{Izolacja sieciowa i architektura chmurowa (VPC)}
+\paragraph{Izolacja sieciowa i architektura chmurowa (VPC)}
 \label{\detokenize{rozdzial_2/rozdzial_27/rozdzial_1:izolacja-sieciowa-i-architektura-chmurowa-vpc}}
 \sphinxAtStartPar
 Nawet najlepiej skonfigurowany system uprawnień bazodanowych traci na znaczeniu, jeśli instancja wystawiona jest bezpośrednio do publicznej sieci Internet. Standardem inżynieryjnym w nowoczesnych wdrożeniach (zarówno on\sphinxhyphen{}premise, jak i cloud) jest głęboka separacja sieciowa.
@@ -1364,7 +1366,7 @@ W środowiskach chmurowych (np. AWS, Azure, GCP) bazy danych umieszcza się w de
 Takie podejście drastycznie zmniejsza powierzchnię ataku (ang. \sphinxstyleemphasis{attack surface}), eliminując ryzyko bezpośrednich ataków typu \sphinxstyleemphasis{brute\sphinxhyphen{}force} na porty bazy danych z zewnątrz.
 
 
-\subsubsection{Konteneryzacja a bezpieczeństwo bazy}
+\paragraph{Konteneryzacja a bezpieczeństwo bazy}
 \label{\detokenize{rozdzial_2/rozdzial_27/rozdzial_1:konteneryzacja-a-bezpieczenstwo-bazy}}
 \sphinxAtStartPar
 Uruchamianie baz danych w kontenerach (np. Docker, Kubernetes) stało się powszechne, jednak niesie ze sobą specyficzne wektory zagrożeń. Kontenery dzielą jądro (kernel) z systemem hosta, co oznacza, że kompromitacja bazy danych może prowadzić do ucieczki z kontenera (ang. \sphinxstyleemphasis{container breakout}).
@@ -1389,13 +1391,13 @@ Aby zminimalizować to ryzyko, stosuje się następujące praktyki:
 \sphinxstepscope
 
 
-\subsection{2. Ataki na bazy danych i luki w zabezpieczeniach}
+\subsubsection{2. Ataki na bazy danych i luki w zabezpieczeniach}
 \label{\detokenize{rozdzial_2/rozdzial_27/rozdzial_2:ataki-na-bazy-danych-i-luki-w-zabezpieczeniach}}\label{\detokenize{rozdzial_2/rozdzial_27/rozdzial_2::doc}}
 \sphinxAtStartPar
 Ponieważ bazy danych przechowują najbardziej krytyczne informacje organizacji, stanowią główny cel cyberataków. Według zestawień takich jak OWASP Top 10, podatności związane ze wstrzykiwaniem kodu (Injection) oraz błędną konfiguracją od lat utrzymują się w czołówce zagrożeń. Zrozumienie mechaniki tych ataków jest kluczowe do zaprojektowania skutecznych mechanizmów obronnych w warstwie aplikacyjnej i bazodanowej.
 
 
-\subsubsection{Wstrzykiwanie kodu SQL (SQL Injection)}
+\paragraph{Wstrzykiwanie kodu SQL (SQL Injection)}
 \label{\detokenize{rozdzial_2/rozdzial_27/rozdzial_2:wstrzykiwanie-kodu-sql-sql-injection}}
 \sphinxAtStartPar
 SQL Injection (SQLi) to podatność polegająca na możliwości modyfikacji zapytania SQL poprzez nieodpowiednio zwalidowane dane wejściowe. Pozwala to atakującemu na wykonanie nieautoryzowanych operacji na bazie danych.
@@ -1444,7 +1446,7 @@ Ponieważ warunek \sphinxcode{\sphinxupquote{\textquotesingle{}1\textquotesingle
 Podstawową i najskuteczniejszą metodą obrony przed SQLi jest korzystanie z \sphinxstylestrong{zapytań parametryzowanych (Prepared Statements)} lub nowoczesnych systemów ORM (Object\sphinxhyphen{}Relational Mapping), które oddzielają składnię zapytań od danych wejściowych.
 
 
-\subsubsection{Ataki NoSQL Injection}
+\paragraph{Ataki NoSQL Injection}
 \label{\detokenize{rozdzial_2/rozdzial_27/rozdzial_2:ataki-nosql-injection}}
 \sphinxAtStartPar
 Wraz ze wzrostem popularności nierelacyjnych baz danych (np. MongoDB, CouchDB), pojawił się mit o ich całkowitej odporności na wstrzykiwanie kodu. Choć nie używają one tradycyjnego dialektu SQL, aplikacje z nich korzystające nadal mogą być podatne na modyfikację logiki zapytań.
@@ -1477,7 +1479,7 @@ Atakujący wysyła zmodyfikowany payload z użyciem operatora logicznego \sphinx
 W rezultacie silnik MongoDB wykonuje zapytanie szukające użytkownika, którego login i hasło \sphinxstyleemphasis{nie są nullem}. Zapytanie zwraca pierwszy pasujący rekord (często administratora), umożliwiając logowanie bez znajomości hasła.
 
 
-\subsubsection{Przepełnienie bufora (Buffer Overflow) w DBMS}
+\paragraph{Przepełnienie bufora (Buffer Overflow) w DBMS}
 \label{\detokenize{rozdzial_2/rozdzial_27/rozdzial_2:przepelnienie-bufora-buffer-overflow-w-dbms}}
 \sphinxAtStartPar
 Silniki baz danych (np. MySQL, PostgreSQL, Oracle) to skomplikowane aplikacje napisane najczęściej w językach C lub C++, co oznacza, że są potencjalnie narażone na błędy zarządzania pamięcią.
@@ -1491,7 +1493,7 @@ Może to prowadzić do:
 2. \sphinxstylestrong{Wykonania dowolnego kodu (RCE \sphinxhyphen{} Remote Code Execution)} \textendash{} uruchomienia shellcode’u na serwerze z uprawnieniami procesu bazy danych, co stanowi bezpośrednie wejście do kompromitacji hosta (powiązane z ryzykiem opisanym w rozdziale o konteneryzacji).
 
 
-\subsubsection{Odmowa Usługi (DoS) na poziomie bazy danych}
+\paragraph{Odmowa Usługi (DoS) na poziomie bazy danych}
 \label{\detokenize{rozdzial_2/rozdzial_27/rozdzial_2:odmowa-uslugi-dos-na-poziomie-bazy-danych}}
 \sphinxAtStartPar
 Ataki Denial of Service na bazy danych różnią się od klasycznych ataków sieciowych. Mają one charakter aplikacyjny i celują w wyczerpanie zasobów sprzętowych serwera (CPU, RAM, I/O) lub limitów samego oprogramowania.
@@ -1507,7 +1509,7 @@ Ataki Denial of Service na bazy danych różnią się od klasycznych ataków sie
 \end{itemize}
 
 
-\subsubsection{Automatyzacja ataków: Narzędzia audytowe}
+\paragraph{Automatyzacja ataków: Narzędzia audytowe}
 \label{\detokenize{rozdzial_2/rozdzial_27/rozdzial_2:automatyzacja-atakow-narzedzia-audytowe}}
 \sphinxAtStartPar
 W procesach testów penetracyjnych baz danych, analitycy bezpieczeństwa korzystają ze zautomatyzowanych frameworków. Najpopularniejszym z nich jest \sphinxstylestrong{sqlmap} \textendash{} potężne narzędzie open\sphinxhyphen{}source automatyzujące proces wykrywania podatności SQLi i przejmowania kontroli nad serwerami bazodanowymi.
@@ -1525,7 +1527,7 @@ pozwoli narzędziu na wykrycie typu wstrzyknięcia (np. czasowe lub błędowe), 
 \sphinxstepscope
 
 
-\chapter{Rozdział 3: Projektowanie Bazy Danych: System Zarządzania Biblioteką}
+\section{Rozdział 3: Projektowanie Bazy Danych: System Zarządzania Biblioteką}
 \label{\detokenize{rozdzial_3/index:rozdzial-3-projektowanie-bazy-danych-system-zarzadzania-biblioteka}}\label{\detokenize{rozdzial_3/index::doc}}\begin{quote}\begin{description}
 \sphinxlineitem{Autorzy}\begin{enumerate}
 \sphinxsetlistlabels{\arabic}{enumi}{enumii}{}{.}%
@@ -1542,17 +1544,17 @@ Paweł Łosowski
 \end{description}\end{quote}
 
 
-\section{Wybór zagadnienia, opis procesów i danych}
+\subsection{Wybór zagadnienia, opis procesów i danych}
 \label{\detokenize{rozdzial_3/index:wybor-zagadnienia-opis-procesow-i-danych}}
 
-\subsection{Wybrane zagadnienie:}
+\subsubsection{Wybrane zagadnienie:}
 \label{\detokenize{rozdzial_3/index:wybrane-zagadnienie}}
 \sphinxAtStartPar
 System zarządzania wypożyczeniami w bibliotece.
 Projekt obejmuje obsługę bazy czytelników, katalogu zbiorów bibliotecznych (z uwzględnieniem autorów i kategorii literackich), a także pełen proces ewidencji wypożyczeń, zwrotów oraz historii operacji każdego użytkownika.
 
 
-\subsection{Opis procesów i więzy integralności:}
+\subsubsection{Opis procesów i więzy integralności:}
 \label{\detokenize{rozdzial_3/index:opis-procesow-i-wiezy-integralnosci}}
 \sphinxAtStartPar
 Głównym procesem w systemie jest obieg książki między biblioteką a czytelnikiem.
@@ -1576,7 +1578,7 @@ Głównym procesem w systemie jest obieg książki między biblioteką a czyteln
 \end{itemize}
 
 
-\subsection{Wykaz gromadzonych danych:}
+\subsubsection{Wykaz gromadzonych danych:}
 \label{\detokenize{rozdzial_3/index:wykaz-gromadzonych-danych}}\begin{itemize}
 \item {} 
 \sphinxAtStartPar
@@ -1601,7 +1603,7 @@ Głównym procesem w systemie jest obieg książki między biblioteką a czyteln
 \end{itemize}
 
 
-\section{Prototyp CSV}
+\subsection{Prototyp CSV}
 \label{\detokenize{rozdzial_3/index:prototyp-csv}}
 \sphinxAtStartPar
 Aby zweryfikować kompletność przetwarzanych informacji, przygotowano “płaską” (nieznormalizowaną) reprezentację danych dla operacji wypożyczenia, bazującą na pierwotnych wytycznych.
@@ -1614,13 +1616,13 @@ Aby zweryfikować kompletność przetwarzanych informacji, przygotowano “płas
 \end{sphinxVerbatim}
 
 
-\section{Model Konceptualny (Pojęciowy)}
+\subsection{Model Konceptualny (Pojęciowy)}
 \label{\detokenize{rozdzial_3/index:model-konceptualny-pojeciowy}}
 \sphinxAtStartPar
 Na podstawie analizy procesów i zebranych danych opracowano model pojęciowy, identyfikując obiekty, ich cechy oraz powiązania.
 
 
-\subsection{Zidentyfikowane encje}
+\subsubsection{Zidentyfikowane encje}
 \label{\detokenize{rozdzial_3/index:zidentyfikowane-encje}}\begin{itemize}
 \item {} 
 \sphinxAtStartPar
@@ -1645,7 +1647,7 @@ Na podstawie analizy procesów i zebranych danych opracowano model pojęciowy, i
 \end{itemize}
 
 
-\subsection{Zdefiniowane atrybuty/własności}
+\subsubsection{Zdefiniowane atrybuty/własności}
 \label{\detokenize{rozdzial_3/index:zdefiniowane-atrybuty-wlasnosci}}\begin{itemize}
 \item {} 
 \sphinxAtStartPar
@@ -1670,7 +1672,7 @@ Na podstawie analizy procesów i zebranych danych opracowano model pojęciowy, i
 \end{itemize}
 
 
-\subsection{Opis związków}
+\subsubsection{Opis związków}
 \label{\detokenize{rozdzial_3/index:opis-zwiazkow}}\begin{itemize}
 \item {} 
 \sphinxAtStartPar
@@ -1691,22 +1693,22 @@ Na podstawie analizy procesów i zebranych danych opracowano model pojęciowy, i
 \end{itemize}
 
 
-\subsection{Identyfikacja encji słabych}
+\subsubsection{Identyfikacja encji słabych}
 \label{\detokenize{rozdzial_3/index:identyfikacja-encji-slabych}}
 \sphinxAtStartPar
 Występuje relacja wiele\sphinxhyphen{}do\sphinxhyphen{}wielu (M:N) między Czytelnikiem a Książką (czytelnik czyta wiele książek, książka jest czytana przez wielu czytelników). Związek ten rozwiązywany jest przez encję asocjacyjną \sphinxstylestrong{Wypożyczenia}, która przechowuje wszystkie historyczne i bieżące transakcje między dwoma stronami.
 * \sphinxstylestrong{Uzasadnienie:} Byt ten nie istnieje samodzielnie w oderwaniu od konkretnego Czytelnika i konkretnej Książki.
 
 
-\subsection{Schemat w notacji Chena}
+\subsubsection{Schemat w notacji Chena}
 \label{\detokenize{rozdzial_3/index:schemat-w-notacji-chena}}
 \noindent\sphinxincludegraphics[width=0.800\linewidth]{{model_konceptualny_biblioteka}.png}
 
 
-\section{Model logiczny i proces normalizacji}
+\subsection{Model logiczny i proces normalizacji}
 \label{\detokenize{rozdzial_3/index:model-logiczny-i-proces-normalizacji}}
 
-\subsection{Przebieg procesu normalizacji}
+\subsubsection{Przebieg procesu normalizacji}
 \label{\detokenize{rozdzial_3/index:przebieg-procesu-normalizacji}}
 \sphinxAtStartPar
 \sphinxstylestrong{Krok 1: Pierwsza Postać Normalna (1NF)}
@@ -1723,7 +1725,7 @@ Tworzymy bazowe tabele: \sphinxcode{\sphinxupquote{Czytelnicy}} oraz \sphinxcode
 Eliminacja zależności przechodnich. Z tabeli \sphinxcode{\sphinxupquote{Ksiazki}} wydzielamy powtarzające się nazwy gatunków do tabeli \sphinxcode{\sphinxupquote{Kategorie}} (klucz: ID\_Kategorii) oraz dane twórców do tabeli \sphinxcode{\sphinxupquote{Autorzy}} (klucz: ID\_Autora). Każda tabela reprezentuje teraz niezależną encję o jasno określonym celu biznesowym.
 
 
-\subsection{Ostateczna struktura tabel (3NF)}
+\subsubsection{Ostateczna struktura tabel (3NF)}
 \label{\detokenize{rozdzial_3/index:ostateczna-struktura-tabel-3nf}}\begin{itemize}
 \item {} 
 \sphinxAtStartPar
@@ -1748,18 +1750,18 @@ Eliminacja zależności przechodnich. Z tabeli \sphinxcode{\sphinxupquote{Ksiazk
 \end{itemize}
 
 
-\subsection{Diagram ERD (Model Logiczny)}
+\subsubsection{Diagram ERD (Model Logiczny)}
 \label{\detokenize{rozdzial_3/index:diagram-erd-model-logiczny}}
 \noindent\sphinxincludegraphics[width=0.800\linewidth]{{erd_logiczny_biblioteka}.png}
 
 
-\section{Model fizyczny bazy danych}
+\subsection{Model fizyczny bazy danych}
 \label{\detokenize{rozdzial_3/index:model-fizyczny-bazy-danych}}
 \sphinxAtStartPar
 Różnice implementacyjne między modelami fizycznymi wynikają wprost z silników RDBMS \textendash{} ograniczeń typowania SQLite oraz bogatych możliwości deklaratywnych PostgreSQL.
 
 
-\subsection{Model fizyczny dla środowiska SQLite}
+\subsubsection{Model fizyczny dla środowiska SQLite}
 \label{\detokenize{rozdzial_3/index:model-fizyczny-dla-srodowiska-sqlite}}
 \sphinxAtStartPar
 Z uwagi na okrojony zestaw typów, daty są mapowane jako TEXT.
@@ -1789,7 +1791,7 @@ Z uwagi na okrojony zestaw typów, daty są mapowane jako TEXT.
 \noindent\sphinxincludegraphics[width=0.800\linewidth]{{fizyczny_sqlite_biblioteka}.png}
 
 
-\subsection{Model fizyczny dla środowiska PostgreSQL}
+\subsubsection{Model fizyczny dla środowiska PostgreSQL}
 \label{\detokenize{rozdzial_3/index:model-fizyczny-dla-srodowiska-postgresql}}
 \sphinxAtStartPar
 PostgreSQL umożliwia zastosowanie precyzyjnych i natywnych typów, w tym rygorystycznych typów daty (DATE) oraz optymalizacji pamięciowej dla ciągów znaków (VARCHAR).
@@ -1821,7 +1823,7 @@ PostgreSQL umożliwia zastosowanie precyzyjnych i natywnych typów, w tym rygory
 \sphinxstepscope
 
 
-\chapter{Rozdział 4: Implementacja fizyczna i zasilanie bazy danych}
+\section{Rozdział 4: Implementacja fizyczna i zasilanie bazy danych}
 \label{\detokenize{rozdzial_4/index:rozdzial-4-implementacja-fizyczna-i-zasilanie-bazy-danych}}\label{\detokenize{rozdzial_4/index::doc}}\begin{quote}\begin{description}
 \sphinxlineitem{Autorzy}\begin{enumerate}
 \sphinxsetlistlabels{\arabic}{enumi}{enumii}{}{.}%
@@ -1838,13 +1840,13 @@ Paweł Łosowski
 \end{description}\end{quote}
 
 
-\section{Definicja fizyczna bazy danych (Zadanie 1)}
+\subsection{Definicja fizyczna bazy danych (Zadanie 1)}
 \label{\detokenize{rozdzial_4/index:definicja-fizyczna-bazy-danych-zadanie-1}}
 \sphinxAtStartPar
 Na podstawie opracowanych wcześniej modeli logicznych przygotowano skrypty DDL (Data Definition Language) dla dwóch docelowych silników relacyjnych baz danych: PostgreSQL oraz SQLite. Kody te przygotowały solidną fundamentę dla skutecznego przechowywania i zarządzania danymi biblioteki.
 
 
-\subsection{Skrypt dla środowiska PostgreSQL}
+\subsubsection{Skrypt dla środowiska PostgreSQL}
 \label{\detokenize{rozdzial_4/index:skrypt-dla-srodowiska-postgresql}}
 \sphinxAtStartPar
 Środowisko PostgreSQL pozwala na wykorzystanie zaawansowanych, natywnych typów danych oraz rygorystyczne egzekwowanie więzów integralności. W poniższym skrypcie kluczowym elementem jest użycie więzów klucza obcego (FOREIGN KEY) w celu zapewnienia spójności referencyalnej między tabelami.
@@ -1869,7 +1871,7 @@ Na podstawie opracowanych wcześniej modeli logicznych przygotowano skrypty DDL 
 \end{sphinxVerbatim}
 
 
-\subsection{Skrypt dla środowiska SQLite}
+\subsubsection{Skrypt dla środowiska SQLite}
 \label{\detokenize{rozdzial_4/index:skrypt-dla-srodowiska-sqlite}}
 \sphinxAtStartPar
 W silniku SQLite struktura ulega pewnemu uproszczeniu z powodu mniejszej rygorystyczności typowania oraz bardzo ograniczonej liczby wbudowanych klas typów danych (np. brak odrębnego typu daty). Pomimo ograniczeń, SQLite pozostaje niezawodnym rozwiązaniem do prototypowania i mniejszych aplikacji.
@@ -1888,13 +1890,13 @@ W silniku SQLite struktura ulega pewnemu uproszczeniu z powodu mniejszej rygorys
 \end{sphinxVerbatim}
 
 
-\section{Mechanizm zasilania bazy danych (Zadanie 2)}
+\subsection{Mechanizm zasilania bazy danych (Zadanie 2)}
 \label{\detokenize{rozdzial_4/index:mechanizm-zasilania-bazy-danych-zadanie-2}}
 \sphinxAtStartPar
 Posiadając gotową strukturę bazy, należało wyposażyć ją w dane demonstracyjne. Przygotowano zbiór danych testowych, które zostały poddane wsadowemu ładowaniu (batch import).
 
 
-\subsection{Formatyzacja danych (Pliki CSV)}
+\subsubsection{Formatyzacja danych (Pliki CSV)}
 \label{\detokenize{rozdzial_4/index:formatyzacja-danych-pliki-csv}}
 \sphinxAtStartPar
 Dane do importu przygotowano w niezależnym formacie płaskim CSV (Comma\sphinxhyphen{}Separated Values). Takie podejście pozwala na łatwą edycję danych poza systemem bazodanowym. Poniżej zaprezentowano wybrane kategorie książek przygotowane w formacie CSV.
@@ -1909,7 +1911,7 @@ Horror
 \end{sphinxVerbatim}
 
 
-\subsection{Implementacja mechanizmu importu}
+\subsubsection{Implementacja mechanizmu importu}
 \label{\detokenize{rozdzial_4/index:implementacja-mechanizmu-importu}}
 \sphinxAtStartPar
 Do zaimportowania powyższych danych wybrano mechanizm wprowadzania wielowartościowego oparty na technice \sphinxstylestrong{INSERT (multi\sphinxhyphen{}value/batch)}. Rozwiązanie zrealizowano z wykorzystaniem języka Python wraz z biblioteką psycopg do komunikacji z bazą PostgreSQL.
@@ -1954,7 +1956,7 @@ Poniżej przedstawiono fragment skryptu aplikacyjnego odpowiedzialnego za odczyt
 \end{sphinxVerbatim}
 
 
-\section{Podsumowanie}
+\subsection{Podsumowanie}
 \label{\detokenize{rozdzial_4/index:podsumowanie}}
 \sphinxAtStartPar
 Niniejszy rozdział wieńczy etap projektowania i wdrażania struktury relacyjnej bazy danych dla systemu zarządzania biblioteką. Poprzez transformację modelu logicznego do postaci fizycznej osiągnięto kompletne i funkcjonalne rozwiązanie.
@@ -1974,7 +1976,7 @@ Niniejszy projekt stanowi kompletne studium cyklu życia relacyjnej bazy danych 
 \sphinxstepscope
 
 
-\chapter{Rozdział 5: Komunikacja i operacje na danych}
+\section{Rozdział 5: Komunikacja i operacje na danych}
 \label{\detokenize{rozdzial_5/index:rozdzial-5-komunikacja-i-operacje-na-danych}}\label{\detokenize{rozdzial_5/index::doc}}\begin{quote}\begin{description}
 \sphinxlineitem{Autorzy}\begin{enumerate}
 \sphinxsetlistlabels{\arabic}{enumi}{enumii}{}{.}%
@@ -1991,7 +1993,7 @@ Paweł Łosowski
 \end{description}\end{quote}
 
 
-\section{Wstęp}
+\subsection{Wstęp}
 \label{\detokenize{rozdzial_5/index:wstep}}
 \sphinxAtStartPar
 Po zdefiniowaniu i zasileniu struktur bazodanowych w poprzednich rozdziałach, system wymaga
@@ -2006,14 +2008,14 @@ Wykorzystano techniki tworzenia rozbudowanych zapytań SQL, w tym:
 * Operatory teorii mnogości (\sphinxcode{\sphinxupquote{UNION}}, \sphinxcode{\sphinxupquote{INTERSECT}}, \sphinxcode{\sphinxupquote{EXCEPT}}).
 
 
-\section{Pełna specyfikacja stworzonego API}
+\subsection{Pełna specyfikacja stworzonego API}
 \label{\detokenize{rozdzial_5/index:pelna-specyfikacja-stworzonego-api}}
 \sphinxAtStartPar
 Poniżej przedstawiono zautomatyzowaną dokumentację modułu obsługującego połączenia z
 bazami PostgreSQL oraz SQLite, wygenerowaną na podstawie wbudowanych komentarzy (Docstrings).
 \index{module@\spxentry{module}!biblioteka\_zapytania@\spxentry{biblioteka\_zapytania}}\index{biblioteka\_zapytania@\spxentry{biblioteka\_zapytania}!module@\spxentry{module}}
 
-\subsection{Moduł biblioteka\_zapytania}
+\subsubsection{Moduł biblioteka\_zapytania}
 \label{\detokenize{rozdzial_5/index:modul-biblioteka-zapytania}}\label{\detokenize{rozdzial_5/index:module-biblioteka_zapytania}}
 \sphinxAtStartPar
 Moduł zawiera zestaw zaawansowanych zapytań SQL do obsługi systemu zarządzania biblioteką.

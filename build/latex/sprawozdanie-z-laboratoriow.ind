@@ -6,32 +6,32 @@
 
   \bigletter B
   \item \spxentry{biblioteka\_zapytania}
-    \subitem \spxentry{module}, \hyperpage{23}
+    \subitem \spxentry{module}, \hyperpage{22}
 
   \indexspace
   \bigletter G
   \item \spxentry{get\_aktywni\_czytelnicy\_powyzej\_limitu()}\spxextra{in module biblioteka\_zapytania}, 
-		\hyperpage{23}
+		\hyperpage{22}
   \item \spxentry{get\_czytelnicy\_bez\_wypozyczen()}\spxextra{in module biblioteka\_zapytania}, 
 		\hyperpage{23}
-  \item \spxentry{get\_katalog\_osob()}\spxextra{in module biblioteka\_zapytania}, \hyperpage{24}
+  \item \spxentry{get\_katalog\_osob()}\spxextra{in module biblioteka\_zapytania}, \hyperpage{23}
   \item \spxentry{get\_ksiazki\_wypozyczone\_w\_miescie()}\spxextra{in module biblioteka\_zapytania}, 
-		\hyperpage{24}
+		\hyperpage{23}
   \item \spxentry{get\_ksiazki\_z\_iloscia\_wypozyczen()}\spxextra{in module biblioteka\_zapytania}, 
-		\hyperpage{24}
+		\hyperpage{23}
   \item \spxentry{get\_najdluzej\_przetrzymywane()}\spxextra{in module biblioteka\_zapytania}, 
-		\hyperpage{24}
+		\hyperpage{23}
   \item \spxentry{get\_puste\_kategorie()}\spxextra{in module biblioteka\_zapytania}, 
 		\hyperpage{24}
   \item \spxentry{get\_raport\_autorow()}\spxextra{in module biblioteka\_zapytania}, \hyperpage{24}
   \item \spxentry{get\_srednia\_wypozyczen\_na\_czytelnika()}\spxextra{in module biblioteka\_zapytania}, 
-		\hyperpage{25}
+		\hyperpage{24}
   \item \spxentry{get\_wszechstronni\_czytelnicy()}\spxextra{in module biblioteka\_zapytania}, 
-		\hyperpage{25}
+		\hyperpage{24}
 
   \indexspace
   \bigletter M
   \item \spxentry{module}
-    \subitem \spxentry{biblioteka\_zapytania}, \hyperpage{23}
+    \subitem \spxentry{biblioteka\_zapytania}, \hyperpage{22}
 
 \end{sphinxtheindex}
