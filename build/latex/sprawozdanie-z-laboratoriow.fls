@@ -1,0 +1,7 @@
+PWD /home/student15/gitstuiff/Bazy-Danych-1/build/latex
+INPUT /etc/texmf/web2c/texmf.cnf
+INPUT /usr/share/texmf/web2c/texmf.cnf
+INPUT /usr/share/texlive/texmf-dist/web2c/texmf.cnf
+INPUT /var/lib/texmf/web2c/pdftex/pdflatex.fmt
+INPUT sprawozdanie-z-laboratoriow.tex
+OUTPUT sprawozdanie-z-laboratoriow.log

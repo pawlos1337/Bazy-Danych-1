@@ -1,0 +1,14 @@
+# Fdb version 4
+["pdflatex"] 1781394694.94759 "sprawozdanie-z-laboratoriow.tex" "sprawozdanie-z-laboratoriow.pdf" "sprawozdanie-z-laboratoriow" 1781394741.03777 2
+  "/etc/texmf/web2c/texmf.cnf" 1772394163.08845 475 c0e671620eb5563b2130f56340a5fde8 ""
+  "/usr/share/texlive/texmf-dist/web2c/texmf.cnf" 1741904018 41538 c016915c1d51223b6dbbfe27341748a8 ""
+  "/usr/share/texmf/web2c/texmf.cnf" 1741904018 41538 c016915c1d51223b6dbbfe27341748a8 ""
+  "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1772394241 3351489 7d1a0305bdfe00388716e5c7fb175e02 ""
+  "Paweł Łosowski.cls" 0 -1 0 ""
+  "sprawozdanie-z-laboratoriow.aux" 1781394687.57946 20823 bbbf39ad2b385f9eb0287d28218fdd0e "pdflatex"
+  "sprawozdanie-z-laboratoriow.tex" 1781394646.79893 102734 3654ed91070d8ac615bc460e5ea3d360 ""
+  (generated)
+  "sprawozdanie-z-laboratoriow.aux"
+  "sprawozdanie-z-laboratoriow.log"
+  "sprawozdanie-z-laboratoriow.pdf"
+  (rewritten before read)

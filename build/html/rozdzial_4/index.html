@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>4. Rozdział 4: Implementacja fizyczna i zasilanie bazy danych &#8212; Sprawozdanie-z-laboratoriów  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=12dfc556" />
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="5. Rozdział 5: Komunikacja i operacje na danych" href="../rozdzial_5/index.html" />
+    <link rel="prev" title="3. Rozdział 3: Projektowanie Bazy Danych: System Zarządzania Biblioteką" href="../rozdzial_3/index.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="rozdzial-4-implementacja-fizyczna-i-zasilanie-bazy-danych">
+<h1><span class="section-number">4. </span>Rozdział 4: Implementacja fizyczna i zasilanie bazy danych<a class="headerlink" href="#rozdzial-4-implementacja-fizyczna-i-zasilanie-bazy-danych" title="Link to this heading">¶</a></h1>
+<dl class="field-list simple">
+<dt class="field-odd">Autorzy<span class="colon">:</span></dt>
+<dd class="field-odd"><ol class="arabic simple">
+<li><p>Paweł Łoćwin</p></li>
+<li><p>Paweł Łosowski</p></li>
+</ol>
+</dd>
+</dl>
+<section id="definicja-fizyczna-bazy-danych-zadanie-1">
+<h2><span class="section-number">4.1. </span>Definicja fizyczna bazy danych (Zadanie 1)<a class="headerlink" href="#definicja-fizyczna-bazy-danych-zadanie-1" title="Link to this heading">¶</a></h2>
+<p>Na podstawie opracowanych wcześniej modeli logicznych przygotowano skrypty DDL (Data Definition Language) dla dwóch docelowych silników relacyjnych baz danych: PostgreSQL oraz SQLite. Kody te przygotowały solidną fundamentę dla skutecznego przechowywania i zarządzania danymi biblioteki.</p>
+<section id="skrypt-dla-srodowiska-postgresql">
+<h3><span class="section-number">4.1.1. </span>Skrypt dla środowiska PostgreSQL<a class="headerlink" href="#skrypt-dla-srodowiska-postgresql" title="Link to this heading">¶</a></h3>
+<p>Środowisko PostgreSQL pozwala na wykorzystanie zaawansowanych, natywnych typów danych oraz rygorystyczne egzekwowanie więzów integralności. W poniższym skrypcie kluczowym elementem jest użycie więzów klucza obcego (FOREIGN KEY) w celu zapewnienia spójności referencyalnej między tabelami.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Fragment kodu definicji kluczowych tabel (PostgreSQL)</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">Ksiazki</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">ID_Ksiazki</span><span class="w"> </span><span class="nb">SERIAL</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="w">    </span><span class="n">ID_Autora</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">Autorzy</span><span class="p">(</span><span class="n">ID_Autora</span><span class="p">),</span>
+<span class="w">    </span><span class="n">ID_Kategorii</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">Kategorie</span><span class="p">(</span><span class="n">ID_Kategorii</span><span class="p">),</span>
+<span class="w">    </span><span class="n">Tytul</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">150</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Rok_Wydania</span><span class="w"> </span><span class="nb">SMALLINT</span>
+<span class="p">);</span>
+
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">Wypozyczenia</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">ID_Wypozyczenia</span><span class="w"> </span><span class="nb">SERIAL</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="w">    </span><span class="n">ID_Czytelnika</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">Czytelnicy</span><span class="p">(</span><span class="n">ID_Czytelnika</span><span class="p">),</span>
+<span class="w">    </span><span class="n">ID_Ksiazki</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">Ksiazki</span><span class="p">(</span><span class="n">ID_Ksiazki</span><span class="p">),</span>
+<span class="w">    </span><span class="n">Data_Wypozyczenia</span><span class="w"> </span><span class="nb">DATE</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">CURRENT_DATE</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Data_Zwrotu</span><span class="w"> </span><span class="nb">DATE</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="skrypt-dla-srodowiska-sqlite">
+<h3><span class="section-number">4.1.2. </span>Skrypt dla środowiska SQLite<a class="headerlink" href="#skrypt-dla-srodowiska-sqlite" title="Link to this heading">¶</a></h3>
+<p>W silniku SQLite struktura ulega pewnemu uproszczeniu z powodu mniejszej rygorystyczności typowania oraz bardzo ograniczonej liczby wbudowanych klas typów danych (np. brak odrębnego typu daty). Pomimo ograniczeń, SQLite pozostaje niezawodnym rozwiązaniem do prototypowania i mniejszych aplikacji.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Fragment kodu definicji kluczowych tabel (SQLite)</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">Wypozyczenia</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">ID_Wypozyczenia</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="n">AUTOINCREMENT</span><span class="p">,</span>
+<span class="w">    </span><span class="n">ID_Czytelnika</span><span class="w"> </span><span class="nb">INTEGER</span><span class="p">,</span>
+<span class="w">    </span><span class="n">ID_Ksiazki</span><span class="w"> </span><span class="nb">INTEGER</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Data_Wypozyczenia</span><span class="w"> </span><span class="nb">TEXT</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Data_Zwrotu</span><span class="w"> </span><span class="nb">TEXT</span><span class="p">,</span>
+<span class="w">    </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="p">(</span><span class="n">ID_Czytelnika</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">Czytelnicy</span><span class="p">(</span><span class="n">ID_Czytelnika</span><span class="p">),</span>
+<span class="w">    </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="p">(</span><span class="n">ID_Ksiazki</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">Ksiazki</span><span class="p">(</span><span class="n">ID_Ksiazki</span><span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="mechanizm-zasilania-bazy-danych-zadanie-2">
+<h2><span class="section-number">4.2. </span>Mechanizm zasilania bazy danych (Zadanie 2)<a class="headerlink" href="#mechanizm-zasilania-bazy-danych-zadanie-2" title="Link to this heading">¶</a></h2>
+<p>Posiadając gotową strukturę bazy, należało wyposażyć ją w dane demonstracyjne. Przygotowano zbiór danych testowych, które zostały poddane wsadowemu ładowaniu (batch import).</p>
+<section id="formatyzacja-danych-pliki-csv">
+<h3><span class="section-number">4.2.1. </span>Formatyzacja danych (Pliki CSV)<a class="headerlink" href="#formatyzacja-danych-pliki-csv" title="Link to this heading">¶</a></h3>
+<p>Dane do importu przygotowano w niezależnym formacie płaskim CSV (Comma-Separated Values). Takie podejście pozwala na łatwą edycję danych poza systemem bazodanowym. Poniżej zaprezentowano wybrane kategorie książek przygotowane w formacie CSV.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Nazwa_Kategorii
+Fantastyka
+Kryminał
+Literatura faktu
+Poezja
+Horror
+</pre></div>
+</div>
+</section>
+<section id="implementacja-mechanizmu-importu">
+<h3><span class="section-number">4.2.2. </span>Implementacja mechanizmu importu<a class="headerlink" href="#implementacja-mechanizmu-importu" title="Link to this heading">¶</a></h3>
+<p>Do zaimportowania powyższych danych wybrano mechanizm wprowadzania wielowartościowego oparty na technice <strong>INSERT (multi-value/batch)</strong>. Rozwiązanie zrealizowano z wykorzystaniem języka Python wraz z biblioteką psycopg do komunikacji z bazą PostgreSQL.</p>
+<p>Wybór tego mechanizmu podyktowany jest kompromisem między uniwersalnością a wydajnością. Użycie metody <code class="docutils literal notranslate"><span class="pre">executemany()</span></code> na obiekcie kursora bazy danych pozwala na szybkie wstawienie wielu rekordów bez konieczności wykonywania zapytania dla każdego wiersza osobno.</p>
+<p>Poniżej przedstawiono fragment skryptu aplikacyjnego odpowiedzialnego za odczyt z pliku i zasilenie tabel:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">csv</span>
+<span class="kn">import</span> <span class="nn">psycopg</span>
+
+<span class="c1"># 1. Wczytywanie danych z pliku CSV do struktury iterowalnej (listy krotek)</span>
+<span class="k">def</span> <span class="nf">wczytaj_dane_csv</span><span class="p">(</span><span class="n">sciezka_pliku</span><span class="p">):</span>
+    <span class="n">dane</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">sciezka_pliku</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">plik</span><span class="p">:</span>
+        <span class="n">csv_reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">plik</span><span class="p">)</span>
+        <span class="nb">next</span><span class="p">(</span><span class="n">csv_reader</span><span class="p">)</span>  <span class="c1"># Pominięcie wiersza nagłówka</span>
+        <span class="k">for</span> <span class="n">wiersz</span> <span class="ow">in</span> <span class="n">csv_reader</span><span class="p">:</span>
+            <span class="n">dane</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">tuple</span><span class="p">(</span><span class="n">wiersz</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">dane</span>
+
+<span class="c1"># 2. Właściwy proces wsadowego importu do bazy PostgreSQL</span>
+<span class="k">def</span> <span class="nf">importuj_do_postgres</span><span class="p">(</span><span class="n">kategorie_do_importu</span><span class="p">,</span> <span class="n">db_config</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Użycie Context Managera dla bezpiecznego zarządzania transakcjami</span>
+        <span class="k">with</span> <span class="n">psycopg</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="o">**</span><span class="n">db_config</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+            <span class="k">with</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span> <span class="k">as</span> <span class="n">cursor</span><span class="p">:</span>
+
+                <span class="c1"># Definicja sparametryzowanego zapytania zapobiegającego SQL Injection</span>
+                <span class="n">zapytanie_sql</span> <span class="o">=</span> <span class="s2">&quot;INSERT INTO Kategorie (Nazwa_Kategorii) VALUES (</span><span class="si">%s</span><span class="s2">)&quot;</span>
+
+                <span class="c1"># Wsadowe wywołanie zapytań (batch insert)</span>
+                <span class="n">cursor</span><span class="o">.</span><span class="n">executemany</span><span class="p">(</span><span class="n">zapytanie_sql</span><span class="p">,</span> <span class="n">kategorie_do_importu</span><span class="p">)</span>
+
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Pomyślnie zaimportowano </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">kategorie_do_importu</span><span class="p">)</span><span class="si">}</span><span class="s2"> rekordów.&quot;</span><span class="p">)</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Wystąpił błąd operacji wsadowej: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="podsumowanie">
+<h2><span class="section-number">4.3. </span>Podsumowanie<a class="headerlink" href="#podsumowanie" title="Link to this heading">¶</a></h2>
+<p>Niniejszy rozdział wieńczy etap projektowania i wdrażania struktury relacyjnej bazy danych dla systemu zarządzania biblioteką. Poprzez transformację modelu logicznego do postaci fizycznej osiągnięto kompletne i funkcjonalne rozwiązanie.</p>
+<p>Pierwsza część rozdziału koncentrowała się na <strong>Definicji fizycznej bazy danych (Zadanie 1)</strong>, gdzie dokonano implementacji schematów dla dwóch wiodących silników relacyjnych: PostgreSQL i SQLite, stanowiących praktyczną alternatywę w zależności od wymagań skalowalności oraz zasobów dostępnych w środowisku produkcyjnym.</p>
+<p>Druga część rozdziału poświęcona została <strong>Mechanizmowi zasilania bazy danych (Zadanie 2)</strong>. Dane demonstracyjne przygotowano w formacie CSV, który zapewnia elastyczność i łatwość edycji zarówno dla administratorów baz danych, jak i dla użytkowników końcowych systemu.</p>
+<p>Automatyzacja procesu inicjalizacji systemu za pomocą skryptów Python stanowi znaczący wkład w praktyczność rozwiązania, umożliwiając łatwe replikowanie i testowanie bazy danych w różnych środowiskach bez konieczności wykonywania repetycyjnych czynności manualnych.</p>
+<p>Niniejszy projekt stanowi kompletne studium cyklu życia relacyjnej bazy danych – od teoretycznego modelowania (Rozdziały 1-3) poprzez praktyczną implementację (Rozdział 4) – demonstrując całkowity proces od koncepcji do produkcyjnego systemu zarządzania danymi.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Sprawozdanie-z-laboratoriów</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../rozdzial_1/index.html">1. Rozdział 1: Wstęp oraz linki</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rozdzial_2/index.html">2. Badania literaturowe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rozdzial_3/index.html">3. Rozdział 3: Projektowanie Bazy Danych: System Zarządzania Biblioteką</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">4. Rozdział 4: Implementacja fizyczna i zasilanie bazy danych</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#definicja-fizyczna-bazy-danych-zadanie-1">4.1. Definicja fizyczna bazy danych (Zadanie 1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mechanizm-zasilania-bazy-danych-zadanie-2">4.2. Mechanizm zasilania bazy danych (Zadanie 2)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#podsumowanie">4.3. Podsumowanie</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../rozdzial_5/index.html">5. Rozdział 5: Komunikacja i operacje na danych</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../rozdzial_3/index.html" title="previous chapter"><span class="section-number">3. </span>Rozdział 3: Projektowanie Bazy Danych: System Zarządzania Biblioteką</a></li>
+      <li>Next: <a href="../rozdzial_5/index.html" title="next chapter"><span class="section-number">5. </span>Rozdział 5: Komunikacja i operacje na danych</a></li>
+  </ul></li>
+</ul>
+</div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2026, Paweł Łoćwin.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.1.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
+      
+      |
+      <a href="../_sources/rozdzial_4/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
