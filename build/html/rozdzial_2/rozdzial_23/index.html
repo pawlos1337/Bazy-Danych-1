@@ -13,7 +13,7 @@
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="2.4. Monitorowanie i diagnostyka" href="../rozdzial_24/index.html" />
+    <link rel="next" title="&lt;no title&gt;" href="../rozdzial_25/index.html" />
     <link rel="prev" title="2.2. Konfiguracja bazy danych PostgreSQL" href="../rozdzial_22/index.html" />
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
@@ -44,18 +44,18 @@
 </dl>
 <section id="wprowadzenie">
 <h2><span class="section-number">2.3.1. </span>Wprowadzenie<a class="headerlink" href="#wprowadzenie" title="Link to this heading">¶</a></h2>
-<p>Współczesne systemy relacyjnych baz danych to wysoce skomplikowane środowiska, które wymagają ciągłego i proaktywnego nadzoru, aby zagwarantować wysoką dostępność, niezawodność oraz […]</p>
+<p>Współczesne systemy relacyjnych baz danych to wysoce skomplikowane środowiska, które wymagają ciągłego i proaktywnego nadzoru, aby zagwarantować wysoką dostępność, niezawodność oraz wydajność. Administracja takimi systemami stanowi złożone zagadnienie wymagające zarówno wiedzy teoretycznej, jak i praktycznego doświadczenia w zarządzaniu infrastrukturą informatyczną.</p>
 </section>
 <section id="zarzadzanie-przestrzenia-i-mechanizm-wspolbieznosci">
 <h2><span class="section-number">2.3.2. </span>Zarządzanie przestrzenią i mechanizm współbieżności<a class="headerlink" href="#zarzadzanie-przestrzenia-i-mechanizm-wspolbieznosci" title="Link to this heading">¶</a></h2>
-<p>PostgreSQL opiera swoje działanie na zaawansowanej architekturze określanej jako Multi-Version Concurrency Control. Technologia ta pozwala na równoległy odczyt i zapis danych bez wzajemnego bl[…]</p>
+<p>PostgreSQL opiera swoje działanie na zaawansowanej architekturze określanej jako Multi-Version Concurrency Control (MVCC). Technologia ta pozwala na równoległy odczyt i zapis danych bez wzajemnego blokowania się transakcji, co stanowi fundamentalną zaletę w środowiskach wieloużytkownikowych o wysokim natężeniu operacji.</p>
 <p>Aby zapobiec zjawisku drastycznego puchnięcia tabel oraz degradacji wydajności operacji wejścia i wyjścia, konieczna jest regularna konserwacja na poziomie nośnika danych:</p>
 <ul class="simple">
-<li><p><strong>VACUUM:</strong> Podstawowy proces konserwacyjny odzyskujący miejsce po martwych krotkach. Oznacza on wolne obszary jako dostępne do ponownego zapisu przez nowe instrukcje, zapobiegając niekontrol[…]</p></li>
-<li><p><strong>VACUUM FULL:</strong> Znacznie bardziej inwazyjna wersja operacji, która fizycznie przebudowuje strukturę całej tabeli i trwale zwraca wolne miejsce do systemu operacyjnego. Operacja ta wymaga jed[…]</p></li>
-<li><p><strong>AUTOVACUUM:</strong> W nowoczesnych środowiskach produkcyjnych utrzymanie czystości dyskowej powierza się wbudowanemu procesowi pracującemu w tle. Monitoruje on na bieżąco statystyki zmian i au[…]</p></li>
+<li><p><strong>VACUUM:</strong> Podstawowy proces konserwacyjny odzyskujący miejsce po martwych krotkach. Oznacza on wolne obszary jako dostępne do ponownego zapisu przez nowe instrukcje, zapobiegając niekontrolowanemu wzrostowi rozmiarów tabel na dysku.</p></li>
+<li><p><strong>VACUUM FULL:</strong> Znacznie bardziej inwazyjna wersja operacji, która fizycznie przebudowuje strukturę całej tabeli i trwale zwraca wolne miejsce do systemu operacyjnego. Operacja ta wymaga jednak zablokowania całej tabeli i powinna być wykonywana w godzinach niskiego obciążenia.</p></li>
+<li><p><strong>AUTOVACUUM:</strong> W nowoczesnych środowiskach produkcyjnych utrzymanie czystości dyskowej powierza się wbudowanemu procesowi pracującemu w tle. Monitoruje on na bieżąco statystyki zmian i automatycznie wyzwala operacje czyszczenia, eliminując potrzebę ręcznej interwencji administratora.</p></li>
 </ul>
-<p>Zaniedbanie procesu czyszczenia w systemach o wysokiej rotacji danych może doprowadzić nie tylko do spadku wydajności, ale w skrajnych przypadkach do wyczerpania identyfikatorów transakcji, co[…]</p>
+<p>Zaniedbanie procesu czyszczenia w systemach o wysokiej rotacji danych może doprowadzić nie tylko do spadku wydajności, ale w skrajnych przypadkach do wyczerpania identyfikatorów transakcji, co prowadzi do całkowitego zamrożenia bazy.</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Przykładowe wymuszenie manualnej konserwacji z analizą statystyk dla tabeli</span>
 <span class="k">VACUUM</span><span class="w"> </span><span class="p">(</span><span class="k">VERBOSE</span><span class="p">,</span><span class="w"> </span><span class="k">ANALYZE</span><span class="p">)</span><span class="w"> </span><span class="n">Wypozyczenia</span><span class="p">;</span>
 </pre></div>
@@ -63,11 +63,11 @@
 </section>
 <section id="optymalizacja-i-statystyki-planisty-zapytan">
 <h2><span class="section-number">2.3.3. </span>Optymalizacja i statystyki planisty zapytań<a class="headerlink" href="#optymalizacja-i-statystyki-planisty-zapytan" title="Link to this heading">¶</a></h2>
-<p>Kolejnym filarem utrzymania sprawności systemu jest kontrola nad optymalizatorem, zwanym planistą zapytań. Silnik bazy danych przed wykonaniem jakiejkolwiek skomplikowanej kwerendy analizuje dz[…]</p>
-<p>Aby planista mógł podejmować optymalne decyzje, musi opierać się na wysoce dokładnych i aktualnych statystykach dotyczących rozkładu danych. Obejmują one między innymi histogramy wartoś[…]</p>
+<p>Kolejnym filarem utrzymania sprawności systemu jest kontrola nad optymalizatorem, zwanym planistą zapytań. Silnik bazy danych przed wykonaniem jakiejkolwiek skomplikowanej kwerendy analizuje dostępne drogi realizacji i wybiera najefektywniejszą z punktu widzenia kosztów obliczeniowych.</p>
+<p>Aby planista mógł podejmować optymalne decyzje, musi opierać się na wysoce dokładnych i aktualnych statystykach dotyczących rozkładu danych. Obejmują one między innymi histogramy wartości w kolumnach, liczby odrębnych wartości (distinct count), oraz rozmiary tabel i indeksów.</p>
 <ul class="simple">
-<li><p>Instrukcja <strong>ANALYZE</strong> służy do natychmiastowego odświeżenia tych metadanych. Baza pobiera losową próbkę wierszy i na jej podstawie aktualizuje wewnętrzne tabele systemowe, co pozwala un[…]</p></li>
-<li><p>Bieżące profilowanie wydajności realizowane jest natomiast przy pomocy instrukcji <strong>EXPLAIN ANALYZE</strong>. Narzędzie to uruchamia zapytanie, po czym zwraca nie tylko wynik, ale również szczeg[…]</p></li>
+<li><p>Instrukcja <strong>ANALYZE</strong> służy do natychmiastowego odświeżenia tych metadanych. Baza pobiera losową próbkę wierszy i na jej podstawie aktualizuje wewnętrzne tabele systemowe, co pozwala uniknąć błędnych oszacowań planu wykonania.</p></li>
+<li><p>Bieżące profilowanie wydajności realizowane jest natomiast przy pomocy instrukcji <strong>EXPLAIN ANALYZE</strong>. Narzędzie to uruchamia zapytanie, po czym zwraca nie tylko wynik, ale również szczegółowy opis planu wykonania wraz z rzeczywistymi czasy i liczbami wierszy na każdym kroku.</p></li>
 </ul>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Kontrola planu wykonania zapytania z rzeczywistym pomiarem czasu</span>
 <span class="k">EXPLAIN</span><span class="w"> </span><span class="k">ANALYZE</span>
@@ -81,9 +81,9 @@
 </section>
 <section id="bezpieczenstwo-i-rygorystyczna-kontrola-dostepu">
 <h2><span class="section-number">2.3.4. </span>Bezpieczeństwo i rygorystyczna kontrola dostępu<a class="headerlink" href="#bezpieczenstwo-i-rygorystyczna-kontrola-dostepu" title="Link to this heading">¶</a></h2>
-<p>Bezpieczeństwo danych stanowi absolutny priorytet każdej administracji systemami informatycznymi. Nowoczesne podejście do ochrony baz danych całkowicie odchodzi od wykorzystywania globalnych k[…]</p>
-<p>System zabezpieczeń środowiska PostgreSQL pozwala na niezwykle elastyczną gradację uprawnień. Definiuje się dedykowane role systemowe przypisane do konkretnych mikrousług lub modułów apli[…]</p>
-<p>Kluczowym konceptem jest wdrożenie zasady najmniejszych uprawnień. Rola wykorzystywana przez aplikację powinna dysponować prawami pozwalającymi wyłącznie na modyfikację danych niezbędnych[…]</p>
+<p>Bezpieczeństwo danych stanowi absolutny priorytet każdej administracji systemami informatycznymi. Nowoczesne podejście do ochrony baz danych całkowicie odchodzi od wykorzystywania globalnych kont administratora na rzecz zaawansowanego systemu uprawnień opartego na rolach (RBAC – Role-Based Access Control).</p>
+<p>System zabezpieczeń środowiska PostgreSQL pozwala na niezwykle elastyczną gradację uprawnień. Definiuje się dedykowane role systemowe przypisane do konkretnych mikrousług lub modułów aplikacji, z precyzyjnie określonymi prawami dostępu do pojedynczych schematów, tabel, a nawet kolumn.</p>
+<p>Kluczowym konceptem jest wdrożenie zasady najmniejszych uprawnień (Principle of Least Privilege). Rola wykorzystywana przez aplikację powinna dysponować prawami pozwalającymi wyłącznie na modyfikację danych niezbędnych do jej funkcjonowania, bez dostępu do danych wrażliwych czy możliwości zmiany struktury bazy.</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Przykład implementacji bezpiecznej polityki kontroli dostępu</span>
 <span class="k">CREATE</span><span class="w"> </span><span class="k">ROLE</span><span class="w"> </span><span class="n">app_user</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="n">LOGIN</span><span class="w"> </span><span class="n">PASSWORD</span><span class="w"> </span><span class="s1">&#39;TrudneHaslo123&#39;</span><span class="p">;</span>
 <span class="k">GRANT</span><span class="w"> </span><span class="k">CONNECT</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">biblioteka_db</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">app_user</span><span class="p">;</span>
@@ -94,15 +94,15 @@
 </section>
 <section id="strategie-zabezpieczania-przed-utrata-danych">
 <h2><span class="section-number">2.3.5. </span>Strategie zabezpieczania przed utratą danych<a class="headerlink" href="#strategie-zabezpieczania-przed-utrata-danych" title="Link to this heading">¶</a></h2>
-<p>Nawet najlepiej zoptymalizowany i zabezpieczony system informatyczny jest narażony na błędy ludzkie lub awarie infrastruktury sprzętowej. Dlatego odpowiednia polityka wykonywania kopii zapasow[…]</p>
-<p>Kopie logiczne polegają na ekstrakcji danych z bazy do postaci czystego skryptu języka SQL lub dedykowanego formatu archiwalnego. Narzędzia realizujące to zadanie gwarantują przenośność da[…]</p>
-<p>Dlatego w krytycznych środowiskach produkcyjnych stosuje się kopie fizyczne połączone z archiwizacją dzienników wyprzedzających. Dzienniki te rejestrują absolutnie każdą zmianę bajtu na[…]</p>
+<p>Nawet najlepiej zoptymalizowany i zabezpieczony system informatyczny jest narażony na błędy ludzkie lub awarie infrastruktury sprzętowej. Dlatego odpowiednia polityka wykonywania kopii zapasowych stanowi ostateczną linię obrony i jest absolutnie niezbędna dla każdej produkcyjnej instancji bazy danych.</p>
+<p>Kopie logiczne polegają na ekstrakcji danych z bazy do postaci czystego skryptu języka SQL lub dedykowanego formatu archiwalnego. Narzędzia realizujące to zadanie gwarantują przenośność danych między platformami i wersjami silnika, jednak proces przywracania jest czasochłonny i może nie przywrócić wszystkich zmian z ostatnich minut przed awarią.</p>
+<p>Dlatego w krytycznych środowiskach produkcyjnych stosuje się kopie fizyczne połączone z archiwizacją dzienników wyprzedzających. Dzienniki te rejestrują absolutnie każdą zmianę bajtu na poziomie magazynu, co umożliwia odtworzenie bazy do dowolnego punktu w przeszłości z dokładnością do sekundy.</p>
 </section>
 <section id="podsumowanie">
 <h2><span class="section-number">2.3.6. </span>Podsumowanie<a class="headerlink" href="#podsumowanie" title="Link to this heading">¶</a></h2>
-<p>Prawidłowa kontrola i konserwacja środowiska bazodanowego to wielowymiarowy proces, który nie ma punktu końcowego, lecz trwa przez cały cykl życia oprogramowania. Złożoność nowoczesnych […]</p>
-<p>Samo zaprojektowanie zgodnego ze sztuką schematu relacyjnego jest zaledwie początkiem pracy. Stabilność aplikacji zależy w równej mierze od rygorystycznego zarządzania fizyczną strukturą […]</p>
-<p>Holistyczne spojrzenie na administrację PostgreSQL, obejmujące zarówno automatyzację procesów porządkujących pamięć, jak i ciągłe monitorowanie planów wykonania zapytań, pozwala na bu[…]</p>
+<p>Prawidłowa kontrola i konserwacja środowiska bazodanowego to wielowymiarowy proces, który nie ma punktu końcowego, lecz trwa przez cały cykl życia oprogramowania. Złożoność nowoczesnych systemów relacyjnych wymaga holistycznego podejścia łączącego automatyzację, monitoring i ciągłe doskonalenie.</p>
+<p>Samo zaprojektowanie zgodnego ze sztuką schematu relacyjnego jest zaledwie początkiem pracy. Stabilność aplikacji zależy w równej mierze od rygorystycznego zarządzania fizyczną strukturą danych, optymalizacji wykonywanych operacji oraz wdrażania wielowarstwowych strategii bezpieczeństwa i ochrony przed awarią.</p>
+<p>Holistyczne spojrzenie na administrację PostgreSQL, obejmujące zarówno automatyzację procesów porządkujących pamięć, jak i ciągłe monitorowanie planów wykonania zapytań, pozwala na budowanie systemów, które są nie tylko funkcjonalne, ale także odpornie i niezawodne w najbardziej wymagających warunkach produkcyjnych.</p>
 </section>
 </section>
 
@@ -128,6 +128,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">2. Badania literaturowe</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../rozdzial_3/index.html">3. Rozdział 3: Projektowanie Bazy Danych: System Zarządzania Biblioteką</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../rozdzial_4/index.html">4. Rozdział 4: Implementacja fizyczna i zasilanie bazy danych</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rozdzial_5/index.html">5. Rozdział 5: Komunikacja i operacje na danych</a></li>
 </ul>
 
 <div class="relations">
@@ -136,7 +137,7 @@
   <li><a href="../../index.html">Documentation overview</a><ul>
   <li><a href="../index.html"><span class="section-number">2. </span>Badania literaturowe</a><ul>
       <li>Previous: <a href="../rozdzial_22/index.html" title="previous chapter"><span class="section-number">2.2. </span>Konfiguracja bazy danych PostgreSQL</a></li>
-      <li>Next: <a href="../rozdzial_24/index.html" title="next chapter"><span class="section-number">2.4. </span>Monitorowanie i diagnostyka</a></li>
+      <li>Next: <a href="../rozdzial_25/index.html" title="next chapter">&lt;no title&gt;</a></li>
   </ul></li>
   </ul></li>
 </ul>
