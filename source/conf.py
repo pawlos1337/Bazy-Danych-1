@@ -52,7 +52,7 @@ latex_elements = {
 }
 latex_documents = [
     ('index', 'sprawozdanie-z-laboratoriow.tex', 'Sprawozdanie z Laboratorium: Bazy Danych', 
-     'Paweł Łoćwin',, 'Paweł Łosowski', 'manual'),
+     'Paweł Łoćwin', 'Paweł Łosowski', 'manual'),
 ]
 
 latex_show_urls = 'footnote'
