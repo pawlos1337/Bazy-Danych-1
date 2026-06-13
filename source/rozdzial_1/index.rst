@@ -38,7 +38,7 @@ Poniżej znajdują się odnośniki do repozytoriów reszty grupy, które został
 * **Grupa 1 (rozdzial_1):** `Link do repozytorium 1 <https://github.com/karaskamil/Sprzet-dla-bazy-danych.git>`_
 * **Grupa 2 (rozdzial_2):** `Link do repozytorium 2 <https://github.com/Youarecheck/Bazy_Danych_Tematyczne_Repo_MK.git>`_
 * **Grupa 3 (rozdzial_3):** `Link do repozytorium 3 <https://github.com/pawlos1337/Bazy-danych-temat.git>`_
-* **Grupa 4 (rozdzial_4):** `Link do repozytorium 4 <https://github.com/OskarProgrammer/monitorowanie_i_diagnostyka.git`_
+* **Grupa 4 (rozdzial_4):** `Link do repozytorium 4 <https://github.com/OskarProgrammer/monitorowanie_i_diagnostyka.git>`_
 * **Grupa 5 (rozdzial_5):** `Link do repozytorium 5 <https://github.com/KMachoK/Tematyczne.git>`_
 * **Grupa 6 (rozdzial_6):** `Link do repozytorium 6 <https://github.com/domino0472/Partycjonowani-Danych>`_
 * **Grupa 7 (rozdzial_7):** `Link do repozytorium 7 <https://github.com/oski486/BazyDanych-Subject.git>`_
