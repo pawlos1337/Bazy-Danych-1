@@ -76,7 +76,7 @@
 
 
 \title{Sprawozdanie z Laboratorium: Bazy Danych}
-\date{Jun 10, 2026}
+\date{Jun 13, 2026}
 \release{}
 \author{Paweł Łoćwin}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -107,12 +107,12 @@
 Niniejsza dokumentacja stanowi kompletne sprawozdanie z laboratorium przedmiotu Bazy Danych. Projekt obejmuje całościową analizę procesów związanych z administracją i projektowaniem relacyjnych baz danych.
 
 \sphinxAtStartPar
-Dokumentacja została podzielona na cztery główne sekcje:
+Dokumentacja została podzielona na pięć głównych sekcji:
 \begin{enumerate}
 \sphinxsetlistlabels{\arabic}{enumi}{enumii}{}{.}%
 \item {} 
 \sphinxAtStartPar
-\sphinxstylestrong{Rozdział 1: Kontrola i konserwacja} \textendash{} Analiza fundamentalnych procesów administracyjnych niezbędnych do utrzymania wysokiej dostępności i wydajności systemu bazodanowego. Obejmuje VACUUM, ANALYZE i strategie bezpieczeństwa.
+\sphinxstylestrong{Rozdział 1: Kontrola i konserwacja} \textendash{} Analiza fundamentalnych procesów administracyjnych niezbędnych do utrzymania wysokiej dostępności i wydajności systemu bazodanowego. Obejmuje VACUUM, REINDEX, kopie zapasowe i monitoring.
 
 \item {} 
 \sphinxAtStartPar
@@ -120,11 +120,15 @@ Dokumentacja została podzielona na cztery główne sekcje:
 
 \item {} 
 \sphinxAtStartPar
-\sphinxstylestrong{Rozdział 3: Projektowanie bazy danych} \textendash{} Praktyczne modelowanie systemu zarządzania bibliotecznym katalogiem wypożyczeń. Sekcja obejmuje analizę wymagań, model konceptualny (notacja Chen) i schemat logiczny.
+\sphinxstylestrong{Rozdział 3: Projektowanie bazy danych} \textendash{} Praktyczne modelowanie systemu zarządzania bibliotecznym katalogiem wypożyczeń. Sekcja obejmuje analizę wymagań, model konceptualny (notacja E\sphinxhyphen{}R) oraz model logiczny.
 
 \item {} 
 \sphinxAtStartPar
 \sphinxstylestrong{Rozdział 4: Implementacja fizyczna i zasilanie bazy} \textendash{} Realizacja fizycznego schematu bazy danych poprzez skrypty DDL, mechanizmy importu danych oraz automatyzacja zasilania bazy.
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstylestrong{Rozdział 5: Zapytania do bazy danych} \textendash{} Zaawansowane funkcje SQL w Python, selekcje, agregacje, złączenia, operatory zbiorowe i podzapytania z pełną dokumentacją Sphinx.
 
 \end{enumerate}
 
@@ -1312,126 +1316,6 @@ Holistyczne spojrzenie na administrację PostgreSQL, obejmujące zarówno automa
 
 \sphinxstepscope
 
-
-\section{Monitorowanie i diagnostyka}
-\label{\detokenize{rozdzial_2/rozdzial_24/index:monitorowanie-i-diagnostyka}}\label{\detokenize{rozdzial_2/rozdzial_24/index::doc}}
-
-\subsection{Wstęp}
-\label{\detokenize{rozdzial_2/rozdzial_24/index:wstep}}
-\sphinxAtStartPar
-Monitorowanie i diagnostyka baz danych obejmują zestaw działań, które pozwalają administratorowi lub zespołowi utrzymania sprawdzić, czy system działa poprawnie, bezpiecznie i wydajnie. W praktyce nie chodzi jedynie o obserwowanie pojedynczych parametrów serwera, ale o łączenie informacji pochodzących z wielu warstw: samej bazy danych, systemu operacyjnego, aplikacji oraz narzędzi zewnętrznych. Dzięki temu można szybciej wykrywać przeciążenia, błędy konfiguracji, problemy z zapytaniami SQL, nieprawidłowe uprawnienia oraz awarie sprzętowe lub sieciowe.
-
-\sphinxAtStartPar
-W systemach bazodanowych szczególnie ważne jest to, że wiele problemów nie jest od razu widocznych dla użytkownika końcowego. Przykładowo zapytania mogą stopniowo wykonywać się coraz wolniej, liczba aktywnych sesji może rosnąć, a logi mogą zawierać powtarzające się ostrzeżenia. Bez monitorowania takie sygnały są łatwe do przeoczenia. Diagnostyka pozwala natomiast przejść od samego wykrycia problemu do ustalenia jego przyczyny, np. przez analizę sesji, blokad, planów zapytań, dzienników błędów lub zużycia zasobów systemowych.
-
-
-\subsection{Sesje i użytkownicy}
-\label{\detokenize{rozdzial_2/rozdzial_24/index:sesje-i-uzytkownicy}}
-\sphinxAtStartPar
-Jednym z podstawowych obszarów monitorowania bazy danych jest obserwowanie aktywnych sesji i użytkowników. Sesja oznacza połączenie użytkownika lub aplikacji z serwerem bazy danych. W ramach sesji wykonywane są zapytania, transakcje oraz operacje administracyjne. Analiza sesji pozwala sprawdzić między innymi, kto jest aktualnie połączony z bazą, z jakiego hosta pochodzi połączenie, jakie zapytanie jest wykonywane oraz czy sesja jest aktywna, bezczynna albo zablokowana.
-
-\sphinxAtStartPar
-W wielu systemach zarządzania bazami danych dostępne są specjalne widoki lub narzędzia administracyjne służące do obserwowania bieżącej aktywności. Na przykład PostgreSQL udostępnia mechanizmy monitorowania aktywności bazy danych oraz widoki statystyczne, takie jak \sphinxcode{\sphinxupquote{pg\_stat\_activity}}, które pozwalają sprawdzać informacje o procesach serwera i wykonywanych zapytaniach %
-\begin{footnote}[1]\sphinxAtStartFootnote
-PostgreSQL Documentation, \sphinxstyleemphasis{Monitoring Database Activity} oraz \sphinxstyleemphasis{The Cumulative Statistics System}, \sphinxurl{https://www.postgresql.org/docs/current/monitoring.html}
-%
-\end{footnote}. W MySQL podobną rolę może pełnić Performance Schema, które gromadzi dane diagnostyczne o pracy serwera i może być wykorzystywane do analizy wydajności %
-\begin{footnote}[2]\sphinxAtStartFootnote
-MySQL Documentation, \sphinxstyleemphasis{Using the Performance Schema to Diagnose Problems}, \sphinxurl{https://dev.mysql.com/doc/refman/8.2/en/performance-schema-examples.html}
-%
-\end{footnote}.
-
-\sphinxAtStartPar
-Monitorowanie sesji jest istotne zarówno z punktu widzenia wydajności, jak i bezpieczeństwa. Zbyt duża liczba jednoczesnych połączeń może prowadzić do przeciążenia serwera, a długo działające transakcje mogą blokować inne operacje. Z kolei nietypowe połączenia, np. z nieznanych adresów lub wykonywane poza normalnymi godzinami pracy, mogą wskazywać na błąd konfiguracji albo próbę nieautoryzowanego dostępu.
-
-
-\subsection{Śledzenie dostępu użytkowników do tabel}
-\label{\detokenize{rozdzial_2/rozdzial_24/index:sledzenie-dostepu-uzytkownikow-do-tabel}}
-\sphinxAtStartPar
-Kolejnym ważnym elementem jest kontrola tego, którzy użytkownicy uzyskują dostęp do określonych tabel i jakie operacje wykonują. W bazach danych przechowywane są często dane wrażliwe, dlatego sama informacja o tym, że użytkownik posiada konto w systemie, nie jest wystarczająca. Należy również wiedzieć, czy jego działania są zgodne z nadanymi uprawnieniami oraz z zasadami bezpieczeństwa obowiązującymi w organizacji.
-
-\sphinxAtStartPar
-Śledzenie dostępu może obejmować operacje odczytu danych, modyfikacji rekordów, usuwania danych, tworzenia nowych obiektów oraz zmian w uprawnieniach. W praktyce realizuje się to za pomocą mechanizmów audytu, dzienników zapytań, wyzwalaczy, narzędzi klasy Database Activity Monitoring lub funkcji wbudowanych w konkretny system bazodanowy. Przykładowo Oracle Database udostępnia mechanizmy audytu, a nowsze wersje zalecają korzystanie z unified auditing zamiast starszego audytu tradycyjnego %
-\begin{footnote}[3]\sphinxAtStartFootnote
-Oracle Documentation, \sphinxstyleemphasis{AUDIT\_TRAIL} oraz informacje o unified auditing, \sphinxurl{https://docs.oracle.com/en/database/oracle/oracle-database/21/refrn/AUDIT\_TRAIL.html}
-%
-\end{footnote}.
-
-\sphinxAtStartPar
-Takie śledzenie jest potrzebne nie tylko przy wykrywaniu incydentów bezpieczeństwa. Pomaga również w spełnianiu wymagań formalnych, analizie błędów użytkowników oraz odtwarzaniu przebiegu zdarzeń po awarii. Przykładowo, jeśli w tabeli pojawiły się nieprawidłowe dane, historia dostępu może pomóc ustalić, kiedy doszło do zmiany i która aplikacja lub który użytkownik ją wykonał.
-
-
-\subsection{Błędy dziennika, logi i raporty}
-\label{\detokenize{rozdzial_2/rozdzial_24/index:bledy-dziennika-logi-i-raporty}}
-\sphinxAtStartPar
-Dzienniki zdarzeń, czyli logi, są jednym z najważniejszych źródeł informacji diagnostycznych. Serwer bazy danych może zapisywać w nich komunikaty o błędach, ostrzeżeniach, nieudanych logowaniach, problemach z zapytaniami, restartach, zmianach konfiguracji lub przekroczeniu określonych progów wydajnościowych. Analiza logów pozwala wykrywać problemy, które nie zawsze są widoczne w aplikacji klienckiej.
-
-\sphinxAtStartPar
-W zależności od systemu bazodanowego logi mogą mieć różną postać. PostgreSQL obsługuje różne metody logowania komunikatów serwera, między innymi \sphinxcode{\sphinxupquote{stderr}}, \sphinxcode{\sphinxupquote{csvlog}}, \sphinxcode{\sphinxupquote{jsonlog}} oraz \sphinxcode{\sphinxupquote{syslog}}; w systemie Windows możliwe jest także użycie dziennika zdarzeń %
-\begin{footnote}[4]\sphinxAtStartFootnote
-PostgreSQL Documentation, \sphinxstyleemphasis{Error Reporting and Logging}, \sphinxurl{https://www.postgresql.org/docs/current/runtime-config-logging.html}
-%
-\end{footnote}. MySQL udostępnia między innymi general query log, który może rejestrować połączenia i zapytania otrzymywane przez serwer, oraz slow query log, używany do identyfikowania zapytań wykonujących się zbyt długo %
-\begin{footnote}[5]\sphinxAtStartFootnote
-MySQL Documentation, \sphinxstyleemphasis{The General Query Log} oraz \sphinxstyleemphasis{The Slow Query Log}, \sphinxurl{https://dev.mysql.com/doc/en/query-log.html}
-%
-\end{footnote}.
-
-\sphinxAtStartPar
-Raporty diagnostyczne są rozwinięciem surowych logów. Zamiast ręcznie analizować tysiące wpisów, administrator może korzystać z raportów podsumowujących liczbę błędów, najwolniejsze zapytania, częstotliwość nieudanych logowań lub zmiany obciążenia w czasie. Raporty są szczególnie przydatne w pracy zespołowej, ponieważ pozwalają dokumentować problemy i porównywać stan systemu przed oraz po wprowadzeniu zmian optymalizacyjnych.
-
-
-\subsection{Monitorowanie na poziomie systemu operacyjnego}
-\label{\detokenize{rozdzial_2/rozdzial_24/index:monitorowanie-na-poziomie-systemu-operacyjnego}}
-\sphinxAtStartPar
-Baza danych działa na konkretnym systemie operacyjnym i korzysta z jego zasobów. Dlatego diagnostyka nie może ograniczać się wyłącznie do samego silnika bazy danych. Wydajność zapytań może zależeć od procesora, pamięci RAM, operacji wejścia/wyjścia na dysku, sieci, liczby procesów oraz ogólnego obciążenia systemu.
-
-\sphinxAtStartPar
-W systemach Linux często wykorzystuje się narzędzia takie jak \sphinxcode{\sphinxupquote{iostat}}, \sphinxcode{\sphinxupquote{htop}} oraz \sphinxcode{\sphinxupquote{vmstat}}. Narzędzie \sphinxcode{\sphinxupquote{iostat}} pozwala obserwować wykorzystanie procesora i urządzeń wejścia/wyjścia, co jest szczególnie ważne przy bazach danych intensywnie korzystających z dysku. \sphinxcode{\sphinxupquote{htop}} umożliwia wygodne śledzenie procesów i zużycia zasobów w czasie rzeczywistym. \sphinxcode{\sphinxupquote{vmstat}} pokazuje między innymi informacje o pamięci, procesach, wymianie danych z dyskiem oraz obciążeniu procesora.
-
-\sphinxAtStartPar
-W systemach Microsoft Windows podobną rolę pełnią Menedżer zadań oraz Monitor wydajności. Pozwalają one obserwować zużycie procesora, pamięci, dysków, sieci oraz usług działających w tle. W środowiskach produkcyjnych takie dane są często zbierane automatycznie i zestawiane z metrykami pochodzącymi z bazy danych. Dzięki temu można odróżnić problem wynikający z nieoptymalnego zapytania SQL od problemu spowodowanego np. przeciążeniem dysku lub brakiem pamięci.
-
-
-\subsection{Monitorowanie serwera}
-\label{\detokenize{rozdzial_2/rozdzial_24/index:monitorowanie-serwera}}
-\sphinxAtStartPar
-Ostatnim poziomem jest monitorowanie całego serwera lub infrastruktury, w której działa baza danych. Obejmuje ono dostępność usług, czas odpowiedzi, zużycie zasobów, stan dysków, wykorzystanie sieci, działanie kopii zapasowych oraz wysyłanie powiadomień w przypadku awarii. W tym celu stosuje się narzędzia takie jak Nagios, Grafana, Prometheus, Zabbix lub inne systemy monitoringu.
-
-\sphinxAtStartPar
-Nagios jest przykładem narzędzia używanego do monitorowania usług i hostów, sprawdzania ich stanu oraz informowania administratorów o problemach %
-\begin{footnote}[6]\sphinxAtStartFootnote
-Nagios Open Source Documentation, \sphinxurl{https://www.nagios.org/documentation/}
-%
-\end{footnote}. Grafana z kolei służy przede wszystkim do wizualizacji danych monitorujących w formie dashboardów. Panele Grafany mogą prezentować metryki w postaci wykresów, tabel i innych wizualizacji, a moduł alertów pozwala reagować na określone zdarzenia lub przekroczenie progów %
-\begin{footnote}[7]\sphinxAtStartFootnote
-Grafana Documentation, \sphinxstyleemphasis{Dashboards overview} oraz \sphinxstyleemphasis{Grafana Alerting}, \sphinxurl{https://grafana.com/docs/grafana/latest/fundamentals/dashboards-overview/}
-%
-\end{footnote}.
-
-\sphinxAtStartPar
-Monitorowanie serwera jest szczególnie ważne w środowiskach, w których baza danych stanowi element większego systemu. Awaria bazy może wynikać nie tylko z błędu samego silnika, ale również z problemu sieciowego, zapełnionego dysku, braku pamięci, błędnej konfiguracji systemu lub nieudanego wdrożenia aplikacji. Centralne monitorowanie pozwala zebrać te informacje w jednym miejscu i szybciej wskazać źródło problemu.
-
-
-\subsection{Znaczenie monitorowania i diagnostyki w bazach danych}
-\label{\detokenize{rozdzial_2/rozdzial_24/index:znaczenie-monitorowania-i-diagnostyki-w-bazach-danych}}
-\sphinxAtStartPar
-Monitorowanie i diagnostyka są ważne, ponieważ wpływają na trzy kluczowe obszary: dostępność, wydajność i bezpieczeństwo danych. Dostępność oznacza, że baza danych jest osiągalna dla użytkowników i aplikacji. Wydajność oznacza, że zapytania wykonują się w akceptowalnym czasie. Bezpieczeństwo oznacza natomiast, że dostęp do danych jest kontrolowany, a podejrzane działania mogą zostać wykryte i przeanalizowane.
-
-\sphinxAtStartPar
-W dobrze utrzymanym środowisku bazodanowym monitorowanie powinno działać stale, a nie dopiero wtedy, gdy pojawi się awaria. Regularne obserwowanie sesji, logów, dostępu do tabel, parametrów systemu operacyjnego i stanu serwera pozwala wykrywać problemy na wczesnym etapie. Diagnostyka pozwala natomiast ustalić przyczyny tych problemów i zaplanować odpowiednie działania, takie jak optymalizacja zapytań, zmiana konfiguracji, zwiększenie zasobów, poprawa uprawnień lub wdrożenie dodatkowych zabezpieczeń.
-
-
-\subsection{Podsumowanie}
-\label{\detokenize{rozdzial_2/rozdzial_24/index:podsumowanie}}
-\sphinxAtStartPar
-Monitorowanie i diagnostyka baz danych tworzą wielowarstwowy proces kontroli działania systemu. Na poziomie bazy danych analizuje się sesje, użytkowników, zapytania, blokady, dostęp do tabel oraz logi. Na poziomie systemu operacyjnego obserwuje się zużycie procesora, pamięci, dysku i sieci. Na poziomie serwera wykorzystuje się narzędzia monitorujące, które zbierają metryki, tworzą wykresy oraz wysyłają alerty. Dopiero połączenie tych perspektyw daje pełny obraz stanu systemu i pozwala skutecznie reagować na błędy, spadki wydajności oraz potencjalne incydenty bezpieczeństwa.
-
-
-\subsection{Źródła}
-\label{\detokenize{rozdzial_2/rozdzial_24/index:zrodla}}
-\sphinxstepscope
-
 \sphinxAtStartPar
 Tego typu jakis tekst
 
@@ -2110,6 +1994,387 @@ Automatyzacja procesu inicjalizacji systemu za pomocą skryptów Python stanowi 
 
 \sphinxAtStartPar
 Niniejszy projekt stanowi kompletne studium cyklu życia relacyjnej bazy danych \textendash{} od teoretycznego modelowania (Rozdziały 1\sphinxhyphen{}3) poprzez praktyczną implementację (Rozdział 4) \textendash{} demonstrując całkowity proces od koncepcji do produkcyjnego systemu zarządzania danymi.
+
+\sphinxstepscope
+
+
+\chapter{Rozdział 5: Komunikacja i operacje na danych}
+\label{\detokenize{rozdzial_5/index:rozdzial-5-komunikacja-i-operacje-na-danych}}\label{\detokenize{rozdzial_5/index::doc}}\begin{quote}\begin{description}
+\sphinxlineitem{Autorzy}\begin{enumerate}
+\sphinxsetlistlabels{\arabic}{enumi}{enumii}{}{.}%
+\item {} 
+\sphinxAtStartPar
+Paweł Łoćwin
+
+\item {} 
+\sphinxAtStartPar
+Paweł Łosowski
+
+\end{enumerate}
+
+\end{description}\end{quote}
+
+
+\section{Wstęp}
+\label{\detokenize{rozdzial_5/index:wstep}}
+\sphinxAtStartPar
+Po zdefiniowaniu i zasileniu struktur bazodanowych w poprzednich rozdziałach, system wymaga
+interfejsu zdolnego do obsługi zaawansowanej logiki biznesowej biblioteki. W tym celu zaimplementowano
+warstwę dostępu do danych (Data Access Layer) w języku Python.
+
+\sphinxAtStartPar
+Wykorzystano techniki tworzenia rozbudowanych zapytań SQL, w tym:
+* Podzapytania (skorelowane i nieskorelowane w klauzulach \sphinxcode{\sphinxupquote{SELECT}}, \sphinxcode{\sphinxupquote{FROM}}, \sphinxcode{\sphinxupquote{WHERE}}).
+* Złączenia relacyjne (\sphinxcode{\sphinxupquote{JOIN}}, \sphinxcode{\sphinxupquote{LEFT JOIN}}).
+* Analizę agregacyjną (\sphinxcode{\sphinxupquote{GROUP BY}}, \sphinxcode{\sphinxupquote{HAVING}}).
+* Operatory teorii mnogości (\sphinxcode{\sphinxupquote{UNION}}, \sphinxcode{\sphinxupquote{INTERSECT}}, \sphinxcode{\sphinxupquote{EXCEPT}}).
+
+
+\section{Pełna specyfikacja stworzonego API}
+\label{\detokenize{rozdzial_5/index:pelna-specyfikacja-stworzonego-api}}
+\sphinxAtStartPar
+Poniżej przedstawiono zautomatyzowaną dokumentację modułu obsługującego połączenia z
+bazami PostgreSQL oraz SQLite, wygenerowaną na podstawie wbudowanych komentarzy (Docstrings).
+\index{module@\spxentry{module}!biblioteka\_zapytania@\spxentry{biblioteka\_zapytania}}\index{biblioteka\_zapytania@\spxentry{biblioteka\_zapytania}!module@\spxentry{module}}
+
+\subsection{Moduł biblioteka\_zapytania}
+\label{\detokenize{rozdzial_5/index:modul-biblioteka-zapytania}}\label{\detokenize{rozdzial_5/index:module-biblioteka_zapytania}}
+\sphinxAtStartPar
+Moduł zawiera zestaw zaawansowanych zapytań SQL do obsługi systemu zarządzania biblioteką.
+Obsługuje dwa silniki bazodanowe: PostgreSQL oraz SQLite.
+
+\sphinxAtStartPar
+Wymagania:
+\sphinxhyphen{} psycopg2 (lub psycopg) dla PostgreSQL
+\sphinxhyphen{} sqlite3 (wbudowany) dla SQLite
+\index{get\_aktywni\_czytelnicy\_powyzej\_limitu() (in module biblioteka\_zapytania)@\spxentry{get\_aktywni\_czytelnicy\_powyzej\_limitu()}\spxextra{in module biblioteka\_zapytania}}
+
+\begin{savenotes}\begin{fulllineitems}
+\phantomsection\label{\detokenize{rozdzial_5/index:biblioteka_zapytania.get_aktywni_czytelnicy_powyzej_limitu}}
+\pysigstartsignatures
+\pysiglinewithargsret
+{\sphinxcode{\sphinxupquote{biblioteka\_zapytania.}}\sphinxbfcode{\sphinxupquote{get\_aktywni\_czytelnicy\_powyzej\_limitu}}}
+{\sphinxparam{\DUrole{n}{conn}}\sphinxparamcomma \sphinxparam{\DUrole{n}{limit\_wypozyczen}}}
+{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Pobiera listę czytelników, którzy w historii wypożyczyli więcej książek niż wynosi podany limit.
+Wykorzystuje funkcje agregujące, złączenia oraz klauzulę HAVING.
+\begin{quote}\begin{description}
+\sphinxlineitem{Parameters}\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{conn}} (\sphinxstyleliteralemphasis{\sphinxupquote{psycopg2.extensions.connection}}) \textendash{} Obiekt aktywnego połączenia z bazą PostgreSQL (psycopg2).
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{limit\_wypozyczen}} (\sphinxstyleliteralemphasis{\sphinxupquote{int}}) \textendash{} Minimalna liczba wypożyczeń uprawniająca do znalezienia się na liście.
+
+\end{itemize}
+
+\sphinxlineitem{Returns}
+\sphinxAtStartPar
+Lista krotek zawierająca imię, nazwisko i sumę wypożyczeń czytelnika.
+
+\sphinxlineitem{Return type}
+\sphinxAtStartPar
+list{[}tuple{]}
+
+\end{description}\end{quote}
+
+\end{fulllineitems}\end{savenotes}
+
+\index{get\_czytelnicy\_bez\_wypozyczen() (in module biblioteka\_zapytania)@\spxentry{get\_czytelnicy\_bez\_wypozyczen()}\spxextra{in module biblioteka\_zapytania}}
+
+\begin{savenotes}\begin{fulllineitems}
+\phantomsection\label{\detokenize{rozdzial_5/index:biblioteka_zapytania.get_czytelnicy_bez_wypozyczen}}
+\pysigstartsignatures
+\pysiglinewithargsret
+{\sphinxcode{\sphinxupquote{biblioteka\_zapytania.}}\sphinxbfcode{\sphinxupquote{get\_czytelnicy\_bez\_wypozyczen}}}
+{\sphinxparam{\DUrole{n}{conn}}}
+{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Pobiera dane czytelników, którzy zapisali się do biblioteki, ale nigdy nie wypożyczyli żadnej książki.
+Zastosowano tu operator zbiorowy EXCEPT w celu odjęcia zbioru aktywnych od wszystkich.
+\begin{quote}\begin{description}
+\sphinxlineitem{Parameters}
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{conn}} (\sphinxstyleliteralemphasis{\sphinxupquote{psycopg2.extensions.connection}}) \textendash{} Obiekt aktywnego połączenia z bazą PostgreSQL.
+
+\sphinxlineitem{Returns}
+\sphinxAtStartPar
+Lista krotek z danymi czytelników (ID, Imię, Nazwisko).
+
+\sphinxlineitem{Return type}
+\sphinxAtStartPar
+list{[}tuple{]}
+
+\end{description}\end{quote}
+
+\end{fulllineitems}\end{savenotes}
+
+\index{get\_katalog\_osob() (in module biblioteka\_zapytania)@\spxentry{get\_katalog\_osob()}\spxextra{in module biblioteka\_zapytania}}
+
+\begin{savenotes}\begin{fulllineitems}
+\phantomsection\label{\detokenize{rozdzial_5/index:biblioteka_zapytania.get_katalog_osob}}
+\pysigstartsignatures
+\pysiglinewithargsret
+{\sphinxcode{\sphinxupquote{biblioteka\_zapytania.}}\sphinxbfcode{\sphinxupquote{get\_katalog\_osob}}}
+{\sphinxparam{\DUrole{n}{conn}}}
+{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Zwraca ujednoliconą listę wszystkich osób figurujących w systemie, przypisując im odpowiednią
+rolę. Używa operatora zbiorowego UNION w celu złączenia tabel Czytelnicy i Autorzy.
+\begin{quote}\begin{description}
+\sphinxlineitem{Parameters}
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{conn}} (\sphinxstyleliteralemphasis{\sphinxupquote{sqlite3.Connection}}) \textendash{} Obiekt połączenia z bazą SQLite.
+
+\sphinxlineitem{Returns}
+\sphinxAtStartPar
+Lista krotek postaci (Imię, Nazwisko, Rola).
+
+\sphinxlineitem{Return type}
+\sphinxAtStartPar
+list{[}tuple{]}
+
+\end{description}\end{quote}
+
+\end{fulllineitems}\end{savenotes}
+
+\index{get\_ksiazki\_wypozyczone\_w\_miescie() (in module biblioteka\_zapytania)@\spxentry{get\_ksiazki\_wypozyczone\_w\_miescie()}\spxextra{in module biblioteka\_zapytania}}
+
+\begin{savenotes}\begin{fulllineitems}
+\phantomsection\label{\detokenize{rozdzial_5/index:biblioteka_zapytania.get_ksiazki_wypozyczone_w_miescie}}
+\pysigstartsignatures
+\pysiglinewithargsret
+{\sphinxcode{\sphinxupquote{biblioteka\_zapytania.}}\sphinxbfcode{\sphinxupquote{get\_ksiazki\_wypozyczone\_w\_miescie}}}
+{\sphinxparam{\DUrole{n}{conn}}\sphinxparamcomma \sphinxparam{\DUrole{n}{nazwa\_miasta}}}
+{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Wyszukuje tytuły książek, które kiedykolwiek zostały wypożyczone przez mieszkańców określonego miasta.
+Rozwiązanie bazuje na podzapytaniu skorelowanym w klauzuli WHERE.
+\begin{quote}\begin{description}
+\sphinxlineitem{Parameters}\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{conn}} (\sphinxstyleliteralemphasis{\sphinxupquote{psycopg2.extensions.connection}}) \textendash{} Obiekt aktywnego połączenia z bazą PostgreSQL.
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{nazwa\_miasta}} (\sphinxstyleliteralemphasis{\sphinxupquote{str}}) \textendash{} Nazwa miasta do przefiltrowania czytelników.
+
+\end{itemize}
+
+\sphinxlineitem{Returns}
+\sphinxAtStartPar
+Lista krotek zawierająca wyłącznie tytuły książek.
+
+\sphinxlineitem{Return type}
+\sphinxAtStartPar
+list{[}tuple{]}
+
+\end{description}\end{quote}
+
+\end{fulllineitems}\end{savenotes}
+
+\index{get\_ksiazki\_z\_iloscia\_wypozyczen() (in module biblioteka\_zapytania)@\spxentry{get\_ksiazki\_z\_iloscia\_wypozyczen()}\spxextra{in module biblioteka\_zapytania}}
+
+\begin{savenotes}\begin{fulllineitems}
+\phantomsection\label{\detokenize{rozdzial_5/index:biblioteka_zapytania.get_ksiazki_z_iloscia_wypozyczen}}
+\pysigstartsignatures
+\pysiglinewithargsret
+{\sphinxcode{\sphinxupquote{biblioteka\_zapytania.}}\sphinxbfcode{\sphinxupquote{get\_ksiazki\_z\_iloscia\_wypozyczen}}}
+{\sphinxparam{\DUrole{n}{conn}}\sphinxparamcomma \sphinxparam{\DUrole{n}{rok\_od}}}
+{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Zwraca szczegółowe dane o książkach wydanych po zadanym roku wraz z ilością ich historycznych 
+wypożyczeń. Wykorzystuje funkcje wierszowe (UPPER) oraz podzapytanie w klauzuli SELECT.
+\begin{quote}\begin{description}
+\sphinxlineitem{Parameters}\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{conn}} (\sphinxstyleliteralemphasis{\sphinxupquote{psycopg2.extensions.connection}}) \textendash{} Obiekt aktywnego połączenia z bazą PostgreSQL.
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{rok\_od}} (\sphinxstyleliteralemphasis{\sphinxupquote{int}}) \textendash{} Dolna granica roku wydania książki (wyłącznie).
+
+\end{itemize}
+
+\sphinxlineitem{Returns}
+\sphinxAtStartPar
+Lista krotek (Tytuł, ZWielkiejLitery\_NazwiskoAutora, Total\_Wypozyczen).
+
+\sphinxlineitem{Return type}
+\sphinxAtStartPar
+list{[}tuple{]}
+
+\end{description}\end{quote}
+
+\end{fulllineitems}\end{savenotes}
+
+\index{get\_najdluzej\_przetrzymywane() (in module biblioteka\_zapytania)@\spxentry{get\_najdluzej\_przetrzymywane()}\spxextra{in module biblioteka\_zapytania}}
+
+\begin{savenotes}\begin{fulllineitems}
+\phantomsection\label{\detokenize{rozdzial_5/index:biblioteka_zapytania.get_najdluzej_przetrzymywane}}
+\pysigstartsignatures
+\pysiglinewithargsret
+{\sphinxcode{\sphinxupquote{biblioteka\_zapytania.}}\sphinxbfcode{\sphinxupquote{get\_najdluzej\_przetrzymywane}}}
+{\sphinxparam{\DUrole{n}{conn}}\sphinxparamcomma \sphinxparam{\DUrole{n}{limit\_rekordow}}}
+{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Wyszukuje wypożyczenia, które aktualnie trwają (brak daty zwrotu) i sortuje je rosnąco od 
+najstarszych. Wykorzystuje funkcję wierszową DATE() silnika SQLite działającą na ciągach TEXT.
+\begin{quote}\begin{description}
+\sphinxlineitem{Parameters}\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{conn}} (\sphinxstyleliteralemphasis{\sphinxupquote{sqlite3.Connection}}) \textendash{} Obiekt połączenia z bazą SQLite.
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{limit\_rekordow}} (\sphinxstyleliteralemphasis{\sphinxupquote{int}}) \textendash{} Liczba rekordów do zwrócenia (LIMIT).
+
+\end{itemize}
+
+\sphinxlineitem{Returns}
+\sphinxAtStartPar
+Lista krotek (Tytuł, Imię, Nazwisko, Data wypożyczenia).
+
+\sphinxlineitem{Return type}
+\sphinxAtStartPar
+list{[}tuple{]}
+
+\end{description}\end{quote}
+
+\end{fulllineitems}\end{savenotes}
+
+\index{get\_puste\_kategorie() (in module biblioteka\_zapytania)@\spxentry{get\_puste\_kategorie()}\spxextra{in module biblioteka\_zapytania}}
+
+\begin{savenotes}\begin{fulllineitems}
+\phantomsection\label{\detokenize{rozdzial_5/index:biblioteka_zapytania.get_puste_kategorie}}
+\pysigstartsignatures
+\pysiglinewithargsret
+{\sphinxcode{\sphinxupquote{biblioteka\_zapytania.}}\sphinxbfcode{\sphinxupquote{get\_puste\_kategorie}}}
+{\sphinxparam{\DUrole{n}{conn}}}
+{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Pobiera nazwy kategorii, do których aktualnie nie przypisano żadnych książek w inwentarzu.
+Demonstruje wykorzystanie LEFT JOIN w celu znalezienia brakujących relacji (NULL).
+\begin{quote}\begin{description}
+\sphinxlineitem{Parameters}
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{conn}} (\sphinxstyleliteralemphasis{\sphinxupquote{sqlite3.Connection}}) \textendash{} Obiekt połączenia z bazą SQLite.
+
+\sphinxlineitem{Returns}
+\sphinxAtStartPar
+Lista krotek z nazwami “pustych” kategorii.
+
+\sphinxlineitem{Return type}
+\sphinxAtStartPar
+list{[}tuple{]}
+
+\end{description}\end{quote}
+
+\end{fulllineitems}\end{savenotes}
+
+\index{get\_raport\_autorow() (in module biblioteka\_zapytania)@\spxentry{get\_raport\_autorow()}\spxextra{in module biblioteka\_zapytania}}
+
+\begin{savenotes}\begin{fulllineitems}
+\phantomsection\label{\detokenize{rozdzial_5/index:biblioteka_zapytania.get_raport_autorow}}
+\pysigstartsignatures
+\pysiglinewithargsret
+{\sphinxcode{\sphinxupquote{biblioteka\_zapytania.}}\sphinxbfcode{\sphinxupquote{get\_raport\_autorow}}}
+{\sphinxparam{\DUrole{n}{conn}}}
+{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Tworzy zaawansowany raport o autorach, zliczając ich wszystkie książki oraz wskazując 
+tytuł chronologicznie najnowszego dzieła za pomocą podzapytania w SELECT.
+\begin{quote}\begin{description}
+\sphinxlineitem{Parameters}
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{conn}} (\sphinxstyleliteralemphasis{\sphinxupquote{sqlite3.Connection}}) \textendash{} Obiekt połączenia z bazą SQLite.
+
+\sphinxlineitem{Returns}
+\sphinxAtStartPar
+Lista krotek (Imię autora, Nazwisko, Suma dzieł, Tytuł najnowszej książki).
+
+\sphinxlineitem{Return type}
+\sphinxAtStartPar
+list{[}tuple{]}
+
+\end{description}\end{quote}
+
+\end{fulllineitems}\end{savenotes}
+
+\index{get\_srednia\_wypozyczen\_na\_czytelnika() (in module biblioteka\_zapytania)@\spxentry{get\_srednia\_wypozyczen\_na\_czytelnika()}\spxextra{in module biblioteka\_zapytania}}
+
+\begin{savenotes}\begin{fulllineitems}
+\phantomsection\label{\detokenize{rozdzial_5/index:biblioteka_zapytania.get_srednia_wypozyczen_na_czytelnika}}
+\pysigstartsignatures
+\pysiglinewithargsret
+{\sphinxcode{\sphinxupquote{biblioteka\_zapytania.}}\sphinxbfcode{\sphinxupquote{get\_srednia\_wypozyczen\_na\_czytelnika}}}
+{\sphinxparam{\DUrole{n}{conn}}}
+{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Oblicza średnią liczbę wypożyczonych książek przypadającą na jednego aktywnego czytelnika.
+Wykorzystuje podzapytanie w klauzuli FROM do wcześniejszej agregacji danych.
+\begin{quote}\begin{description}
+\sphinxlineitem{Parameters}
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{conn}} (\sphinxstyleliteralemphasis{\sphinxupquote{sqlite3.Connection}}) \textendash{} Obiekt połączenia z bazą SQLite.
+
+\sphinxlineitem{Returns}
+\sphinxAtStartPar
+Zwraca jedną krotkę z pojedynczą wartością zmiennoprzecinkową (średnia).
+
+\sphinxlineitem{Return type}
+\sphinxAtStartPar
+list{[}tuple{]}
+
+\end{description}\end{quote}
+
+\end{fulllineitems}\end{savenotes}
+
+\index{get\_wszechstronni\_czytelnicy() (in module biblioteka\_zapytania)@\spxentry{get\_wszechstronni\_czytelnicy()}\spxextra{in module biblioteka\_zapytania}}
+
+\begin{savenotes}\begin{fulllineitems}
+\phantomsection\label{\detokenize{rozdzial_5/index:biblioteka_zapytania.get_wszechstronni_czytelnicy}}
+\pysigstartsignatures
+\pysiglinewithargsret
+{\sphinxcode{\sphinxupquote{biblioteka\_zapytania.}}\sphinxbfcode{\sphinxupquote{get\_wszechstronni\_czytelnicy}}}
+{\sphinxparam{\DUrole{n}{conn}}}
+{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Zwraca czytelników (Imię i Nazwisko), którzy wypożyczali książki z kategorii ‘Fantastyka’
+oraz jednocześnie z kategorii ‘Kryminał’. Używa operatora zbiorowego INTERSECT.
+\begin{quote}\begin{description}
+\sphinxlineitem{Parameters}
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{conn}} (\sphinxstyleliteralemphasis{\sphinxupquote{psycopg2.extensions.connection}}) \textendash{} Obiekt aktywnego połączenia z bazą PostgreSQL.
+
+\sphinxlineitem{Returns}
+\sphinxAtStartPar
+Lista krotek z imionami i nazwiskami wszechstronnych czytelników.
+
+\sphinxlineitem{Return type}
+\sphinxAtStartPar
+list{[}tuple{]}
+
+\end{description}\end{quote}
+
+\end{fulllineitems}\end{savenotes}
+
 
 
 
