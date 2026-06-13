@@ -1,5 +1,5 @@
-Badania literaturowe
-====================
+Rozdział 2: Badania literaturowe
+================================
 
 .. toctree::
    :maxdepth: 1
