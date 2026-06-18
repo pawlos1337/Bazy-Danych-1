@@ -19,7 +19,7 @@ Spis treści
 ===========
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :numbered:
 
    rozdzial_1/index
