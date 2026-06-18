@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2025/dev/Debian) (preloaded format=pdflatex 2026.3.1)  18 JUN 2026 12:56
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2025/dev/Debian) (preloaded format=pdflatex 2026.3.1)  18 JUN 2026 13:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -933,7 +933,7 @@ nput line 1155.
 [10{/usr/share/texlive/texmf-dist/fonts/enc/dvips/fontawesome5/fa5free1.enc}]
 
 [11]
-Underfull \hbox (badness 10000) in paragraph at lines 1352--1355
+Underfull \hbox (badness 10000) in paragraph at lines 1366--1369
 [][][][][]\T1/qtm/m/n/9 Oracle Doc-u-men-ta-tion, \T1/qtm/m/it/9 AU-DIT_TRAIL \
 T1/qtm/m/n/9 oraz in-for-ma-cje o uni-fied au-dit-ing, [][]$https : / / docs . 
 oracle . com / en / database / oracle /
@@ -970,55 +970,56 @@ oracle . com / en / database / oracle /
 [25]
 
 [26]
-<model_konceptualny_biblioteka.png, id=802, 1891.065pt x 1276.77pt>
+
+[27]
+<model_konceptualny_biblioteka.png, id=813, 1891.065pt x 1276.77pt>
 File: model_konceptualny_biblioteka.png Graphic file (type png)
 <use model_konceptualny_biblioteka.png>
 Package pdftex.def Info: model_konceptualny_biblioteka.png  used on input line 
-2350.
+2390.
 (pdftex.def)             Requested size: 397.06577pt x 268.07117pt.
 
 
-[27]
-<erd_logiczny_biblioteka.png, id=810, 712.91344pt x 181.42781pt>
+[28 <./model_konceptualny_biblioteka.png>]
+<erd_logiczny_biblioteka.png, id=821, 712.91344pt x 181.42781pt>
 File: erd_logiczny_biblioteka.png Graphic file (type png)
 <use erd_logiczny_biblioteka.png>
-Package pdftex.def Info: erd_logiczny_biblioteka.png  used on input line 2400.
+Package pdftex.def Info: erd_logiczny_biblioteka.png  used on input line 2440.
 (pdftex.def)             Requested size: 397.06577pt x 101.04797pt.
-
-
-[28 <./model_konceptualny_biblioteka.png>]
-<fizyczny_sqlite_biblioteka.png, id=817, 828.84656pt x 181.42781pt>
+<fizyczny_sqlite_biblioteka.png, id=822, 828.84656pt x 181.42781pt>
 File: fizyczny_sqlite_biblioteka.png Graphic file (type png)
 <use fizyczny_sqlite_biblioteka.png>
-Package pdftex.def Info: fizyczny_sqlite_biblioteka.png  used on input line 243
+Package pdftex.def Info: fizyczny_sqlite_biblioteka.png  used on input line 247
 6.
 (pdftex.def)             Requested size: 397.06577pt x 86.91272pt.
-<fizyczny_postgres_biblioteka.drawio.png, id=818, 889.07156pt x 181.42781pt>
+
+
+[29 <./erd_logiczny_biblioteka.png> <./fizyczny_sqlite_biblioteka.png>]
+<fizyczny_postgres_biblioteka.drawio.png, id=830, 889.07156pt x 181.42781pt>
 File: fizyczny_postgres_biblioteka.drawio.png Graphic file (type png)
 <use fizyczny_postgres_biblioteka.drawio.png>
 Package pdftex.def Info: fizyczny_postgres_biblioteka.drawio.png  used on input
- line 2466.
+ line 2506.
 (pdftex.def)             Requested size: 397.06577pt x 81.02718pt.
 
 
-[29 <./erd_logiczny_biblioteka.png> <./fizyczny_sqlite_biblioteka.png> <./fizyc
-zny_postgres_biblioteka.drawio.png>]
-
-[30]
+[30 <./fizyczny_postgres_biblioteka.drawio.png>]
 
 [31]
-Underfull \hbox (badness 10000) in paragraph at lines 2693--2695
+
+[32]
+Underfull \hbox (badness 10000) in paragraph at lines 2733--2735
 []\T1/txtt/bx/n/10.95 limit_wypozyczen \T1/qtm/m/n/10.95 (\T1/txtt/m/sl/10.95 i
 nt\T1/qtm/m/n/10.95 ) ^^U Min-i-malna liczba wypo»y-cze« up-raw-ni-a-j¡ca do
  []
 
 
 
-[32]
-
 [33]
 
-[34] (./sprawozdanie-z-laboratoriow.aux)
+[34]
+
+[35] (./sprawozdanie-z-laboratoriow.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -1028,13 +1029,13 @@ nged.
 (rerunfilecheck)             Checksum: C93890DD8C82E178ADB9D348914748D6;31428.
  ) 
 Here is how much of TeX's memory you used:
- 20840 strings out of 473197
- 377518 string characters out of 5718606
- 809791 words of memory out of 5000000
+ 20846 strings out of 473197
+ 377560 string characters out of 5718606
+ 806791 words of memory out of 5000000
  43416 multiletter control sequences out of 15000+600000
  627639 words of font info for 104 fonts, out of 8000000 for 9000
  1142 hyphenation exceptions out of 8191
- 72i,11n,82p,1216b,764s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 72i,11n,82p,1216b,752s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/fontawesome5/FontAwesome5Fr
 ee-Solid.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi
 6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><
@@ -1045,10 +1046,10 @@ fonts/type1/public/tex-gyre/qtmri.pfb></usr/share/texlive/texmf-dist/fonts/type
 1/public/txfonts/t1xbtt.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/t
 xfonts/t1xtt.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/t1xt
 t.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/tcxtt.pfb>
-Output written on sprawozdanie-z-laboratoriow.pdf (36 pages, 2557102 bytes).
+Output written on sprawozdanie-z-laboratoriow.pdf (37 pages, 2558044 bytes).
 PDF statistics:
- 962 PDF objects out of 1000 (max. 8388607)
- 887 compressed objects within 9 object streams
- 245 named destinations out of 1000 (max. 500000)
+ 975 PDF objects out of 1000 (max. 8388607)
+ 899 compressed objects within 9 object streams
+ 251 named destinations out of 1000 (max. 500000)
  1121 words of extra memory for PDF output out of 10000 (max. 10000000)
 
