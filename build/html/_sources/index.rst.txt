@@ -16,7 +16,7 @@ Dokumentacja została podzielona na pięć głównych sekcji:
 * **Rozdział 5:** Zaawansowane funkcje SQL w Pythonie, selekcje, agregacje, złączenia, operatory zbiorowe i podzapytania.
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: spis treści:
    :numbered:
 
