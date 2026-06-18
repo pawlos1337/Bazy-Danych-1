@@ -3,7 +3,6 @@ Sprawozdanie z Laboratorium: Bazy Danych
 ========================================
 
 Wprowadzenie
-============
 
 Niniejsza dokumentacja stanowi kompletne sprawozdanie z laboratorium przedmiotu Bazy Danych. Projekt obejmuje całościową analizę procesów związanych z administracją i projektowaniem relacyjnych baz danych.
 
