@@ -1,7 +1,7 @@
 \babel@toc {english}{}\relax 
 \contentsline {chapter}{\numberline {1}Wprowadzenie}{1}{chapter.1}%
 \contentsline {chapter}{\numberline {2}Spis treści}{2}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Rozdział 1: Wstęp oraz linki}{2}{section.2.1}%
+\contentsline {section}{\numberline {2.1}Wstęp oraz linki}{2}{section.2.1}%
 \contentsline {subsection}{\numberline {2.1.1}Wstęp do sprawozdania}{2}{subsection.2.1.1}%
 \contentsline {subsection}{\numberline {2.1.2}Wykaz repozytoriów (Linki)}{2}{subsection.2.1.2}%
 \contentsline {subsubsection}{1. Główne repozytorium sprawozdania (Dokumentacja Sphinx)}{2}{subsubsection*.3}%
