@@ -9,21 +9,21 @@ Rozdział 5: Komunikacja i operacje na danych
 Wstęp
 =====
 
-Po zdefiniowaniu i zasileniu struktur bazodanowych w poprzednich rozdziałach, system wymaga 
-interfejsu zdolnego do obsługi zaawansowanej logiki biznesowej biblioteki. W tym celu zaimplementowano 
-warstwę dostępu do danych (Data Access Layer) w języku Python. 
+Po zdefiniowaniu znormalizowanego modelu logicznego i zasileniu struktur bazodanowych w poprzednich rozdziałach, system biblioteczny wymagał interfejsu zdolnego do obsługi zaawansowanej logiki biznesowej. Zamiast osadzać instrukcje SQL bezpośrednio w warstwie prezentacji, zaimplementowano dedykowaną warstwę dostępu do danych (*Data Access Layer*) w języku Python. Moduł ten zapewnia pełną abstrakcję, obsługując równolegle środowisko produkcyjne (PostgreSQL) oraz prototypowe (SQLite).
 
-Wykorzystano techniki tworzenia rozbudowanych zapytań SQL, w tym:
-* Podzapytania (skorelowane i nieskorelowane w klauzulach ``SELECT``, ``FROM``, ``WHERE``).
-* Złączenia relacyjne (``JOIN``, ``LEFT JOIN``).
-* Analizę agregacyjną (``GROUP BY``, ``HAVING``).
-* Operatory teorii mnogości (``UNION``, ``INTERSECT``, ``EXCEPT``).
+Zrezygnowano z trywialnych operacji CRUD na rzecz zapytań agregujących i analitycznych, które przenoszą ciężar obliczeniowy z aplikacji na silnik bazy danych. Wykorzystano zaawansowane techniki tworzenia rozbudowanych zapytań SQL, w tym:
+
+* **Podzapytania (skorelowane i nieskorelowane):** Izolacja danych w klauzulach ``SELECT``, ``FROM`` i ``WHERE``, optymalizująca m.in. wielowarstwowe filtrowanie geolokalizacyjne w potężnych zbiorach danych.
+* **Złączenia relacyjne (``JOIN``, ``LEFT JOIN``):** Wykorzystywane do łączenia rozproszonych danych transakcyjnych oraz detekcji asymetrii w systemie (np. precyzyjne wyłapywanie kategorii inwentarzowych bez przypisanych egzemplarzy).
+* **Analizę agregacyjną (``GROUP BY``, ``HAVING``):** Generowanie kluczowych statystyk i identyfikacja trendów w obrocie zbiorami bibliotecznymi.
+* **Operatory teorii mnogości (``UNION``, ``INTERSECT``, ``EXCEPT``):** Służące do wysokowydajnej, krzyżowej analizy preferencji czytelniczych, rozwiązywania problemu polimorfizmu encji (scalanie niezależnych tabel osób) oraz błyskawicznej identyfikacji pasywnych użytkowników.
 
 Pełna specyfikacja stworzonego API
 ==================================
 
-Poniżej przedstawiono zautomatyzowaną dokumentację modułu obsługującego połączenia z 
-bazami PostgreSQL oraz SQLite, wygenerowaną na podstawie wbudowanych komentarzy (Docstrings).
+Zgodnie z dobrymi praktykami inżynierii oprogramowania, poniżej przedstawiono pełną, zautomatyzowaną specyfikację interfejsu programistycznego. Dokumentacja modułu obsługującego komunikację z bazami PostgreSQL oraz SQLite została wygenerowana bezpośrednio na podstawie komentarzy strukturalnych (Docstrings). 
+
+Zastosowanie mechanizmu kompilatora Sphinx gwarantuje absolutną zgodność dokumentacji ze stanem faktycznym implementacji w warstwie Python, eliminując problem z ręczną dezaktualizacją opisów.
 
 .. automodule:: biblioteka_zapytania
    :members:
