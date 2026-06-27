@@ -80,7 +80,7 @@
 
 
 \title{Sprawozdanie z Laboratorium: Bazy Danych}
-\date{Jun 25, 2026}
+\date{Jun 27, 2026}
 \release{}
 \author{Paweł Łoćwin, Paweł Łosowski}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -2625,10 +2625,44 @@ Głównym procesem w systemie jest obieg książki między biblioteką a czyteln
 Aby zweryfikować kompletność przetwarzanych informacji, przygotowano “płaską” (nieznormalizowaną) reprezentację danych dla operacji wypożyczenia, bazującą na pierwotnych wytycznych.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{Imie}\PYG{p}{,}\PYG{n}{Nazwisko}\PYG{p}{,}\PYG{n}{Ulica}\PYG{p}{,}\PYG{n}{Kod\PYGZus{}Pocztowy}\PYG{p}{,}\PYG{n}{Miasto}\PYG{p}{,}\PYG{n}{Data\PYGZus{}Zapisu}\PYG{p}{,}\PYG{n}{Tytul\PYGZus{}Ksiazki}\PYG{p}{,}\PYG{n}{Imie\PYGZus{}Autora}\PYG{p}{,}\PYG{n}{Nazwisko\PYGZus{}Autora}\PYG{p}{,}\PYG{n}{Kategoria}\PYG{p}{,}\PYG{n}{Data\PYGZus{}Wypozyczenia}\PYG{p}{,}\PYG{n}{Data\PYGZus{}Zwrotu}
-\PYG{n}{Jan}\PYG{p}{,}\PYG{n}{Kowalski}\PYG{p}{,}\PYG{n}{Kwiatowa} \PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{00}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{001}\PYG{p}{,}\PYG{n}{Warszawa}\PYG{p}{,}\PYG{l+m+mi}{2024}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{01}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{15}\PYG{p}{,}\PYG{n}{Wiedźmin}\PYG{p}{,}\PYG{n}{Andrzej}\PYG{p}{,}\PYG{n}{Sapkowski}\PYG{p}{,}\PYG{n}{Fantastyka}\PYG{p}{,}\PYG{l+m+mi}{2024}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{03}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{01}\PYG{p}{,}\PYG{l+m+mi}{2024}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{03}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{15}
-\PYG{n}{Jan}\PYG{p}{,}\PYG{n}{Kowalski}\PYG{p}{,}\PYG{n}{Kwiatowa} \PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{00}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{001}\PYG{p}{,}\PYG{n}{Warszawa}\PYG{p}{,}\PYG{l+m+mi}{2024}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{01}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{15}\PYG{p}{,}\PYG{n}{Pan} \PYG{n}{Tadeusz}\PYG{p}{,}\PYG{n}{Adam}\PYG{p}{,}\PYG{n}{Mickiewicz}\PYG{p}{,}\PYG{n}{Poezja}\PYG{p}{,}\PYG{l+m+mi}{2024}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{03}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{10}\PYG{p}{,}
-\PYG{n}{Anna}\PYG{p}{,}\PYG{n}{Nowak}\PYG{p}{,}\PYG{n}{Polna} \PYG{l+m+mi}{2}\PYG{p}{,}\PYG{l+m+mi}{31}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{444}\PYG{p}{,}\PYG{n}{Kraków}\PYG{p}{,}\PYG{l+m+mi}{2023}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{11}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{05}\PYG{p}{,}\PYG{n}{Lśnienie}\PYG{p}{,}\PYG{n}{Stephen}\PYG{p}{,}\PYG{n}{King}\PYG{p}{,}\PYG{n}{Horror}\PYG{p}{,}\PYG{l+m+mi}{2024}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{02}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{20}\PYG{p}{,}\PYG{l+m+mi}{2024}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{03}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{05}
+Imie,Nazwisko,Ulica,Kod\PYGZus{}Pocztowy,Miasto,Data\PYGZus{}Zapisu,Tytul\PYGZus{}Ksiazki,Imie\PYGZus{}Autora,Nazwisko\PYGZus{}Autora,Kategoria,Data\PYGZus{}Wypozyczenia,Data\PYGZus{}Zwrotu
+Jan,Kowalski,Kwiatowa 1,00\PYGZhy{}001,Warszawa,2024\PYGZhy{}01\PYGZhy{}15,Wiedźmin,Andrzej,Sapkowski,Fantastyka,2024\PYGZhy{}03\PYGZhy{}01,2024\PYGZhy{}03\PYGZhy{}15
+Jan,Kowalski,Kwiatowa 1,00\PYGZhy{}001,Warszawa,2024\PYGZhy{}01\PYGZhy{}15,Pan Tadeusz,Adam,Mickiewicz,Poezja,2024\PYGZhy{}03\PYGZhy{}10,
+Anna,Nowak,Polna 2,31\PYGZhy{}444,Kraków,2023\PYGZhy{}11\PYGZhy{}05,Lśnienie,Stephen,King,Horror,2024\PYGZhy{}02\PYGZhy{}20,2024\PYGZhy{}03\PYGZhy{}05
+\end{sphinxVerbatim}
+
+
+\section{Prototyp JSON}
+\label{\detokenize{rozdzial_3/index:prototyp-json}}
+\sphinxAtStartPar
+Poniższy dokument JSON przedstawia hierarchiczny układ pojedynczego wiersza danych testowych (zawierającego pełną operację transakcyjną), pozwalający na jednoznaczną weryfikację struktury obiektów przed procesem mapowania relacyjnego.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{p}{\PYGZob{}}
+\PYG{+w}{  }\PYG{n+nt}{\PYGZdq{}czytelnik\PYGZdq{}}\PYG{p}{:}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{n+nt}{\PYGZdq{}imie\PYGZdq{}}\PYG{p}{:}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}Jan\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n+nt}{\PYGZdq{}nazwisko\PYGZdq{}}\PYG{p}{:}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}Kowalski\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n+nt}{\PYGZdq{}adres\PYGZdq{}}\PYG{p}{:}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{      }\PYG{n+nt}{\PYGZdq{}ulica\PYGZdq{}}\PYG{p}{:}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}Kwiatowa 1\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{      }\PYG{n+nt}{\PYGZdq{}kod\PYGZus{}pocztowy\PYGZdq{}}\PYG{p}{:}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}00\PYGZhy{}001\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{      }\PYG{n+nt}{\PYGZdq{}miasto\PYGZdq{}}\PYG{p}{:}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}Warszawa\PYGZdq{}}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{},}
+\PYG{+w}{    }\PYG{n+nt}{\PYGZdq{}data\PYGZus{}zapisu\PYGZdq{}}\PYG{p}{:}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}2024\PYGZhy{}01\PYGZhy{}15\PYGZdq{}}
+\PYG{+w}{  }\PYG{p}{\PYGZcb{},}
+\PYG{+w}{  }\PYG{n+nt}{\PYGZdq{}wypozyczenie\PYGZdq{}}\PYG{p}{:}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{n+nt}{\PYGZdq{}ksiazka\PYGZdq{}}\PYG{p}{:}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{      }\PYG{n+nt}{\PYGZdq{}tytul\PYGZdq{}}\PYG{p}{:}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}Wiedźmin\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{      }\PYG{n+nt}{\PYGZdq{}rok\PYGZus{}wydania\PYGZdq{}}\PYG{p}{:}\PYG{+w}{ }\PYG{l+m+mi}{1993}\PYG{p}{,}
+\PYG{+w}{      }\PYG{n+nt}{\PYGZdq{}autor\PYGZdq{}}\PYG{p}{:}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{n+nt}{\PYGZdq{}imie\PYGZdq{}}\PYG{p}{:}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}Andrzej\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{        }\PYG{n+nt}{\PYGZdq{}nazwisko\PYGZdq{}}\PYG{p}{:}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}Sapkowski\PYGZdq{}}
+\PYG{+w}{      }\PYG{p}{\PYGZcb{},}
+\PYG{+w}{      }\PYG{n+nt}{\PYGZdq{}kategoria\PYGZdq{}}\PYG{p}{:}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}Fantastyka\PYGZdq{}}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{},}
+\PYG{+w}{    }\PYG{n+nt}{\PYGZdq{}data\PYGZus{}wypozyczenia\PYGZdq{}}\PYG{p}{:}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}2024\PYGZhy{}03\PYGZhy{}01\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n+nt}{\PYGZdq{}data\PYGZus{}zwrotu\PYGZdq{}}\PYG{p}{:}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}2024\PYGZhy{}03\PYGZhy{}15\PYGZdq{}}
+\PYG{+w}{  }\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
 \end{sphinxVerbatim}
 
 
@@ -2705,6 +2739,18 @@ Na podstawie analizy procesów i zebranych danych opracowano model pojęciowy, i
 \item {} 
 \sphinxAtStartPar
 \sphinxstylestrong{Książka \textendash{} Wypożyczenie (1:N):} Jeden egzemplarz książki może być w swojej historii wypożyczany wielokrotnie różnym czytelnikom.
+
+\end{itemize}
+
+
+\subsection{Określenie związków niepoprawnych (Pułapki połączeń)}
+\label{\detokenize{rozdzial_3/index:okreslenie-zwiazkow-niepoprawnych-pulapki-polaczen}}
+\sphinxAtStartPar
+W ramach weryfikacji poprawności założeń strukturalnych przeanalizowano model pod kątem występowania semantycznych pułapek połączeń.
+\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+\sphinxstylestrong{Pułapka typu wiatrak (Fan Trap):} Mogłaby ona wystąpić w przypadku błędnego połączenia encji bazowych, np. poprzez powiązanie encji \sphinxcode{\sphinxupquote{Kategoria}} bezpośrednio z encją \sphinxcode{\sphinxupquote{Czytelnik}} (w celu zapisu preferencji czytelniczych) oraz równolegle encji \sphinxcode{\sphinxupquote{Kategoria}} z encją \sphinxcode{\sphinxupquote{Książka}}. Taka struktura uniemożliwiłaby jednoznaczne stwierdzenie na poziomie logicznym, który konkretny egzemplarz książki został wypożyczony przez daną osobę. W zaprojektowanym modelu powiązania przechodzą ściśle w sposób liniowy/hierarchiczny, gdzie relacje zbiegają się bezpośrednio w encji asocjacyjnej \sphinxcode{\sphinxupquote{Wypożyczenie}}, co całkowicie eliminuje to ryzyko.
 
 \end{itemize}
 
@@ -2861,6 +2907,14 @@ Paweł Łosowski
 \sphinxAtStartPar
 Na podstawie opracowanych wcześniej modeli logicznych przygotowano skrypty DDL (Data Definition Language) dla dwóch docelowych silników relacyjnych baz danych: PostgreSQL oraz SQLite. Kody te przygotowały solidną fundamentę dla skutecznego przechowywania i zarządzania danymi biblioteki.
 
+\sphinxAtStartPar
+Pełny kod źródłowy definicji bazy danych (skrypty DDL) oraz mechanizmy zasilające znajdują się w dedykowanym repozytorium projektu:
+\sphinxhref{https://github.com/baguetedev/Bazy-Danych-pliki}{GitHub \sphinxhyphen{} Bazy\sphinxhyphen{}Danych\sphinxhyphen{}pliki}%
+\begin{footnote}[8]\sphinxAtStartFootnote
+\sphinxnolinkurl{https://github.com/baguetedev/Bazy-Danych-pliki}
+%
+\end{footnote}
+
 
 \subsection{Skrypt dla środowiska PostgreSQL}
 \label{\detokenize{rozdzial_4/index:skrypt-dla-srodowiska-postgresql}}
@@ -2930,13 +2984,13 @@ Horror
 \subsection{Implementacja mechanizmu importu}
 \label{\detokenize{rozdzial_4/index:implementacja-mechanizmu-importu}}
 \sphinxAtStartPar
-Do zaimportowania powyższych danych wybrano mechanizm wprowadzania wielowartościowego oparty na technice \sphinxstylestrong{INSERT (multi\sphinxhyphen{}value/batch)}. Rozwiązanie zrealizowano z wykorzystaniem języka Python wraz z biblioteką psycopg do komunikacji z bazą PostgreSQL.
+Do zaimportowania powyższych danych wybrano mechanizm wprowadzania wielowartościowego oparty na technice \sphinxstylestrong{INSERT (multi\sphinxhyphen{}value/batch)}. Rozwiązanie zrealizowano z wykorzystaniem języka Python wraz z biblioteką psycopg do komunikacji z bazą PostgreSQL oraz wbudowaną biblioteką sqlite3 dla bazy SQLite.
 
 \sphinxAtStartPar
 Wybór tego mechanizmu podyktowany jest kompromisem między uniwersalnością a wydajnością. Użycie metody \sphinxcode{\sphinxupquote{executemany()}} na obiekcie kursora bazy danych pozwala na szybkie wstawienie wielu rekordów bez konieczności wykonywania zapytania dla każdego wiersza osobno.
 
 \sphinxAtStartPar
-Poniżej przedstawiono fragment skryptu aplikacyjnego odpowiedzialnego za odczyt z pliku i zasilenie tabel:
+Poniżej przedstawiono fragment skryptu aplikacyjnego odpowiedzialnego za odczyt z pliku i zasilenie tabel dla PostgreSQL:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{k+kn}{import} \PYG{n+nn}{csv}
@@ -2969,6 +3023,60 @@ Poniżej przedstawiono fragment skryptu aplikacyjnego odpowiedzialnego za odczyt
 
     \PYG{k}{except} \PYG{n+ne}{Exception} \PYG{k}{as} \PYG{n}{e}\PYG{p}{:}
         \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Wystąpił błąd operacji wsadowej: }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{e}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{)}
+
+\PYG{k}{if} \PYG{n+nv+vm}{\PYGZus{}\PYGZus{}name\PYGZus{}\PYGZus{}} \PYG{o}{==} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{\PYGZus{}\PYGZus{}main\PYGZus{}\PYGZus{}}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}
+    \PYG{c+c1}{\PYGZsh{} Dane logowania do bazy (do uzupełnienia rzeczywistymi danymi z laboratorium)}
+    \PYG{n}{konfiguracja\PYGZus{}bazy} \PYG{o}{=} \PYG{p}{\PYGZob{}}
+        \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{dbname}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{student15db4}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
+        \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{user}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{student15}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
+        \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{password}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{fwbmfhgxqdZNP}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
+        \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{host}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{localhost}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
+        \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{port}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{5432}\PYG{l+s+s2}{\PYGZdq{}}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{c+c1}{\PYGZsh{} Uruchomienie procesu}
+    \PYG{n}{dane\PYGZus{}z\PYGZus{}pliku} \PYG{o}{=} \PYG{n}{wczytaj\PYGZus{}dane\PYGZus{}csv}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{kategorie.csv}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+    \PYG{k}{if} \PYG{n}{dane\PYGZus{}z\PYGZus{}pliku}\PYG{p}{:}
+        \PYG{n}{importuj\PYGZus{}do\PYGZus{}postgres}\PYG{p}{(}\PYG{n}{dane\PYGZus{}z\PYGZus{}pliku}\PYG{p}{,} \PYG{n}{konfiguracja\PYGZus{}bazy}\PYG{p}{)}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+Analogiczny skrypt przygotowano do obsługi plikowej bazy danych SQLite, korzystając z tej samej metodyki odczytu wsadowego:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{import} \PYG{n+nn}{sqlite3}
+\PYG{k+kn}{import} \PYG{n+nn}{csv}
+\PYG{k+kn}{import} \PYG{n+nn}{os}
+
+\PYG{c+c1}{\PYGZsh{} Funkcja wsadowego importu do SQLite}
+\PYG{k}{def} \PYG{n+nf}{importuj\PYGZus{}do\PYGZus{}sqlite}\PYG{p}{(}\PYG{n}{kategorie\PYGZus{}do\PYGZus{}importu}\PYG{p}{,} \PYG{n}{sciezka\PYGZus{}bazy}\PYG{p}{)}\PYG{p}{:}
+    \PYG{k}{try}\PYG{p}{:}
+        \PYG{c+c1}{\PYGZsh{} Nawiązanie połączenia z plikiem bazy danych (.db)}
+        \PYG{k}{with} \PYG{n}{sqlite3}\PYG{o}{.}\PYG{n}{connect}\PYG{p}{(}\PYG{n}{sciezka\PYGZus{}bazy}\PYG{p}{)} \PYG{k}{as} \PYG{n}{conn}\PYG{p}{:}
+            \PYG{n}{cursor} \PYG{o}{=} \PYG{n}{conn}\PYG{o}{.}\PYG{n}{cursor}\PYG{p}{(}\PYG{p}{)}
+
+            \PYG{c+c1}{\PYGZsh{} Sparametryzowane zapytanie (? dla SQLite)}
+            \PYG{n}{zapytanie\PYGZus{}sql} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{INSERT INTO Kategorie (Nazwa\PYGZus{}Kategorii) VALUES (?)}\PYG{l+s+s2}{\PYGZdq{}}
+
+            \PYG{c+c1}{\PYGZsh{} Wykonanie wsadowe}
+            \PYG{n}{cursor}\PYG{o}{.}\PYG{n}{executemany}\PYG{p}{(}\PYG{n}{zapytanie\PYGZus{}sql}\PYG{p}{,} \PYG{n}{kategorie\PYGZus{}do\PYGZus{}importu}\PYG{p}{)}
+
+            \PYG{c+c1}{\PYGZsh{} Konieczne zatwierdzenie transakcji}
+            \PYG{n}{conn}\PYG{o}{.}\PYG{n}{commit}\PYG{p}{(}\PYG{p}{)}
+
+            \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Pomyślnie zaimportowano }\PYG{l+s+si}{\PYGZob{}}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{kategorie\PYGZus{}do\PYGZus{}importu}\PYG{p}{)}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{ rekordów do SQLite.}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{)}
+    \PYG{k}{except} \PYG{n}{sqlite3}\PYG{o}{.}\PYG{n}{Error} \PYG{k}{as} \PYG{n}{e}\PYG{p}{:}
+        \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Wystąpił błąd bazy SQLite: }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{e}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{)}
+
+\PYG{k}{if} \PYG{n+nv+vm}{\PYGZus{}\PYGZus{}name\PYGZus{}\PYGZus{}} \PYG{o}{==} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{\PYGZus{}\PYGZus{}main\PYGZus{}\PYGZus{}}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}
+    \PYG{n}{plik\PYGZus{}bazy} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{biblioteka.db}\PYG{l+s+s1}{\PYGZsq{}}
+    \PYG{n}{plik\PYGZus{}csv} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{kategorie.csv}\PYG{l+s+s1}{\PYGZsq{}}
+
+    \PYG{c+c1}{\PYGZsh{} Sprawdzenie czy plik CSV istnieje przed importem}
+    \PYG{k}{if} \PYG{n}{os}\PYG{o}{.}\PYG{n}{path}\PYG{o}{.}\PYG{n}{exists}\PYG{p}{(}\PYG{n}{plik\PYGZus{}csv}\PYG{p}{)}\PYG{p}{:}
+        \PYG{n}{dane\PYGZus{}z\PYGZus{}pliku} \PYG{o}{=} \PYG{n}{wczytaj\PYGZus{}dane\PYGZus{}csv}\PYG{p}{(}\PYG{n}{plik\PYGZus{}csv}\PYG{p}{)}
+        \PYG{n}{importuj\PYGZus{}do\PYGZus{}sqlite}\PYG{p}{(}\PYG{n}{dane\PYGZus{}z\PYGZus{}pliku}\PYG{p}{,} \PYG{n}{plik\PYGZus{}bazy}\PYG{p}{)}
+    \PYG{k}{else}\PYG{p}{:}
+        \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Brak pliku }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{plik\PYGZus{}csv}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{. Upewnij się, że znajduje się w tym samym folderze.}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{)}
 \end{sphinxVerbatim}
 
 

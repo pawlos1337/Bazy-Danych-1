@@ -10,6 +10,9 @@ Definicja fizyczna bazy danych (Zadanie 1)
 ==========================================
 Na podstawie opracowanych wcześniej modeli logicznych przygotowano skrypty DDL (Data Definition Language) dla dwóch docelowych silników relacyjnych baz danych: PostgreSQL oraz SQLite. Kody te przygotowały solidną fundamentę dla skutecznego przechowywania i zarządzania danymi biblioteki.
 
+Pełny kod źródłowy definicji bazy danych (skrypty DDL) oraz mechanizmy zasilające znajdują się w dedykowanym repozytorium projektu: 
+`GitHub - Bazy-Danych-pliki <https://github.com/baguetedev/Bazy-Danych-pliki>`_
+
 Skrypt dla środowiska PostgreSQL
 --------------------------------
 Środowisko PostgreSQL pozwala na wykorzystanie zaawansowanych, natywnych typów danych oraz rygorystyczne egzekwowanie więzów integralności. W poniższym skrypcie kluczowym elementem jest użycie więzów klucza obcego (FOREIGN KEY) w celu zapewnienia spójności referencyalnej między tabelami.
@@ -69,11 +72,11 @@ Dane do importu przygotowano w niezależnym formacie płaskim CSV (Comma-Separat
 
 Implementacja mechanizmu importu
 --------------------------------
-Do zaimportowania powyższych danych wybrano mechanizm wprowadzania wielowartościowego oparty na technice **INSERT (multi-value/batch)**. Rozwiązanie zrealizowano z wykorzystaniem języka Python wraz z biblioteką psycopg do komunikacji z bazą PostgreSQL.
+Do zaimportowania powyższych danych wybrano mechanizm wprowadzania wielowartościowego oparty na technice **INSERT (multi-value/batch)**. Rozwiązanie zrealizowano z wykorzystaniem języka Python wraz z biblioteką psycopg do komunikacji z bazą PostgreSQL oraz wbudowaną biblioteką sqlite3 dla bazy SQLite.
 
 Wybór tego mechanizmu podyktowany jest kompromisem między uniwersalnością a wydajnością. Użycie metody ``executemany()`` na obiekcie kursora bazy danych pozwala na szybkie wstawienie wielu rekordów bez konieczności wykonywania zapytania dla każdego wiersza osobno.
 
-Poniżej przedstawiono fragment skryptu aplikacyjnego odpowiedzialnego za odczyt z pliku i zasilenie tabel:
+Poniżej przedstawiono fragment skryptu aplikacyjnego odpowiedzialnego za odczyt z pliku i zasilenie tabel dla PostgreSQL:
 
 .. code-block:: python
 
@@ -107,6 +110,59 @@ Poniżej przedstawiono fragment skryptu aplikacyjnego odpowiedzialnego za odczyt
 
         except Exception as e:
             print(f"Wystąpił błąd operacji wsadowej: {e}")
+
+    if __name__ == "__main__":
+        # Dane logowania do bazy (do uzupełnienia rzeczywistymi danymi z laboratorium)
+        konfiguracja_bazy = {
+            "dbname": "student15db4",
+            "user": "student15",
+            "password": "fwbmfhgxqdZNP",
+            "host": "localhost", 
+            "port": "5432"
+        }
+        # Uruchomienie procesu
+        dane_z_pliku = wczytaj_dane_csv('kategorie.csv')
+        if dane_z_pliku:
+            importuj_do_postgres(dane_z_pliku, konfiguracja_bazy)
+
+Analogiczny skrypt przygotowano do obsługi plikowej bazy danych SQLite, korzystając z tej samej metodyki odczytu wsadowego:
+
+.. code-block:: python
+
+    import sqlite3
+    import csv
+    import os
+
+    # Funkcja wsadowego importu do SQLite
+    def importuj_do_sqlite(kategorie_do_importu, sciezka_bazy):
+        try:
+            # Nawiązanie połączenia z plikiem bazy danych (.db)
+            with sqlite3.connect(sciezka_bazy) as conn:
+                cursor = conn.cursor()
+                
+                # Sparametryzowane zapytanie (? dla SQLite)
+                zapytanie_sql = "INSERT INTO Kategorie (Nazwa_Kategorii) VALUES (?)"
+                
+                # Wykonanie wsadowe
+                cursor.executemany(zapytanie_sql, kategorie_do_importu)
+                
+                # Konieczne zatwierdzenie transakcji
+                conn.commit()
+                
+                print(f"Pomyślnie zaimportowano {len(kategorie_do_importu)} rekordów do SQLite.")
+        except sqlite3.Error as e:
+            print(f"Wystąpił błąd bazy SQLite: {e}")
+
+    if __name__ == "__main__":
+        plik_bazy = 'biblioteka.db'
+        plik_csv = 'kategorie.csv'
+        
+        # Sprawdzenie czy plik CSV istnieje przed importem
+        if os.path.exists(plik_csv):
+            dane_z_pliku = wczytaj_dane_csv(plik_csv)
+            importuj_do_sqlite(dane_z_pliku, plik_bazy)
+        else:
+            print(f"Brak pliku {plik_csv}. Upewnij się, że znajduje się w tym samym folderze.")
 
 Podsumowanie
 ============

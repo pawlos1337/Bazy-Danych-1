@@ -73,18 +73,49 @@ Projekt obejmuje obsługę bazy czytelników, katalogu zbiorów bibliotecznych (
 <section id="prototyp-csv">
 <h2><span class="section-number">3.2. </span>Prototyp CSV<a class="headerlink" href="#prototyp-csv" title="Link to this heading">¶</a></h2>
 <p>Aby zweryfikować kompletność przetwarzanych informacji, przygotowano “płaską” (nieznormalizowaną) reprezentację danych dla operacji wypożyczenia, bazującą na pierwotnych wytycznych.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Imie</span><span class="p">,</span><span class="n">Nazwisko</span><span class="p">,</span><span class="n">Ulica</span><span class="p">,</span><span class="n">Kod_Pocztowy</span><span class="p">,</span><span class="n">Miasto</span><span class="p">,</span><span class="n">Data_Zapisu</span><span class="p">,</span><span class="n">Tytul_Ksiazki</span><span class="p">,</span><span class="n">Imie_Autora</span><span class="p">,</span><span class="n">Nazwisko_Autora</span><span class="p">,</span><span class="n">Kategoria</span><span class="p">,</span><span class="n">Data_Wypozyczenia</span><span class="p">,</span><span class="n">Data_Zwrotu</span>
-<span class="n">Jan</span><span class="p">,</span><span class="n">Kowalski</span><span class="p">,</span><span class="n">Kwiatowa</span> <span class="mi">1</span><span class="p">,</span><span class="mi">00</span><span class="o">-</span><span class="mi">001</span><span class="p">,</span><span class="n">Warszawa</span><span class="p">,</span><span class="mi">2024</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span><span class="n">Wiedźmin</span><span class="p">,</span><span class="n">Andrzej</span><span class="p">,</span><span class="n">Sapkowski</span><span class="p">,</span><span class="n">Fantastyka</span><span class="p">,</span><span class="mi">2024</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">01</span><span class="p">,</span><span class="mi">2024</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">15</span>
-<span class="n">Jan</span><span class="p">,</span><span class="n">Kowalski</span><span class="p">,</span><span class="n">Kwiatowa</span> <span class="mi">1</span><span class="p">,</span><span class="mi">00</span><span class="o">-</span><span class="mi">001</span><span class="p">,</span><span class="n">Warszawa</span><span class="p">,</span><span class="mi">2024</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span><span class="n">Pan</span> <span class="n">Tadeusz</span><span class="p">,</span><span class="n">Adam</span><span class="p">,</span><span class="n">Mickiewicz</span><span class="p">,</span><span class="n">Poezja</span><span class="p">,</span><span class="mi">2024</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span>
-<span class="n">Anna</span><span class="p">,</span><span class="n">Nowak</span><span class="p">,</span><span class="n">Polna</span> <span class="mi">2</span><span class="p">,</span><span class="mi">31</span><span class="o">-</span><span class="mi">444</span><span class="p">,</span><span class="n">Kraków</span><span class="p">,</span><span class="mi">2023</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">05</span><span class="p">,</span><span class="n">Lśnienie</span><span class="p">,</span><span class="n">Stephen</span><span class="p">,</span><span class="n">King</span><span class="p">,</span><span class="n">Horror</span><span class="p">,</span><span class="mi">2024</span><span class="o">-</span><span class="mi">02</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span><span class="mi">2024</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">05</span>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Imie,Nazwisko,Ulica,Kod_Pocztowy,Miasto,Data_Zapisu,Tytul_Ksiazki,Imie_Autora,Nazwisko_Autora,Kategoria,Data_Wypozyczenia,Data_Zwrotu
+Jan,Kowalski,Kwiatowa 1,00-001,Warszawa,2024-01-15,Wiedźmin,Andrzej,Sapkowski,Fantastyka,2024-03-01,2024-03-15
+Jan,Kowalski,Kwiatowa 1,00-001,Warszawa,2024-01-15,Pan Tadeusz,Adam,Mickiewicz,Poezja,2024-03-10,
+Anna,Nowak,Polna 2,31-444,Kraków,2023-11-05,Lśnienie,Stephen,King,Horror,2024-02-20,2024-03-05
+</pre></div>
+</div>
+</section>
+<section id="prototyp-json">
+<h2><span class="section-number">3.3. </span>Prototyp JSON<a class="headerlink" href="#prototyp-json" title="Link to this heading">¶</a></h2>
+<p>Poniższy dokument JSON przedstawia hierarchiczny układ pojedynczego wiersza danych testowych (zawierającego pełną operację transakcyjną), pozwalający na jednoznaczną weryfikację struktury obiektów przed procesem mapowania relacyjnego.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;czytelnik&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;imie&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Jan&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;nazwisko&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Kowalski&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;adres&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;ulica&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Kwiatowa 1&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;kod_pocztowy&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;00-001&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;miasto&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Warszawa&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;data_zapisu&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2024-01-15&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;wypozyczenie&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;ksiazka&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;tytul&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Wiedźmin&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;rok_wydania&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1993</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;autor&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;imie&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Andrzej&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;nazwisko&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Sapkowski&quot;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;kategoria&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Fantastyka&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;data_wypozyczenia&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2024-03-01&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;data_zwrotu&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2024-03-15&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </section>
 <section id="model-konceptualny-pojeciowy">
-<h2><span class="section-number">3.3. </span>Model Konceptualny (Pojęciowy)<a class="headerlink" href="#model-konceptualny-pojeciowy" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">3.4. </span>Model Konceptualny (Pojęciowy)<a class="headerlink" href="#model-konceptualny-pojeciowy" title="Link to this heading">¶</a></h2>
 <p>Na podstawie analizy procesów i zebranych danych opracowano model pojęciowy, identyfikując obiekty, ich cechy oraz powiązania.</p>
 <section id="zidentyfikowane-encje">
-<h3><span class="section-number">3.3.1. </span>Zidentyfikowane encje<a class="headerlink" href="#zidentyfikowane-encje" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">3.4.1. </span>Zidentyfikowane encje<a class="headerlink" href="#zidentyfikowane-encje" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong>Czytelnik</strong> - osoba zapisana do biblioteki.</p></li>
 <li><p><strong>Autor</strong> - twórca dzieła literackiego.</p></li>
@@ -94,7 +125,7 @@ Projekt obejmuje obsługę bazy czytelników, katalogu zbiorów bibliotecznych (
 </ul>
 </section>
 <section id="zdefiniowane-atrybuty-wlasnosci">
-<h3><span class="section-number">3.3.2. </span>Zdefiniowane atrybuty/własności<a class="headerlink" href="#zdefiniowane-atrybuty-wlasnosci" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">3.4.2. </span>Zdefiniowane atrybuty/własności<a class="headerlink" href="#zdefiniowane-atrybuty-wlasnosci" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong>Czytelnik:</strong> Imię, Nazwisko, Ulica, Kod pocztowy, Miasto, Data zapisu.</p></li>
 <li><p><strong>Autor:</strong> Imię, Nazwisko.</p></li>
@@ -104,7 +135,7 @@ Projekt obejmuje obsługę bazy czytelników, katalogu zbiorów bibliotecznych (
 </ul>
 </section>
 <section id="opis-zwiazkow">
-<h3><span class="section-number">3.3.3. </span>Opis związków<a class="headerlink" href="#opis-zwiazkow" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">3.4.3. </span>Opis związków<a class="headerlink" href="#opis-zwiazkow" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong>Autor – Książka (1:N):</strong> Jeden autor może napisać wiele książek. (Dla uproszczenia modelu zakładamy głównego autora).</p></li>
 <li><p><strong>Kategoria – Książka (1:N):</strong> Kategoria zawiera wiele tytułów.</p></li>
@@ -112,21 +143,28 @@ Projekt obejmuje obsługę bazy czytelników, katalogu zbiorów bibliotecznych (
 <li><p><strong>Książka – Wypożyczenie (1:N):</strong> Jeden egzemplarz książki może być w swojej historii wypożyczany wielokrotnie różnym czytelnikom.</p></li>
 </ul>
 </section>
+<section id="okreslenie-zwiazkow-niepoprawnych-pulapki-polaczen">
+<h3><span class="section-number">3.4.4. </span>Określenie związków niepoprawnych (Pułapki połączeń)<a class="headerlink" href="#okreslenie-zwiazkow-niepoprawnych-pulapki-polaczen" title="Link to this heading">¶</a></h3>
+<p>W ramach weryfikacji poprawności założeń strukturalnych przeanalizowano model pod kątem występowania semantycznych pułapek połączeń.</p>
+<ul class="simple">
+<li><p><strong>Pułapka typu wiatrak (Fan Trap):</strong> Mogłaby ona wystąpić w przypadku błędnego połączenia encji bazowych, np. poprzez powiązanie encji <code class="docutils literal notranslate"><span class="pre">Kategoria</span></code> bezpośrednio z encją <code class="docutils literal notranslate"><span class="pre">Czytelnik</span></code> (w celu zapisu preferencji czytelniczych) oraz równolegle encji <code class="docutils literal notranslate"><span class="pre">Kategoria</span></code> z encją <code class="docutils literal notranslate"><span class="pre">Książka</span></code>. Taka struktura uniemożliwiłaby jednoznaczne stwierdzenie na poziomie logicznym, który konkretny egzemplarz książki został wypożyczony przez daną osobę. W zaprojektowanym modelu powiązania przechodzą ściśle w sposób liniowy/hierarchiczny, gdzie relacje zbiegają się bezpośrednio w encji asocjacyjnej <code class="docutils literal notranslate"><span class="pre">Wypożyczenie</span></code>, co całkowicie eliminuje to ryzyko.</p></li>
+</ul>
+</section>
 <section id="identyfikacja-encji-slabych">
-<h3><span class="section-number">3.3.4. </span>Identyfikacja encji słabych<a class="headerlink" href="#identyfikacja-encji-slabych" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">3.4.5. </span>Identyfikacja encji słabych<a class="headerlink" href="#identyfikacja-encji-slabych" title="Link to this heading">¶</a></h3>
 <p>Występuje relacja wiele-do-wielu (M:N) między Czytelnikiem a Książką (czytelnik czyta wiele książek, książka jest czytana przez wielu czytelników). Związek ten rozwiązywany jest przez encję asocjacyjną <strong>Wypożyczenia</strong>, która przechowuje wszystkie historyczne i bieżące transakcje między dwoma stronami.
 * <strong>Uzasadnienie:</strong> Byt ten nie istnieje samodzielnie w oderwaniu od konkretnego Czytelnika i konkretnej Książki.</p>
 </section>
 <section id="schemat-w-notacji-chena">
-<h3><span class="section-number">3.3.5. </span>Schemat w notacji Chena<a class="headerlink" href="#schemat-w-notacji-chena" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">3.4.6. </span>Schemat w notacji Chena<a class="headerlink" href="#schemat-w-notacji-chena" title="Link to this heading">¶</a></h3>
 <a class="reference internal image-reference" href="../_images/model_konceptualny_biblioteka.png"><img alt="Model konceptualny bazy danych biblioteki (Schemat Chena)." src="../_images/model_konceptualny_biblioteka.png" style="width: 80%;" />
 </a>
 </section>
 </section>
 <section id="model-logiczny-i-proces-normalizacji">
-<h2><span class="section-number">3.4. </span>Model logiczny i proces normalizacji<a class="headerlink" href="#model-logiczny-i-proces-normalizacji" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">3.5. </span>Model logiczny i proces normalizacji<a class="headerlink" href="#model-logiczny-i-proces-normalizacji" title="Link to this heading">¶</a></h2>
 <section id="przebieg-procesu-normalizacji">
-<h3><span class="section-number">3.4.1. </span>Przebieg procesu normalizacji<a class="headerlink" href="#przebieg-procesu-normalizacji" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">3.5.1. </span>Przebieg procesu normalizacji<a class="headerlink" href="#przebieg-procesu-normalizacji" title="Link to this heading">¶</a></h3>
 <p><strong>Krok 1: Pierwsza Postać Normalna (1NF)</strong>
 Wiersze są unikalne, tworzymy sztuczne klucze główne (ID_Wypozyczenia). Wartości w komórkach są atomowe. Pojawia się duża redundancja danych adresowych i książkowych.</p>
 <p><strong>Krok 2: Druga Postać Normalna (2NF)</strong>
@@ -137,7 +175,7 @@ Tworzymy bazowe tabele: <code class="docutils literal notranslate"><span class="
 Eliminacja zależności przechodnich. Z tabeli <code class="docutils literal notranslate"><span class="pre">Ksiazki</span></code> wydzielamy powtarzające się nazwy gatunków do tabeli <code class="docutils literal notranslate"><span class="pre">Kategorie</span></code> (klucz: ID_Kategorii) oraz dane twórców do tabeli <code class="docutils literal notranslate"><span class="pre">Autorzy</span></code> (klucz: ID_Autora). Każda tabela reprezentuje teraz niezależną encję o jasno określonym celu biznesowym.</p>
 </section>
 <section id="ostateczna-struktura-tabel-3nf">
-<h3><span class="section-number">3.4.2. </span>Ostateczna struktura tabel (3NF)<a class="headerlink" href="#ostateczna-struktura-tabel-3nf" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">3.5.2. </span>Ostateczna struktura tabel (3NF)<a class="headerlink" href="#ostateczna-struktura-tabel-3nf" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong>Czytelnicy:</strong> ID_Czytelnika (PK), Imie, Nazwisko, Ulica, Kod_Pocztowy, Miasto, Data_Zapisu</p></li>
 <li><p><strong>Autorzy:</strong> ID_Autora (PK), Imie, Nazwisko</p></li>
@@ -147,16 +185,16 @@ Eliminacja zależności przechodnich. Z tabeli <code class="docutils literal not
 </ul>
 </section>
 <section id="diagram-erd-model-logiczny">
-<h3><span class="section-number">3.4.3. </span>Diagram ERD (Model Logiczny)<a class="headerlink" href="#diagram-erd-model-logiczny" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">3.5.3. </span>Diagram ERD (Model Logiczny)<a class="headerlink" href="#diagram-erd-model-logiczny" title="Link to this heading">¶</a></h3>
 <a class="reference internal image-reference" href="../_images/erd_logiczny_biblioteka.png"><img alt="Diagram logiczny ERD bazy danych biblioteki (Postać 3NF)." src="../_images/erd_logiczny_biblioteka.png" style="width: 80%;" />
 </a>
 </section>
 </section>
 <section id="model-fizyczny-bazy-danych">
-<h2><span class="section-number">3.5. </span>Model fizyczny bazy danych<a class="headerlink" href="#model-fizyczny-bazy-danych" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">3.6. </span>Model fizyczny bazy danych<a class="headerlink" href="#model-fizyczny-bazy-danych" title="Link to this heading">¶</a></h2>
 <p>Różnice implementacyjne między modelami fizycznymi wynikają wprost z silników RDBMS – ograniczeń typowania SQLite oraz bogatych możliwości deklaratywnych PostgreSQL.</p>
 <section id="model-fizyczny-dla-srodowiska-sqlite">
-<h3><span class="section-number">3.5.1. </span>Model fizyczny dla środowiska SQLite<a class="headerlink" href="#model-fizyczny-dla-srodowiska-sqlite" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">3.6.1. </span>Model fizyczny dla środowiska SQLite<a class="headerlink" href="#model-fizyczny-dla-srodowiska-sqlite" title="Link to this heading">¶</a></h3>
 <p>Z uwagi na okrojony zestaw typów, daty są mapowane jako TEXT.</p>
 <ul class="simple">
 <li><p><strong>Czytelnicy:</strong> ID_Czytelnika : INTEGER PRIMARY KEY, Imie : TEXT, Nazwisko : TEXT, Ulica : TEXT, Kod_Pocztowy : TEXT, Miasto : TEXT, Data_Zapisu : TEXT</p></li>
@@ -169,7 +207,7 @@ Eliminacja zależności przechodnich. Z tabeli <code class="docutils literal not
 </a>
 </section>
 <section id="model-fizyczny-dla-srodowiska-postgresql">
-<h3><span class="section-number">3.5.2. </span>Model fizyczny dla środowiska PostgreSQL<a class="headerlink" href="#model-fizyczny-dla-srodowiska-postgresql" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">3.6.2. </span>Model fizyczny dla środowiska PostgreSQL<a class="headerlink" href="#model-fizyczny-dla-srodowiska-postgresql" title="Link to this heading">¶</a></h3>
 <p>PostgreSQL umożliwia zastosowanie precyzyjnych i natywnych typów, w tym rygorystycznych typów daty (DATE) oraz optymalizacji pamięciowej dla ciągów znaków (VARCHAR).</p>
 <ul class="simple">
 <li><p><strong>Czytelnicy:</strong> ID_Czytelnika : SERIAL PRIMARY KEY, Imie : VARCHAR(50), Nazwisko : VARCHAR(50), Ulica : VARCHAR(100), Kod_Pocztowy : VARCHAR(6), Miasto : VARCHAR(50), Data_Zapisu : DATE DEFAULT CURRENT_DATE</p></li>
