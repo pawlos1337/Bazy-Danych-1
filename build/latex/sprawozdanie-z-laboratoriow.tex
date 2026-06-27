@@ -3180,14 +3180,14 @@ Pobiera listę czytelników, którzy w historii wypożyczyli więcej książek n
 Wykorzystuje funkcje agregujące, złączenia (JOIN) oraz klauzulę HAVING.
 
 \sphinxAtStartPar
-\sphinxstylestrong{Zapytanie SQL:}:
+\sphinxstylestrong{Zapytanie SQL:}
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{SELECT} \PYG{n}{c}\PYG{o}{.}\PYG{n}{Imie}\PYG{p}{,} \PYG{n}{c}\PYG{o}{.}\PYG{n}{Nazwisko}\PYG{p}{,} \PYG{n}{COUNT}\PYG{p}{(}\PYG{n}{w}\PYG{o}{.}\PYG{n}{ID\PYGZus{}Wypozyczenia}\PYG{p}{)} \PYG{k}{as} \PYG{n}{suma} 
-\PYG{n}{FROM} \PYG{n}{Czytelnicy} \PYG{n}{c} 
-\PYG{n}{JOIN} \PYG{n}{Wypozyczenia} \PYG{n}{w} \PYG{n}{ON} \PYG{n}{c}\PYG{o}{.}\PYG{n}{ID\PYGZus{}Czytelnika} \PYG{o}{=} \PYG{n}{w}\PYG{o}{.}\PYG{n}{ID\PYGZus{}Czytelnika} 
-\PYG{n}{GROUP} \PYG{n}{BY} \PYG{n}{c}\PYG{o}{.}\PYG{n}{ID\PYGZus{}Czytelnika} 
-\PYG{n}{HAVING} \PYG{n}{COUNT}\PYG{p}{(}\PYG{n}{w}\PYG{o}{.}\PYG{n}{ID\PYGZus{}Wypozyczenia}\PYG{p}{)} \PYG{o}{\PYGZgt{}} \PYG{o}{\PYGZpc{}}\PYG{n}{s}\PYG{p}{;}
+\PYG{k}{SELECT}\PYG{+w}{ }\PYG{k}{c}\PYG{p}{.}\PYG{n}{Imie}\PYG{p}{,}\PYG{+w}{ }\PYG{k}{c}\PYG{p}{.}\PYG{n}{Nazwisko}\PYG{p}{,}\PYG{+w}{ }\PYG{k}{COUNT}\PYG{p}{(}\PYG{n}{w}\PYG{p}{.}\PYG{n}{ID\PYGZus{}Wypozyczenia}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{as}\PYG{+w}{ }\PYG{n}{suma}\PYG{+w}{ }
+\PYG{k}{FROM}\PYG{+w}{ }\PYG{n}{Czytelnicy}\PYG{+w}{ }\PYG{k}{c}\PYG{+w}{ }
+\PYG{k}{JOIN}\PYG{+w}{ }\PYG{n}{Wypozyczenia}\PYG{+w}{ }\PYG{n}{w}\PYG{+w}{ }\PYG{k}{ON}\PYG{+w}{ }\PYG{k}{c}\PYG{p}{.}\PYG{n}{ID\PYGZus{}Czytelnika}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{w}\PYG{p}{.}\PYG{n}{ID\PYGZus{}Czytelnika}\PYG{+w}{ }
+\PYG{k}{GROUP}\PYG{+w}{ }\PYG{k}{BY}\PYG{+w}{ }\PYG{k}{c}\PYG{p}{.}\PYG{n}{ID\PYGZus{}Czytelnika}\PYG{+w}{ }
+\PYG{k}{HAVING}\PYG{+w}{ }\PYG{k}{COUNT}\PYG{p}{(}\PYG{n}{w}\PYG{p}{.}\PYG{n}{ID\PYGZus{}Wypozyczenia}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{o}{\PYGZpc{}}\PYG{n}{s}\PYG{p}{;}
 \end{sphinxVerbatim}
 \begin{quote}\begin{description}
 \sphinxlineitem{Parameters}\begin{itemize}
@@ -3224,14 +3224,14 @@ Pobiera dane czytelników, którzy zapisali się do biblioteki, ale nigdy nie wy
 Zastosowano operator zbiorowy EXCEPT (odjęcie zbioru aktywnych od wszystkich).
 
 \sphinxAtStartPar
-\sphinxstylestrong{Zapytanie SQL:}:
+\sphinxstylestrong{Zapytanie SQL:}
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{SELECT} \PYG{n}{ID\PYGZus{}Czytelnika}\PYG{p}{,} \PYG{n}{Imie}\PYG{p}{,} \PYG{n}{Nazwisko} \PYG{n}{FROM} \PYG{n}{Czytelnicy}
-\PYG{n}{EXCEPT}
-\PYG{n}{SELECT} \PYG{n}{c}\PYG{o}{.}\PYG{n}{ID\PYGZus{}Czytelnika}\PYG{p}{,} \PYG{n}{c}\PYG{o}{.}\PYG{n}{Imie}\PYG{p}{,} \PYG{n}{c}\PYG{o}{.}\PYG{n}{Nazwisko} 
-\PYG{n}{FROM} \PYG{n}{Czytelnicy} \PYG{n}{c} 
-\PYG{n}{JOIN} \PYG{n}{Wypozyczenia} \PYG{n}{w} \PYG{n}{ON} \PYG{n}{c}\PYG{o}{.}\PYG{n}{ID\PYGZus{}Czytelnika} \PYG{o}{=} \PYG{n}{w}\PYG{o}{.}\PYG{n}{ID\PYGZus{}Czytelnika}\PYG{p}{;}
+\PYG{k}{SELECT}\PYG{+w}{ }\PYG{n}{ID\PYGZus{}Czytelnika}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Imie}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Nazwisko}\PYG{+w}{ }\PYG{k}{FROM}\PYG{+w}{ }\PYG{n}{Czytelnicy}
+\PYG{k}{EXCEPT}
+\PYG{k}{SELECT}\PYG{+w}{ }\PYG{k}{c}\PYG{p}{.}\PYG{n}{ID\PYGZus{}Czytelnika}\PYG{p}{,}\PYG{+w}{ }\PYG{k}{c}\PYG{p}{.}\PYG{n}{Imie}\PYG{p}{,}\PYG{+w}{ }\PYG{k}{c}\PYG{p}{.}\PYG{n}{Nazwisko}\PYG{+w}{ }
+\PYG{k}{FROM}\PYG{+w}{ }\PYG{n}{Czytelnicy}\PYG{+w}{ }\PYG{k}{c}\PYG{+w}{ }
+\PYG{k}{JOIN}\PYG{+w}{ }\PYG{n}{Wypozyczenia}\PYG{+w}{ }\PYG{n}{w}\PYG{+w}{ }\PYG{k}{ON}\PYG{+w}{ }\PYG{k}{c}\PYG{p}{.}\PYG{n}{ID\PYGZus{}Czytelnika}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{w}\PYG{p}{.}\PYG{n}{ID\PYGZus{}Czytelnika}\PYG{p}{;}
 \end{sphinxVerbatim}
 \begin{quote}\begin{description}
 \sphinxlineitem{Parameters}
@@ -3261,12 +3261,12 @@ Zwraca ujednoliconą listę wszystkich osób figurujących w systemie (polimorfi
 Używa operatora zbiorowego UNION.
 
 \sphinxAtStartPar
-\sphinxstylestrong{Zapytanie SQL:}:
+\sphinxstylestrong{Zapytanie SQL:}
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{SELECT} \PYG{n}{Imie}\PYG{p}{,} \PYG{n}{Nazwisko}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Czytelnik}\PYG{l+s+s1}{\PYGZsq{}} \PYG{k}{as} \PYG{n}{Rola} \PYG{n}{FROM} \PYG{n}{Czytelnicy} 
-\PYG{n}{UNION} 
-\PYG{n}{SELECT} \PYG{n}{Imie}\PYG{p}{,} \PYG{n}{Nazwisko}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Autor}\PYG{l+s+s1}{\PYGZsq{}} \PYG{k}{as} \PYG{n}{Rola} \PYG{n}{FROM} \PYG{n}{Autorzy}\PYG{p}{;}
+\PYG{k}{SELECT}\PYG{+w}{ }\PYG{n}{Imie}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Nazwisko}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}Czytelnik\PYGZsq{}}\PYG{+w}{ }\PYG{k}{as}\PYG{+w}{ }\PYG{n}{Rola}\PYG{+w}{ }\PYG{k}{FROM}\PYG{+w}{ }\PYG{n}{Czytelnicy}\PYG{+w}{ }
+\PYG{k}{UNION}\PYG{+w}{ }
+\PYG{k}{SELECT}\PYG{+w}{ }\PYG{n}{Imie}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Nazwisko}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}Autor\PYGZsq{}}\PYG{+w}{ }\PYG{k}{as}\PYG{+w}{ }\PYG{n}{Rola}\PYG{+w}{ }\PYG{k}{FROM}\PYG{+w}{ }\PYG{n}{Autorzy}\PYG{p}{;}
 \end{sphinxVerbatim}
 \begin{quote}\begin{description}
 \sphinxlineitem{Parameters}
@@ -3296,14 +3296,14 @@ Wyszukuje tytuły książek, które kiedykolwiek zostały wypożyczone przez mie
 Wykorzystuje podzapytanie skorelowane z operatorem EXISTS w klauzuli WHERE.
 
 \sphinxAtStartPar
-\sphinxstylestrong{Zapytanie SQL:}:
+\sphinxstylestrong{Zapytanie SQL:}
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{SELECT} \PYG{n}{Tytul} \PYG{n}{FROM} \PYG{n}{Ksiazki} \PYG{n}{k} 
-\PYG{n}{WHERE} \PYG{n}{EXISTS} \PYG{p}{(}
-    \PYG{n}{SELECT} \PYG{l+m+mi}{1} \PYG{n}{FROM} \PYG{n}{Wypozyczenia} \PYG{n}{w} 
-    \PYG{n}{JOIN} \PYG{n}{Czytelnicy} \PYG{n}{c} \PYG{n}{ON} \PYG{n}{w}\PYG{o}{.}\PYG{n}{ID\PYGZus{}Czytelnika} \PYG{o}{=} \PYG{n}{c}\PYG{o}{.}\PYG{n}{ID\PYGZus{}Czytelnika} 
-    \PYG{n}{WHERE} \PYG{n}{w}\PYG{o}{.}\PYG{n}{ID\PYGZus{}Ksiazki} \PYG{o}{=} \PYG{n}{k}\PYG{o}{.}\PYG{n}{ID\PYGZus{}Ksiazki} \PYG{n}{AND} \PYG{n}{c}\PYG{o}{.}\PYG{n}{Miasto} \PYG{o}{=} \PYG{o}{\PYGZpc{}}\PYG{n}{s}
+\PYG{k}{SELECT}\PYG{+w}{ }\PYG{n}{Tytul}\PYG{+w}{ }\PYG{k}{FROM}\PYG{+w}{ }\PYG{n}{Ksiazki}\PYG{+w}{ }\PYG{n}{k}\PYG{+w}{ }
+\PYG{k}{WHERE}\PYG{+w}{ }\PYG{k}{EXISTS}\PYG{+w}{ }\PYG{p}{(}
+\PYG{+w}{    }\PYG{k}{SELECT}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{+w}{ }\PYG{k}{FROM}\PYG{+w}{ }\PYG{n}{Wypozyczenia}\PYG{+w}{ }\PYG{n}{w}\PYG{+w}{ }
+\PYG{+w}{    }\PYG{k}{JOIN}\PYG{+w}{ }\PYG{n}{Czytelnicy}\PYG{+w}{ }\PYG{k}{c}\PYG{+w}{ }\PYG{k}{ON}\PYG{+w}{ }\PYG{n}{w}\PYG{p}{.}\PYG{n}{ID\PYGZus{}Czytelnika}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{c}\PYG{p}{.}\PYG{n}{ID\PYGZus{}Czytelnika}\PYG{+w}{ }
+\PYG{+w}{    }\PYG{k}{WHERE}\PYG{+w}{ }\PYG{n}{w}\PYG{p}{.}\PYG{n}{ID\PYGZus{}Ksiazki}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{k}\PYG{p}{.}\PYG{n}{ID\PYGZus{}Ksiazki}\PYG{+w}{ }\PYG{k}{AND}\PYG{+w}{ }\PYG{k}{c}\PYG{p}{.}\PYG{n}{Miasto}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{o}{\PYGZpc{}}\PYG{n}{s}
 \PYG{p}{)}\PYG{p}{;}
 \end{sphinxVerbatim}
 \begin{quote}\begin{description}
@@ -3341,14 +3341,14 @@ Zwraca szczegółowe dane o książkach wydanych po zadanym roku wraz z ilości�
 Używa podzapytania w klauzuli SELECT oraz funkcji wierszowej UPPER().
 
 \sphinxAtStartPar
-\sphinxstylestrong{Zapytanie SQL:}:
+\sphinxstylestrong{Zapytanie SQL:}
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{SELECT} \PYG{n}{k}\PYG{o}{.}\PYG{n}{Tytul}\PYG{p}{,} \PYG{n}{UPPER}\PYG{p}{(}\PYG{n}{a}\PYG{o}{.}\PYG{n}{Nazwisko}\PYG{p}{)} \PYG{n}{AS} \PYG{n}{Autor}\PYG{p}{,} 
-    \PYG{p}{(}\PYG{n}{SELECT} \PYG{n}{COUNT}\PYG{p}{(}\PYG{o}{*}\PYG{p}{)} \PYG{n}{FROM} \PYG{n}{Wypozyczenia} \PYG{n}{w} \PYG{n}{WHERE} \PYG{n}{w}\PYG{o}{.}\PYG{n}{ID\PYGZus{}Ksiazki} \PYG{o}{=} \PYG{n}{k}\PYG{o}{.}\PYG{n}{ID\PYGZus{}Ksiazki}\PYG{p}{)} \PYG{n}{AS} \PYG{n}{Total} 
-\PYG{n}{FROM} \PYG{n}{Ksiazki} \PYG{n}{k} 
-\PYG{n}{JOIN} \PYG{n}{Autorzy} \PYG{n}{a} \PYG{n}{ON} \PYG{n}{k}\PYG{o}{.}\PYG{n}{ID\PYGZus{}Autora} \PYG{o}{=} \PYG{n}{a}\PYG{o}{.}\PYG{n}{ID\PYGZus{}Autora} 
-\PYG{n}{WHERE} \PYG{n}{k}\PYG{o}{.}\PYG{n}{Rok\PYGZus{}Wydania} \PYG{o}{\PYGZgt{}} \PYG{o}{\PYGZpc{}}\PYG{n}{s}\PYG{p}{;}
+\PYG{k}{SELECT}\PYG{+w}{ }\PYG{n}{k}\PYG{p}{.}\PYG{n}{Tytul}\PYG{p}{,}\PYG{+w}{ }\PYG{k}{UPPER}\PYG{p}{(}\PYG{n}{a}\PYG{p}{.}\PYG{n}{Nazwisko}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{AS}\PYG{+w}{ }\PYG{n}{Autor}\PYG{p}{,}\PYG{+w}{ }
+\PYG{+w}{    }\PYG{p}{(}\PYG{k}{SELECT}\PYG{+w}{ }\PYG{k}{COUNT}\PYG{p}{(}\PYG{o}{*}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{FROM}\PYG{+w}{ }\PYG{n}{Wypozyczenia}\PYG{+w}{ }\PYG{n}{w}\PYG{+w}{ }\PYG{k}{WHERE}\PYG{+w}{ }\PYG{n}{w}\PYG{p}{.}\PYG{n}{ID\PYGZus{}Ksiazki}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{k}\PYG{p}{.}\PYG{n}{ID\PYGZus{}Ksiazki}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{AS}\PYG{+w}{ }\PYG{n}{Total}\PYG{+w}{ }
+\PYG{k}{FROM}\PYG{+w}{ }\PYG{n}{Ksiazki}\PYG{+w}{ }\PYG{n}{k}\PYG{+w}{ }
+\PYG{k}{JOIN}\PYG{+w}{ }\PYG{n}{Autorzy}\PYG{+w}{ }\PYG{n}{a}\PYG{+w}{ }\PYG{k}{ON}\PYG{+w}{ }\PYG{n}{k}\PYG{p}{.}\PYG{n}{ID\PYGZus{}Autora}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{a}\PYG{p}{.}\PYG{n}{ID\PYGZus{}Autora}\PYG{+w}{ }
+\PYG{k}{WHERE}\PYG{+w}{ }\PYG{n}{k}\PYG{p}{.}\PYG{n}{Rok\PYGZus{}Wydania}\PYG{+w}{ }\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{o}{\PYGZpc{}}\PYG{n}{s}\PYG{p}{;}
 \end{sphinxVerbatim}
 \begin{quote}\begin{description}
 \sphinxlineitem{Parameters}\begin{itemize}
@@ -3385,16 +3385,16 @@ Wyszukuje aktualnie trwające wypożyczenia (brak zwrotu) posortowane od najstar
 Wykorzystuje funkcję wierszową DATE().
 
 \sphinxAtStartPar
-\sphinxstylestrong{Zapytanie SQL:}:
+\sphinxstylestrong{Zapytanie SQL:}
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-SELECT k.Tytul, c.Imie, c.Nazwisko, DATE(w.Data\PYGZus{}Wypozyczenia) as Data 
-FROM Wypozyczenia w 
-JOIN Czytelnicy c ON w.ID\PYGZus{}Czytelnika = c.ID\PYGZus{}Czytelnika 
-JOIN Ksiazki k ON w.ID\PYGZus{}Ksiazki = k.ID\PYGZus{}Ksiazki 
-WHERE w.Data\PYGZus{}Zwrotu IS NULL 
-ORDER BY w.Data\PYGZus{}Wypozyczenia ASC 
-LIMIT ?;
+\PYG{k}{SELECT}\PYG{+w}{ }\PYG{n}{k}\PYG{p}{.}\PYG{n}{Tytul}\PYG{p}{,}\PYG{+w}{ }\PYG{k}{c}\PYG{p}{.}\PYG{n}{Imie}\PYG{p}{,}\PYG{+w}{ }\PYG{k}{c}\PYG{p}{.}\PYG{n}{Nazwisko}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nb}{DATE}\PYG{p}{(}\PYG{n}{w}\PYG{p}{.}\PYG{n}{Data\PYGZus{}Wypozyczenia}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{as}\PYG{+w}{ }\PYG{k}{Data}\PYG{+w}{ }
+\PYG{k}{FROM}\PYG{+w}{ }\PYG{n}{Wypozyczenia}\PYG{+w}{ }\PYG{n}{w}\PYG{+w}{ }
+\PYG{k}{JOIN}\PYG{+w}{ }\PYG{n}{Czytelnicy}\PYG{+w}{ }\PYG{k}{c}\PYG{+w}{ }\PYG{k}{ON}\PYG{+w}{ }\PYG{n}{w}\PYG{p}{.}\PYG{n}{ID\PYGZus{}Czytelnika}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{c}\PYG{p}{.}\PYG{n}{ID\PYGZus{}Czytelnika}\PYG{+w}{ }
+\PYG{k}{JOIN}\PYG{+w}{ }\PYG{n}{Ksiazki}\PYG{+w}{ }\PYG{n}{k}\PYG{+w}{ }\PYG{k}{ON}\PYG{+w}{ }\PYG{n}{w}\PYG{p}{.}\PYG{n}{ID\PYGZus{}Ksiazki}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{k}\PYG{p}{.}\PYG{n}{ID\PYGZus{}Ksiazki}\PYG{+w}{ }
+\PYG{k}{WHERE}\PYG{+w}{ }\PYG{n}{w}\PYG{p}{.}\PYG{n}{Data\PYGZus{}Zwrotu}\PYG{+w}{ }\PYG{k}{IS}\PYG{+w}{ }\PYG{k}{NULL}\PYG{+w}{ }
+\PYG{k}{ORDER}\PYG{+w}{ }\PYG{k}{BY}\PYG{+w}{ }\PYG{n}{w}\PYG{p}{.}\PYG{n}{Data\PYGZus{}Wypozyczenia}\PYG{+w}{ }\PYG{k}{ASC}\PYG{+w}{ }
+\PYG{k}{LIMIT}\PYG{+w}{ }\PYG{o}{?}\PYG{p}{;}
 \end{sphinxVerbatim}
 \begin{quote}\begin{description}
 \sphinxlineitem{Parameters}\begin{itemize}
@@ -3431,12 +3431,12 @@ Pobiera nazwy kategorii bez przypisanych książek.
 Demonstruje wykorzystanie LEFT JOIN w celu znalezienia brakujących relacji (IS NULL).
 
 \sphinxAtStartPar
-\sphinxstylestrong{Zapytanie SQL:}:
+\sphinxstylestrong{Zapytanie SQL:}
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{SELECT} \PYG{n}{kat}\PYG{o}{.}\PYG{n}{Nazwa\PYGZus{}Kategorii} \PYG{n}{FROM} \PYG{n}{Kategorie} \PYG{n}{kat} 
-\PYG{n}{LEFT} \PYG{n}{JOIN} \PYG{n}{Ksiazki} \PYG{n}{k} \PYG{n}{ON} \PYG{n}{kat}\PYG{o}{.}\PYG{n}{ID\PYGZus{}Kategorii} \PYG{o}{=} \PYG{n}{k}\PYG{o}{.}\PYG{n}{ID\PYGZus{}Kategorii} 
-\PYG{n}{WHERE} \PYG{n}{k}\PYG{o}{.}\PYG{n}{ID\PYGZus{}Ksiazki} \PYG{n}{IS} \PYG{n}{NULL}\PYG{p}{;}
+\PYG{k}{SELECT}\PYG{+w}{ }\PYG{n}{kat}\PYG{p}{.}\PYG{n}{Nazwa\PYGZus{}Kategorii}\PYG{+w}{ }\PYG{k}{FROM}\PYG{+w}{ }\PYG{n}{Kategorie}\PYG{+w}{ }\PYG{n}{kat}\PYG{+w}{ }
+\PYG{k}{LEFT}\PYG{+w}{ }\PYG{k}{JOIN}\PYG{+w}{ }\PYG{n}{Ksiazki}\PYG{+w}{ }\PYG{n}{k}\PYG{+w}{ }\PYG{k}{ON}\PYG{+w}{ }\PYG{n}{kat}\PYG{p}{.}\PYG{n}{ID\PYGZus{}Kategorii}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{k}\PYG{p}{.}\PYG{n}{ID\PYGZus{}Kategorii}\PYG{+w}{ }
+\PYG{k}{WHERE}\PYG{+w}{ }\PYG{n}{k}\PYG{p}{.}\PYG{n}{ID\PYGZus{}Ksiazki}\PYG{+w}{ }\PYG{k}{IS}\PYG{+w}{ }\PYG{k}{NULL}\PYG{p}{;}
 \end{sphinxVerbatim}
 \begin{quote}\begin{description}
 \sphinxlineitem{Parameters}
@@ -3466,14 +3466,14 @@ Tworzy zaawansowany raport o autorach, zliczając ich dzieła oraz wskazując ty
 Używa podzapytania nieskorelowanego w klauzuli SELECT.
 
 \sphinxAtStartPar
-\sphinxstylestrong{Zapytanie SQL:}:
+\sphinxstylestrong{Zapytanie SQL:}
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{SELECT} \PYG{n}{a}\PYG{o}{.}\PYG{n}{Imie}\PYG{p}{,} \PYG{n}{a}\PYG{o}{.}\PYG{n}{Nazwisko}\PYG{p}{,} \PYG{n}{COUNT}\PYG{p}{(}\PYG{n}{k}\PYG{o}{.}\PYG{n}{ID\PYGZus{}Ksiazki}\PYG{p}{)} \PYG{k}{as} \PYG{n}{Suma\PYGZus{}dziel}\PYG{p}{,} 
-    \PYG{p}{(}\PYG{n}{SELECT} \PYG{n}{Tytul} \PYG{n}{FROM} \PYG{n}{Ksiazki} \PYG{n}{WHERE} \PYG{n}{ID\PYGZus{}Autora} \PYG{o}{=} \PYG{n}{a}\PYG{o}{.}\PYG{n}{ID\PYGZus{}Autora} \PYG{n}{ORDER} \PYG{n}{BY} \PYG{n}{Rok\PYGZus{}Wydania} \PYG{n}{DESC} \PYG{n}{LIMIT} \PYG{l+m+mi}{1}\PYG{p}{)} \PYG{k}{as} \PYG{n}{Najnowsza} 
-\PYG{n}{FROM} \PYG{n}{Autorzy} \PYG{n}{a} 
-\PYG{n}{LEFT} \PYG{n}{JOIN} \PYG{n}{Ksiazki} \PYG{n}{k} \PYG{n}{ON} \PYG{n}{a}\PYG{o}{.}\PYG{n}{ID\PYGZus{}Autora} \PYG{o}{=} \PYG{n}{k}\PYG{o}{.}\PYG{n}{ID\PYGZus{}Autora} 
-\PYG{n}{GROUP} \PYG{n}{BY} \PYG{n}{a}\PYG{o}{.}\PYG{n}{ID\PYGZus{}Autora}\PYG{p}{;}
+\PYG{k}{SELECT}\PYG{+w}{ }\PYG{n}{a}\PYG{p}{.}\PYG{n}{Imie}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{a}\PYG{p}{.}\PYG{n}{Nazwisko}\PYG{p}{,}\PYG{+w}{ }\PYG{k}{COUNT}\PYG{p}{(}\PYG{n}{k}\PYG{p}{.}\PYG{n}{ID\PYGZus{}Ksiazki}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{as}\PYG{+w}{ }\PYG{n}{Suma\PYGZus{}dziel}\PYG{p}{,}\PYG{+w}{ }
+\PYG{+w}{    }\PYG{p}{(}\PYG{k}{SELECT}\PYG{+w}{ }\PYG{n}{Tytul}\PYG{+w}{ }\PYG{k}{FROM}\PYG{+w}{ }\PYG{n}{Ksiazki}\PYG{+w}{ }\PYG{k}{WHERE}\PYG{+w}{ }\PYG{n}{ID\PYGZus{}Autora}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{a}\PYG{p}{.}\PYG{n}{ID\PYGZus{}Autora}\PYG{+w}{ }\PYG{k}{ORDER}\PYG{+w}{ }\PYG{k}{BY}\PYG{+w}{ }\PYG{n}{Rok\PYGZus{}Wydania}\PYG{+w}{ }\PYG{k}{DESC}\PYG{+w}{ }\PYG{k}{LIMIT}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{as}\PYG{+w}{ }\PYG{n}{Najnowsza}\PYG{+w}{ }
+\PYG{k}{FROM}\PYG{+w}{ }\PYG{n}{Autorzy}\PYG{+w}{ }\PYG{n}{a}\PYG{+w}{ }
+\PYG{k}{LEFT}\PYG{+w}{ }\PYG{k}{JOIN}\PYG{+w}{ }\PYG{n}{Ksiazki}\PYG{+w}{ }\PYG{n}{k}\PYG{+w}{ }\PYG{k}{ON}\PYG{+w}{ }\PYG{n}{a}\PYG{p}{.}\PYG{n}{ID\PYGZus{}Autora}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{k}\PYG{p}{.}\PYG{n}{ID\PYGZus{}Autora}\PYG{+w}{ }
+\PYG{k}{GROUP}\PYG{+w}{ }\PYG{k}{BY}\PYG{+w}{ }\PYG{n}{a}\PYG{p}{.}\PYG{n}{ID\PYGZus{}Autora}\PYG{p}{;}
 \end{sphinxVerbatim}
 \begin{quote}\begin{description}
 \sphinxlineitem{Parameters}
@@ -3503,12 +3503,12 @@ Oblicza średnią liczbę wypożyczonych książek na aktywnego czytelnika.
 Wykorzystuje podzapytanie w klauzuli FROM do zagnieżdżonej agregacji danych.
 
 \sphinxAtStartPar
-\sphinxstylestrong{Zapytanie SQL:}:
+\sphinxstylestrong{Zapytanie SQL:}
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{SELECT} \PYG{n}{AVG}\PYG{p}{(}\PYG{n}{suma}\PYG{p}{)} \PYG{n}{FROM} \PYG{p}{(}
-    \PYG{n}{SELECT} \PYG{n}{COUNT}\PYG{p}{(}\PYG{n}{ID\PYGZus{}Wypozyczenia}\PYG{p}{)} \PYG{k}{as} \PYG{n}{suma} 
-    \PYG{n}{FROM} \PYG{n}{Wypozyczenia} \PYG{n}{GROUP} \PYG{n}{BY} \PYG{n}{ID\PYGZus{}Czytelnika}
+\PYG{k}{SELECT}\PYG{+w}{ }\PYG{k}{AVG}\PYG{p}{(}\PYG{n}{suma}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{FROM}\PYG{+w}{ }\PYG{p}{(}
+\PYG{+w}{    }\PYG{k}{SELECT}\PYG{+w}{ }\PYG{k}{COUNT}\PYG{p}{(}\PYG{n}{ID\PYGZus{}Wypozyczenia}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{as}\PYG{+w}{ }\PYG{n}{suma}\PYG{+w}{ }
+\PYG{+w}{    }\PYG{k}{FROM}\PYG{+w}{ }\PYG{n}{Wypozyczenia}\PYG{+w}{ }\PYG{k}{GROUP}\PYG{+w}{ }\PYG{k}{BY}\PYG{+w}{ }\PYG{n}{ID\PYGZus{}Czytelnika}
 \PYG{p}{)}\PYG{p}{;}
 \end{sphinxVerbatim}
 \begin{quote}\begin{description}
@@ -3539,20 +3539,20 @@ Zwraca czytelników, którzy wypożyczali książki z kategorii ‘Fantastyka’
 Używa operatora zbiorowego INTERSECT (część wspólna zbiorów).
 
 \sphinxAtStartPar
-\sphinxstylestrong{Zapytanie SQL:}:
+\sphinxstylestrong{Zapytanie SQL:}
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{SELECT} \PYG{n}{c}\PYG{o}{.}\PYG{n}{Imie}\PYG{p}{,} \PYG{n}{c}\PYG{o}{.}\PYG{n}{Nazwisko} \PYG{n}{FROM} \PYG{n}{Czytelnicy} \PYG{n}{c} 
-\PYG{n}{JOIN} \PYG{n}{Wypozyczenia} \PYG{n}{w} \PYG{n}{ON} \PYG{n}{c}\PYG{o}{.}\PYG{n}{ID\PYGZus{}Czytelnika} \PYG{o}{=} \PYG{n}{w}\PYG{o}{.}\PYG{n}{ID\PYGZus{}Czytelnika} 
-\PYG{n}{JOIN} \PYG{n}{Ksiazki} \PYG{n}{k} \PYG{n}{ON} \PYG{n}{w}\PYG{o}{.}\PYG{n}{ID\PYGZus{}Ksiazki} \PYG{o}{=} \PYG{n}{k}\PYG{o}{.}\PYG{n}{ID\PYGZus{}Ksiazki} 
-\PYG{n}{JOIN} \PYG{n}{Kategorie} \PYG{n}{kat} \PYG{n}{ON} \PYG{n}{k}\PYG{o}{.}\PYG{n}{ID\PYGZus{}Kategorii} \PYG{o}{=} \PYG{n}{kat}\PYG{o}{.}\PYG{n}{ID\PYGZus{}Kategorii} 
-\PYG{n}{WHERE} \PYG{n}{kat}\PYG{o}{.}\PYG{n}{Nazwa\PYGZus{}Kategorii} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Fantastyka}\PYG{l+s+s1}{\PYGZsq{}}
-\PYG{n}{INTERSECT}
-\PYG{n}{SELECT} \PYG{n}{c}\PYG{o}{.}\PYG{n}{Imie}\PYG{p}{,} \PYG{n}{c}\PYG{o}{.}\PYG{n}{Nazwisko} \PYG{n}{FROM} \PYG{n}{Czytelnicy} \PYG{n}{c} 
-\PYG{n}{JOIN} \PYG{n}{Wypozyczenia} \PYG{n}{w} \PYG{n}{ON} \PYG{n}{c}\PYG{o}{.}\PYG{n}{ID\PYGZus{}Czytelnika} \PYG{o}{=} \PYG{n}{w}\PYG{o}{.}\PYG{n}{ID\PYGZus{}Czytelnika} 
-\PYG{n}{JOIN} \PYG{n}{Ksiazki} \PYG{n}{k} \PYG{n}{ON} \PYG{n}{w}\PYG{o}{.}\PYG{n}{ID\PYGZus{}Ksiazki} \PYG{o}{=} \PYG{n}{k}\PYG{o}{.}\PYG{n}{ID\PYGZus{}Ksiazki} 
-\PYG{n}{JOIN} \PYG{n}{Kategorie} \PYG{n}{kat} \PYG{n}{ON} \PYG{n}{k}\PYG{o}{.}\PYG{n}{ID\PYGZus{}Kategorii} \PYG{o}{=} \PYG{n}{kat}\PYG{o}{.}\PYG{n}{ID\PYGZus{}Kategorii} 
-\PYG{n}{WHERE} \PYG{n}{kat}\PYG{o}{.}\PYG{n}{Nazwa\PYGZus{}Kategorii} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Kryminał}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{;}
+\PYG{k}{SELECT}\PYG{+w}{ }\PYG{k}{c}\PYG{p}{.}\PYG{n}{Imie}\PYG{p}{,}\PYG{+w}{ }\PYG{k}{c}\PYG{p}{.}\PYG{n}{Nazwisko}\PYG{+w}{ }\PYG{k}{FROM}\PYG{+w}{ }\PYG{n}{Czytelnicy}\PYG{+w}{ }\PYG{k}{c}\PYG{+w}{ }
+\PYG{k}{JOIN}\PYG{+w}{ }\PYG{n}{Wypozyczenia}\PYG{+w}{ }\PYG{n}{w}\PYG{+w}{ }\PYG{k}{ON}\PYG{+w}{ }\PYG{k}{c}\PYG{p}{.}\PYG{n}{ID\PYGZus{}Czytelnika}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{w}\PYG{p}{.}\PYG{n}{ID\PYGZus{}Czytelnika}\PYG{+w}{ }
+\PYG{k}{JOIN}\PYG{+w}{ }\PYG{n}{Ksiazki}\PYG{+w}{ }\PYG{n}{k}\PYG{+w}{ }\PYG{k}{ON}\PYG{+w}{ }\PYG{n}{w}\PYG{p}{.}\PYG{n}{ID\PYGZus{}Ksiazki}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{k}\PYG{p}{.}\PYG{n}{ID\PYGZus{}Ksiazki}\PYG{+w}{ }
+\PYG{k}{JOIN}\PYG{+w}{ }\PYG{n}{Kategorie}\PYG{+w}{ }\PYG{n}{kat}\PYG{+w}{ }\PYG{k}{ON}\PYG{+w}{ }\PYG{n}{k}\PYG{p}{.}\PYG{n}{ID\PYGZus{}Kategorii}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{kat}\PYG{p}{.}\PYG{n}{ID\PYGZus{}Kategorii}\PYG{+w}{ }
+\PYG{k}{WHERE}\PYG{+w}{ }\PYG{n}{kat}\PYG{p}{.}\PYG{n}{Nazwa\PYGZus{}Kategorii}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}Fantastyka\PYGZsq{}}
+\PYG{k}{INTERSECT}
+\PYG{k}{SELECT}\PYG{+w}{ }\PYG{k}{c}\PYG{p}{.}\PYG{n}{Imie}\PYG{p}{,}\PYG{+w}{ }\PYG{k}{c}\PYG{p}{.}\PYG{n}{Nazwisko}\PYG{+w}{ }\PYG{k}{FROM}\PYG{+w}{ }\PYG{n}{Czytelnicy}\PYG{+w}{ }\PYG{k}{c}\PYG{+w}{ }
+\PYG{k}{JOIN}\PYG{+w}{ }\PYG{n}{Wypozyczenia}\PYG{+w}{ }\PYG{n}{w}\PYG{+w}{ }\PYG{k}{ON}\PYG{+w}{ }\PYG{k}{c}\PYG{p}{.}\PYG{n}{ID\PYGZus{}Czytelnika}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{w}\PYG{p}{.}\PYG{n}{ID\PYGZus{}Czytelnika}\PYG{+w}{ }
+\PYG{k}{JOIN}\PYG{+w}{ }\PYG{n}{Ksiazki}\PYG{+w}{ }\PYG{n}{k}\PYG{+w}{ }\PYG{k}{ON}\PYG{+w}{ }\PYG{n}{w}\PYG{p}{.}\PYG{n}{ID\PYGZus{}Ksiazki}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{k}\PYG{p}{.}\PYG{n}{ID\PYGZus{}Ksiazki}\PYG{+w}{ }
+\PYG{k}{JOIN}\PYG{+w}{ }\PYG{n}{Kategorie}\PYG{+w}{ }\PYG{n}{kat}\PYG{+w}{ }\PYG{k}{ON}\PYG{+w}{ }\PYG{n}{k}\PYG{p}{.}\PYG{n}{ID\PYGZus{}Kategorii}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{kat}\PYG{p}{.}\PYG{n}{ID\PYGZus{}Kategorii}\PYG{+w}{ }
+\PYG{k}{WHERE}\PYG{+w}{ }\PYG{n}{kat}\PYG{p}{.}\PYG{n}{Nazwa\PYGZus{}Kategorii}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}Kryminał\PYGZsq{}}\PYG{p}{;}
 \end{sphinxVerbatim}
 \begin{quote}\begin{description}
 \sphinxlineitem{Parameters}
