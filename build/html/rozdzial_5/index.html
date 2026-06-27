@@ -44,6 +44,11 @@
 <section id="wstep">
 <h2><span class="section-number">5.1. </span>Wstęp<a class="headerlink" href="#wstep" title="Link to this heading">¶</a></h2>
 <p>Po zdefiniowaniu znormalizowanego modelu logicznego i zasileniu struktur bazodanowych w poprzednich rozdziałach, system biblioteczny wymagał interfejsu zdolnego do obsługi zaawansowanej logiki biznesowej. Zamiast osadzać instrukcje SQL bezpośrednio w warstwie prezentacji, zaimplementowano dedykowaną warstwę dostępu do danych (<em>Data Access Layer</em>) w języku Python. Moduł ten zapewnia pełną abstrakcję, obsługując równolegle środowisko produkcyjne (PostgreSQL) oraz prototypowe (SQLite).</p>
+<p>Wszystkie skrypty i zapytania zostały zaimplementowane, przetestowane oraz uruchomione w środowisku JupyterLab na serwerze laboratoryjnym.</p>
+<ul class="simple">
+<li><p><strong>Katalog z funkcjami na serwerze:</strong> <code class="docutils literal notranslate"><span class="pre">/home/student15/lab/CLABC01/</span></code></p></li>
+<li><p><strong>Repozytorium z kodem modułu:</strong> <a class="reference external" href="https://github.com/baguetedev/Bazy-Danych-pliki">GitHub - Bazy-Danych-pliki</a></p></li>
+</ul>
 <p>Zrezygnowano z trywialnych operacji CRUD na rzecz zapytań agregujących i analitycznych, które przenoszą ciężar obliczeniowy z aplikacji na silnik bazy danych. Wykorzystano zaawansowane techniki tworzenia rozbudowanych zapytań SQL, w tym:</p>
 <ul class="simple">
 <li><p><strong>Podzapytania (skorelowane i nieskorelowane):</strong> Izolacja danych w klauzulach <code class="docutils literal notranslate"><span class="pre">SELECT</span></code>, <code class="docutils literal notranslate"><span class="pre">FROM</span></code> i <code class="docutils literal notranslate"><span class="pre">WHERE</span></code>, optymalizująca m.in. wielowarstwowe filtrowanie geolokalizacyjne w potężnych zbiorach danych.</p></li>
@@ -54,33 +59,33 @@
 </section>
 <section id="pelna-specyfikacja-stworzonego-api">
 <h2><span class="section-number">5.2. </span>Pełna specyfikacja stworzonego API<a class="headerlink" href="#pelna-specyfikacja-stworzonego-api" title="Link to this heading">¶</a></h2>
-<p>Zgodnie z dobrymi praktykami inżynierii oprogramowania, poniżej przedstawiono pełną, zautomatyzowaną specyfikację interfejsu programistycznego. Dokumentacja modułu obsługującego komunikację z bazami PostgreSQL oraz SQLite została wygenerowana bezpośrednio na podstawie komentarzy strukturalnych (Docstrings).</p>
+<p>Zgodnie z dobrymi praktykami inżynierii oprogramowania, poniżej przedstawiono pełną, zautomatyzowaną specyfikację interfejsu programistycznego. Dokumentacja modułu obsługującego komunikację z bazami PostgreSQL oraz SQLite została wygenerowana bezpośrednio na podstawie komentarzy strukturalnych (Docstrings), w których dla pełnej przejrzystości zawarto również surowe kody zapytań SQL.</p>
 <p>Zastosowanie mechanizmu kompilatora Sphinx gwarantuje absolutną zgodność dokumentacji ze stanem faktycznym implementacji w warstwie Python, eliminując problem z ręczną dezaktualizacją opisów.</p>
-<section id="modul-biblioteka-zapytania">
-<span id="module-biblioteka_zapytania"></span><h3><span class="section-number">5.2.1. </span>Moduł biblioteka_zapytania<a class="headerlink" href="#modul-biblioteka-zapytania" title="Link to this heading">¶</a></h3>
-<p>Moduł zawiera zestaw zaawansowanych zapytań SQL do obsługi systemu zarządzania biblioteką.
-Obsługuje dwa silniki bazodanowe: PostgreSQL oraz SQLite.</p>
-<p>Wymagania:
-- psycopg2 (lub psycopg) dla PostgreSQL
-- sqlite3 (wbudowany) dla SQLite</p>
-</section>
+<p id="module-biblioteka_zapytania">Moduł realizujący warstwę dostępu do danych (Data Access Layer) dla systemu bibliotecznego.
+Zawiera zaawansowane zapytania SQL obsługujące bazy PostgreSQL oraz SQLite.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="biblioteka_zapytania.get_aktywni_czytelnicy_powyzej_limitu">
 <span class="sig-prename descclassname"><span class="pre">biblioteka_zapytania.</span></span><span class="sig-name descname"><span class="pre">get_aktywni_czytelnicy_powyzej_limitu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">conn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit_wypozyczen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#biblioteka_zapytania.get_aktywni_czytelnicy_powyzej_limitu" title="Link to this definition">¶</a></dt>
 <dd><p>Pobiera listę czytelników, którzy w historii wypożyczyli więcej książek niż wynosi podany limit.
-Wykorzystuje funkcje agregujące, złączenia oraz klauzulę HAVING.</p>
+Wykorzystuje funkcje agregujące, złączenia (JOIN) oraz klauzulę HAVING.</p>
+<p><strong>Zapytanie SQL:</strong>
+.. code-block:: sql</p>
+<blockquote>
+<div><p>SELECT c.Imie, c.Nazwisko, COUNT(w.ID_Wypozyczenia) as suma 
+FROM Czytelnicy c 
+JOIN Wypozyczenia w ON c.ID_Czytelnika = w.ID_Czytelnika 
+GROUP BY c.ID_Czytelnika 
+HAVING COUNT(w.ID_Wypozyczenia) &gt; %s;</p>
+</div></blockquote>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>conn</strong> (<em>psycopg2.extensions.connection</em>) – Obiekt aktywnego połączenia z bazą PostgreSQL (psycopg2).</p></li>
-<li><p><strong>limit_wypozyczen</strong> (<em>int</em>) – Minimalna liczba wypożyczeń uprawniająca do znalezienia się na liście.</p></li>
+<li><p><strong>conn</strong> – Obiekt aktywnego połączenia z bazą PostgreSQL.</p></li>
+<li><p><strong>limit_wypozyczen</strong> – Minimalna liczba wypożyczeń.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Lista krotek zawierająca imię, nazwisko i sumę wypożyczeń czytelnika.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>list[tuple]</p>
+<dd class="field-even"><p>Lista krotek (Imie, Nazwisko, Suma wypozyczen).</p>
 </dd>
 </dl>
 </dd></dl>
@@ -88,17 +93,23 @@ Wykorzystuje funkcje agregujące, złączenia oraz klauzulę HAVING.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="biblioteka_zapytania.get_czytelnicy_bez_wypozyczen">
 <span class="sig-prename descclassname"><span class="pre">biblioteka_zapytania.</span></span><span class="sig-name descname"><span class="pre">get_czytelnicy_bez_wypozyczen</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">conn</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#biblioteka_zapytania.get_czytelnicy_bez_wypozyczen" title="Link to this definition">¶</a></dt>
-<dd><p>Pobiera dane czytelników, którzy zapisali się do biblioteki, ale nigdy nie wypożyczyli żadnej książki.
-Zastosowano tu operator zbiorowy EXCEPT w celu odjęcia zbioru aktywnych od wszystkich.</p>
+<dd><p>Pobiera dane czytelników, którzy zapisali się do biblioteki, ale nigdy nie wypożyczyli książki.
+Zastosowano operator zbiorowy EXCEPT (odjęcie zbioru aktywnych od wszystkich).</p>
+<p><strong>Zapytanie SQL:</strong>
+.. code-block:: sql</p>
+<blockquote>
+<div><p>SELECT ID_Czytelnika, Imie, Nazwisko FROM Czytelnicy
+EXCEPT
+SELECT c.ID_Czytelnika, c.Imie, c.Nazwisko 
+FROM Czytelnicy c 
+JOIN Wypozyczenia w ON c.ID_Czytelnika = w.ID_Czytelnika;</p>
+</div></blockquote>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>conn</strong> (<em>psycopg2.extensions.connection</em>) – Obiekt aktywnego połączenia z bazą PostgreSQL.</p>
+<dd class="field-odd"><p><strong>conn</strong> – Obiekt aktywnego połączenia z bazą PostgreSQL.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Lista krotek z danymi czytelników (ID, Imię, Nazwisko).</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>list[tuple]</p>
+<dd class="field-even"><p>Lista krotek z danymi biernych czytelników.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -106,17 +117,21 @@ Zastosowano tu operator zbiorowy EXCEPT w celu odjęcia zbioru aktywnych od wszy
 <dl class="py function">
 <dt class="sig sig-object py" id="biblioteka_zapytania.get_katalog_osob">
 <span class="sig-prename descclassname"><span class="pre">biblioteka_zapytania.</span></span><span class="sig-name descname"><span class="pre">get_katalog_osob</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">conn</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#biblioteka_zapytania.get_katalog_osob" title="Link to this definition">¶</a></dt>
-<dd><p>Zwraca ujednoliconą listę wszystkich osób figurujących w systemie, przypisując im odpowiednią
-rolę. Używa operatora zbiorowego UNION w celu złączenia tabel Czytelnicy i Autorzy.</p>
+<dd><p>Zwraca ujednoliconą listę wszystkich osób figurujących w systemie (polimorfizm encji).
+Używa operatora zbiorowego UNION.</p>
+<p><strong>Zapytanie SQL:</strong>
+.. code-block:: sql</p>
+<blockquote>
+<div><p>SELECT Imie, Nazwisko, ‘Czytelnik’ as Rola FROM Czytelnicy 
+UNION 
+SELECT Imie, Nazwisko, ‘Autor’ as Rola FROM Autorzy;</p>
+</div></blockquote>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>conn</strong> (<em>sqlite3.Connection</em>) – Obiekt połączenia z bazą SQLite.</p>
+<dd class="field-odd"><p><strong>conn</strong> – Obiekt połączenia z bazą SQLite.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Lista krotek postaci (Imię, Nazwisko, Rola).</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>list[tuple]</p>
+<dd class="field-even"><p>Lista krotek (Imie, Nazwisko, Rola).</p>
 </dd>
 </dl>
 </dd></dl>
@@ -125,19 +140,28 @@ rolę. Używa operatora zbiorowego UNION w celu złączenia tabel Czytelnicy i A
 <dt class="sig sig-object py" id="biblioteka_zapytania.get_ksiazki_wypozyczone_w_miescie">
 <span class="sig-prename descclassname"><span class="pre">biblioteka_zapytania.</span></span><span class="sig-name descname"><span class="pre">get_ksiazki_wypozyczone_w_miescie</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">conn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nazwa_miasta</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#biblioteka_zapytania.get_ksiazki_wypozyczone_w_miescie" title="Link to this definition">¶</a></dt>
 <dd><p>Wyszukuje tytuły książek, które kiedykolwiek zostały wypożyczone przez mieszkańców określonego miasta.
-Rozwiązanie bazuje na podzapytaniu skorelowanym w klauzuli WHERE.</p>
+Wykorzystuje podzapytanie skorelowane z operatorem EXISTS w klauzuli WHERE.</p>
+<p><strong>Zapytanie SQL:</strong>
+.. code-block:: sql</p>
+<blockquote>
+<div><p>SELECT Tytul FROM Ksiazki k 
+WHERE EXISTS (</p>
+<blockquote>
+<div><p>SELECT 1 FROM Wypozyczenia w 
+JOIN Czytelnicy c ON w.ID_Czytelnika = c.ID_Czytelnika 
+WHERE w.ID_Ksiazki = k.ID_Ksiazki AND c.Miasto = %s</p>
+</div></blockquote>
+<p>);</p>
+</div></blockquote>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>conn</strong> (<em>psycopg2.extensions.connection</em>) – Obiekt aktywnego połączenia z bazą PostgreSQL.</p></li>
-<li><p><strong>nazwa_miasta</strong> (<em>str</em>) – Nazwa miasta do przefiltrowania czytelników.</p></li>
+<li><p><strong>conn</strong> – Obiekt aktywnego połączenia z bazą PostgreSQL.</p></li>
+<li><p><strong>nazwa_miasta</strong> – Ciąg znaków oznaczający miasto.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Lista krotek zawierająca wyłącznie tytuły książek.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>list[tuple]</p>
+<dd class="field-even"><p>Lista krotek z tytułami książek.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -145,20 +169,28 @@ Rozwiązanie bazuje na podzapytaniu skorelowanym w klauzuli WHERE.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="biblioteka_zapytania.get_ksiazki_z_iloscia_wypozyczen">
 <span class="sig-prename descclassname"><span class="pre">biblioteka_zapytania.</span></span><span class="sig-name descname"><span class="pre">get_ksiazki_z_iloscia_wypozyczen</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">conn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rok_od</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#biblioteka_zapytania.get_ksiazki_z_iloscia_wypozyczen" title="Link to this definition">¶</a></dt>
-<dd><p>Zwraca szczegółowe dane o książkach wydanych po zadanym roku wraz z ilością ich historycznych 
-wypożyczeń. Wykorzystuje funkcje wierszowe (UPPER) oraz podzapytanie w klauzuli SELECT.</p>
+<dd><p>Zwraca szczegółowe dane o książkach wydanych po zadanym roku wraz z ilością ich historycznych wypożyczeń.
+Używa podzapytania w klauzuli SELECT oraz funkcji wierszowej UPPER().</p>
+<p><strong>Zapytanie SQL:</strong>
+.. code-block:: sql</p>
+<blockquote>
+<div><dl class="simple">
+<dt>SELECT k.Tytul, UPPER(a.Nazwisko) AS Autor, </dt><dd><p>(SELECT COUNT(*) FROM Wypozyczenia w WHERE w.ID_Ksiazki = k.ID_Ksiazki) AS Total</p>
+</dd>
+</dl>
+<p>FROM Ksiazki k 
+JOIN Autorzy a ON k.ID_Autora = a.ID_Autora 
+WHERE k.Rok_Wydania &gt; %s;</p>
+</div></blockquote>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>conn</strong> (<em>psycopg2.extensions.connection</em>) – Obiekt aktywnego połączenia z bazą PostgreSQL.</p></li>
-<li><p><strong>rok_od</strong> (<em>int</em>) – Dolna granica roku wydania książki (wyłącznie).</p></li>
+<li><p><strong>conn</strong> – Obiekt aktywnego połączenia z bazą PostgreSQL.</p></li>
+<li><p><strong>rok_od</strong> – Dolna granica roku wydania.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Lista krotek (Tytuł, ZWielkiejLitery_NazwiskoAutora, Total_Wypozyczen).</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>list[tuple]</p>
+<dd class="field-even"><p>Lista krotek z tytułem, nazwiskiem autora i liczbą wypożyczeń.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -166,20 +198,28 @@ wypożyczeń. Wykorzystuje funkcje wierszowe (UPPER) oraz podzapytanie w klauzul
 <dl class="py function">
 <dt class="sig sig-object py" id="biblioteka_zapytania.get_najdluzej_przetrzymywane">
 <span class="sig-prename descclassname"><span class="pre">biblioteka_zapytania.</span></span><span class="sig-name descname"><span class="pre">get_najdluzej_przetrzymywane</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">conn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit_rekordow</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#biblioteka_zapytania.get_najdluzej_przetrzymywane" title="Link to this definition">¶</a></dt>
-<dd><p>Wyszukuje wypożyczenia, które aktualnie trwają (brak daty zwrotu) i sortuje je rosnąco od 
-najstarszych. Wykorzystuje funkcję wierszową DATE() silnika SQLite działającą na ciągach TEXT.</p>
+<dd><p>Wyszukuje aktualnie trwające wypożyczenia (brak zwrotu) posortowane od najstarszych.
+Wykorzystuje funkcję wierszową DATE().</p>
+<p><strong>Zapytanie SQL:</strong>
+.. code-block:: sql</p>
+<blockquote>
+<div><p>SELECT k.Tytul, c.Imie, c.Nazwisko, DATE(w.Data_Wypozyczenia) as Data 
+FROM Wypozyczenia w 
+JOIN Czytelnicy c ON w.ID_Czytelnika = c.ID_Czytelnika 
+JOIN Ksiazki k ON w.ID_Ksiazki = k.ID_Ksiazki 
+WHERE w.Data_Zwrotu IS NULL 
+ORDER BY w.Data_Wypozyczenia ASC 
+LIMIT ?;</p>
+</div></blockquote>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>conn</strong> (<em>sqlite3.Connection</em>) – Obiekt połączenia z bazą SQLite.</p></li>
-<li><p><strong>limit_rekordow</strong> (<em>int</em>) – Liczba rekordów do zwrócenia (LIMIT).</p></li>
+<li><p><strong>conn</strong> – Obiekt połączenia z bazą SQLite.</p></li>
+<li><p><strong>limit_rekordow</strong> – Liczba zwracanych wyników.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Lista krotek (Tytuł, Imię, Nazwisko, Data wypożyczenia).</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>list[tuple]</p>
+<dd class="field-even"><p>Lista niezakończonych wypożyczeń.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -187,17 +227,21 @@ najstarszych. Wykorzystuje funkcję wierszową DATE() silnika SQLite działając
 <dl class="py function">
 <dt class="sig sig-object py" id="biblioteka_zapytania.get_puste_kategorie">
 <span class="sig-prename descclassname"><span class="pre">biblioteka_zapytania.</span></span><span class="sig-name descname"><span class="pre">get_puste_kategorie</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">conn</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#biblioteka_zapytania.get_puste_kategorie" title="Link to this definition">¶</a></dt>
-<dd><p>Pobiera nazwy kategorii, do których aktualnie nie przypisano żadnych książek w inwentarzu.
-Demonstruje wykorzystanie LEFT JOIN w celu znalezienia brakujących relacji (NULL).</p>
+<dd><p>Pobiera nazwy kategorii bez przypisanych książek.
+Demonstruje wykorzystanie LEFT JOIN w celu znalezienia brakujących relacji (IS NULL).</p>
+<p><strong>Zapytanie SQL:</strong>
+.. code-block:: sql</p>
+<blockquote>
+<div><p>SELECT kat.Nazwa_Kategorii FROM Kategorie kat 
+LEFT JOIN Ksiazki k ON kat.ID_Kategorii = k.ID_Kategorii 
+WHERE k.ID_Ksiazki IS NULL;</p>
+</div></blockquote>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>conn</strong> (<em>sqlite3.Connection</em>) – Obiekt połączenia z bazą SQLite.</p>
+<dd class="field-odd"><p><strong>conn</strong> – Obiekt połączenia z bazą SQLite.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Lista krotek z nazwami “pustych” kategorii.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>list[tuple]</p>
+<dd class="field-even"><p>Lista pustych kategorii.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -205,17 +249,25 @@ Demonstruje wykorzystanie LEFT JOIN w celu znalezienia brakujących relacji (NUL
 <dl class="py function">
 <dt class="sig sig-object py" id="biblioteka_zapytania.get_raport_autorow">
 <span class="sig-prename descclassname"><span class="pre">biblioteka_zapytania.</span></span><span class="sig-name descname"><span class="pre">get_raport_autorow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">conn</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#biblioteka_zapytania.get_raport_autorow" title="Link to this definition">¶</a></dt>
-<dd><p>Tworzy zaawansowany raport o autorach, zliczając ich wszystkie książki oraz wskazując 
-tytuł chronologicznie najnowszego dzieła za pomocą podzapytania w SELECT.</p>
+<dd><p>Tworzy zaawansowany raport o autorach, zliczając ich dzieła oraz wskazując tytuł chronologicznie najnowszego dzieła.
+Używa podzapytania nieskorelowanego w klauzuli SELECT.</p>
+<p><strong>Zapytanie SQL:</strong>
+.. code-block:: sql</p>
+<blockquote>
+<div><dl class="simple">
+<dt>SELECT a.Imie, a.Nazwisko, COUNT(k.ID_Ksiazki) as Suma_dziel, </dt><dd><p>(SELECT Tytul FROM Ksiazki WHERE ID_Autora = a.ID_Autora ORDER BY Rok_Wydania DESC LIMIT 1) as Najnowsza</p>
+</dd>
+</dl>
+<p>FROM Autorzy a 
+LEFT JOIN Ksiazki k ON a.ID_Autora = k.ID_Autora 
+GROUP BY a.ID_Autora;</p>
+</div></blockquote>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>conn</strong> (<em>sqlite3.Connection</em>) – Obiekt połączenia z bazą SQLite.</p>
+<dd class="field-odd"><p><strong>conn</strong> – Obiekt połączenia z bazą SQLite.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Lista krotek (Imię autora, Nazwisko, Suma dzieł, Tytuł najnowszej książki).</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>list[tuple]</p>
+<dd class="field-even"><p>Zestawienie analityczne dorobku autorów.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -223,17 +275,24 @@ tytuł chronologicznie najnowszego dzieła za pomocą podzapytania w SELECT.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="biblioteka_zapytania.get_srednia_wypozyczen_na_czytelnika">
 <span class="sig-prename descclassname"><span class="pre">biblioteka_zapytania.</span></span><span class="sig-name descname"><span class="pre">get_srednia_wypozyczen_na_czytelnika</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">conn</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#biblioteka_zapytania.get_srednia_wypozyczen_na_czytelnika" title="Link to this definition">¶</a></dt>
-<dd><p>Oblicza średnią liczbę wypożyczonych książek przypadającą na jednego aktywnego czytelnika.
-Wykorzystuje podzapytanie w klauzuli FROM do wcześniejszej agregacji danych.</p>
+<dd><p>Oblicza średnią liczbę wypożyczonych książek na aktywnego czytelnika.
+Wykorzystuje podzapytanie w klauzuli FROM do zagnieżdżonej agregacji danych.</p>
+<p><strong>Zapytanie SQL:</strong>
+.. code-block:: sql</p>
+<blockquote>
+<div><dl class="simple">
+<dt>SELECT AVG(suma) FROM (</dt><dd><p>SELECT COUNT(ID_Wypozyczenia) as suma 
+FROM Wypozyczenia GROUP BY ID_Czytelnika</p>
+</dd>
+</dl>
+<p>);</p>
+</div></blockquote>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>conn</strong> (<em>sqlite3.Connection</em>) – Obiekt połączenia z bazą SQLite.</p>
+<dd class="field-odd"><p><strong>conn</strong> – Obiekt połączenia z bazą SQLite.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Zwraca jedną krotkę z pojedynczą wartością zmiennoprzecinkową (średnia).</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>list[tuple]</p>
+<dd class="field-even"><p>Średnia wartość zmiennoprzecinkowa.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -241,17 +300,29 @@ Wykorzystuje podzapytanie w klauzuli FROM do wcześniejszej agregacji danych.</p
 <dl class="py function">
 <dt class="sig sig-object py" id="biblioteka_zapytania.get_wszechstronni_czytelnicy">
 <span class="sig-prename descclassname"><span class="pre">biblioteka_zapytania.</span></span><span class="sig-name descname"><span class="pre">get_wszechstronni_czytelnicy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">conn</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#biblioteka_zapytania.get_wszechstronni_czytelnicy" title="Link to this definition">¶</a></dt>
-<dd><p>Zwraca czytelników (Imię i Nazwisko), którzy wypożyczali książki z kategorii ‘Fantastyka’
-oraz jednocześnie z kategorii ‘Kryminał’. Używa operatora zbiorowego INTERSECT.</p>
+<dd><p>Zwraca czytelników, którzy wypożyczali książki z kategorii ‘Fantastyka’ oraz z ‘Kryminał’.
+Używa operatora zbiorowego INTERSECT (część wspólna zbiorów).</p>
+<p><strong>Zapytanie SQL:</strong>
+.. code-block:: sql</p>
+<blockquote>
+<div><p>SELECT c.Imie, c.Nazwisko FROM Czytelnicy c 
+JOIN Wypozyczenia w ON c.ID_Czytelnika = w.ID_Czytelnika 
+JOIN Ksiazki k ON w.ID_Ksiazki = k.ID_Ksiazki 
+JOIN Kategorie kat ON k.ID_Kategorii = kat.ID_Kategorii 
+WHERE kat.Nazwa_Kategorii = ‘Fantastyka’
+INTERSECT
+SELECT c.Imie, c.Nazwisko FROM Czytelnicy c 
+JOIN Wypozyczenia w ON c.ID_Czytelnika = w.ID_Czytelnika 
+JOIN Ksiazki k ON w.ID_Ksiazki = k.ID_Ksiazki 
+JOIN Kategorie kat ON k.ID_Kategorii = kat.ID_Kategorii 
+WHERE kat.Nazwa_Kategorii = ‘Kryminał’;</p>
+</div></blockquote>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>conn</strong> (<em>psycopg2.extensions.connection</em>) – Obiekt aktywnego połączenia z bazą PostgreSQL.</p>
+<dd class="field-odd"><p><strong>conn</strong> – Obiekt aktywnego połączenia z bazą PostgreSQL.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Lista krotek z imionami i nazwiskami wszechstronnych czytelników.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>list[tuple]</p>
+<dd class="field-even"><p>Lista krotek z imionami i nazwiskami czytelników.</p>
 </dd>
 </dl>
 </dd></dl>

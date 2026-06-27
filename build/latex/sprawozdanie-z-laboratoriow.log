@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2025/dev/Debian) (preloaded format=pdflatex 2026.3.1)  27 JUN 2026 14:43
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2025/dev/Debian) (preloaded format=pdflatex 2026.3.1)  27 JUN 2026 15:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -893,44 +893,43 @@ File: ts1qtm.fd 2009/09/25 v1.2 font definition file for TS1/qtm
 
 {/usr/share/texmf/fonts/enc/dvips/tex-gyre/q-ts1.enc}]
 Chapter 1.
-
+LaTeX Font Info:    Trying to load font information for T1+txtt on input line 1
+79.
+(/usr/share/texlive/texmf-dist/tex/latex/txfonts/t1txtt.fd
+File: t1txtt.fd 2000/12/15 v3.1
+)
 
 [2
 
 ]
+
+[3]
 Chapter 2.
 
 
-[3
+[4
 
 ]
-
-[4]
 
 [5]
 
 [6]
-LaTeX Font Info:    Trying to load font information for T1+txtt on input line 5
-60.
- (/usr/share/texlive/texmf-dist/tex/latex/txfonts/t1txtt.fd
-File: t1txtt.fd 2000/12/15 v3.1
-)
 
 [7]
-LaTeX Font Info:    Font shape `T1/txtt/m/it' in size <10.95> not available
-(Font)              Font shape `T1/txtt/m/sl' tried instead on input line 670.
-LaTeX Font Info:    Font shape `T1/txtt/b/n' in size <10.95> not available
-(Font)              Font shape `T1/txtt/bx/n' tried instead on input line 695.
-
 
 [8]
+LaTeX Font Info:    Font shape `T1/txtt/m/it' in size <10.95> not available
+(Font)              Font shape `T1/txtt/m/sl' tried instead on input line 694.
+LaTeX Font Info:    Font shape `T1/txtt/b/n' in size <10.95> not available
+(Font)              Font shape `T1/txtt/bx/n' tried instead on input line 719.
+
+
+[9]
 LaTeX Font Info:    Trying to load font information for TS1+txtt on input line 
 1.
  (/usr/share/texlive/texmf-dist/tex/latex/txfonts/ts1txtt.fd
 File: ts1txtt.fd 2000/12/15 v3.1
 )
-
-[9]
 
 [10]
 
@@ -939,24 +938,24 @@ File: ts1txtt.fd 2000/12/15 v3.1
 [12]
 
 [13]
+
+[14]
 LaTeX Font Info:    Trying to load font information for U+fontawesomefree1 on i
-nput line 1442.
+nput line 1466.
  (/usr/share/texlive/texmf-dist/tex/latex/fontawesome5/ufontawesomefree1.fd)
 
-[14{/usr/share/texlive/texmf-dist/fonts/enc/dvips/fontawesome5/fa5free1.enc}]
-
-[15]
+[15{/usr/share/texlive/texmf-dist/fonts/enc/dvips/fontawesome5/fa5free1.enc}]
 
 [16]
-Underfull \hbox (badness 10000) in paragraph at lines 1653--1656
+
+[17]
+Underfull \hbox (badness 10000) in paragraph at lines 1677--1680
 [][][][][]\T1/qtm/m/n/9 Oracle Doc-u-men-ta-tion, \T1/qtm/m/it/9 AU-DIT_TRAIL \
 T1/qtm/m/n/9 oraz in-for-ma-cje o uni-fied au-dit-ing, [][]$https : / / docs . 
 oracle . com / en / database / oracle /
  []
 
 
-
-[17]
 
 [18]
 
@@ -985,95 +984,117 @@ oracle . com / en / database / oracle /
 [30]
 
 [31]
+
+[32]
 Chapter 3.
 
 
-[32
+[33
 
 ]
 
-[33]
-<model_konceptualny_biblioteka.png, id=1004, 1891.065pt x 1276.77pt>
+[34]
+<model_konceptualny_biblioteka.png, id=1007, 1891.065pt x 1276.77pt>
 File: model_konceptualny_biblioteka.png Graphic file (type png)
 <use model_konceptualny_biblioteka.png>
 Package pdftex.def Info: model_konceptualny_biblioteka.png  used on input line 
-2767.
+2791.
 (pdftex.def)             Requested size: 397.06577pt x 268.07117pt.
 
 
-[34]
-<erd_logiczny_biblioteka.png, id=1010, 712.91344pt x 181.42781pt>
+[35]
+<erd_logiczny_biblioteka.png, id=1013, 712.91344pt x 181.42781pt>
 File: erd_logiczny_biblioteka.png Graphic file (type png)
 <use erd_logiczny_biblioteka.png>
-Package pdftex.def Info: erd_logiczny_biblioteka.png  used on input line 2817.
+Package pdftex.def Info: erd_logiczny_biblioteka.png  used on input line 2841.
 (pdftex.def)             Requested size: 397.06577pt x 101.04797pt.
 
 
-[35 <./model_konceptualny_biblioteka.png>]
-<fizyczny_sqlite_biblioteka.png, id=1016, 828.84656pt x 181.42781pt>
+[36 <./model_konceptualny_biblioteka.png>]
+<fizyczny_sqlite_biblioteka.png, id=1019, 828.84656pt x 181.42781pt>
 File: fizyczny_sqlite_biblioteka.png Graphic file (type png)
 <use fizyczny_sqlite_biblioteka.png>
-Package pdftex.def Info: fizyczny_sqlite_biblioteka.png  used on input line 285
-3.
+Package pdftex.def Info: fizyczny_sqlite_biblioteka.png  used on input line 287
+7.
 (pdftex.def)             Requested size: 397.06577pt x 86.91272pt.
-<fizyczny_postgres_biblioteka.drawio.png, id=1017, 889.07156pt x 181.42781pt>
+<fizyczny_postgres_biblioteka.drawio.png, id=1020, 889.07156pt x 181.42781pt>
 File: fizyczny_postgres_biblioteka.drawio.png Graphic file (type png)
 <use fizyczny_postgres_biblioteka.drawio.png>
 Package pdftex.def Info: fizyczny_postgres_biblioteka.drawio.png  used on input
- line 2883.
+ line 2907.
 (pdftex.def)             Requested size: 397.06577pt x 81.02718pt.
 
 
-[36 <./erd_logiczny_biblioteka.png> <./fizyczny_sqlite_biblioteka.png> <./fizyc
+[37 <./erd_logiczny_biblioteka.png> <./fizyczny_sqlite_biblioteka.png> <./fizyc
 zny_postgres_biblioteka.drawio.png>]
 Chapter 4.
 
 
-[37
+[38
 
 ]
-
-[38]
-Underfull \vbox (badness 10000) detected at line 3080
- []
-
-
 
 [39]
-
-[40]
-Chapter 5.
-
-Underfull \hbox (badness 10000) in paragraph at lines 3186--3188
-[]\T1/txtt/bx/n/10.95 limit_wypozyczen \T1/qtm/m/n/10.95 (\T1/txtt/m/sl/10.95 i
-nt\T1/qtm/m/n/10.95 ) ^^U Min-i-malna liczba wypo»y-cze« up-raw-ni-a-j¡ca do
+Underfull \vbox (badness 10000) detected at line 3104
  []
 
 
 
-[41
+[40]
+
+[41]
+Chapter 5.
+
+
+[42
 
 ]
+Underfull \hbox (badness 10000) in paragraph at lines 3264--3270
+[]\T1/qtm/m/n/10.95 SE-LECT ID_Czytelnika, Imie, Nazwisko FROM Czytel-nicy EX-C
+EPT SE-LECT
+ []
 
-[42]
 
-[43] (./sprawozdanie-z-laboratoriow.aux)
+
+[43]
+Underfull \hbox (badness 6808) in paragraph at lines 3443--3451
+\T1/qtm/m/n/10.95 czenia w JOIN Czytel-nicy c ON w.ID_Czytelnika = c.ID_Czyteln
+ika JOIN Ksi-azki
+ []
+
+
+Underfull \hbox (badness 5475) in paragraph at lines 3529--3531
+\T1/qtm/m/n/10.95 (SE-LECT Ty-tul FROM Ksi-azki WHERE ID_Autora = a.ID_Autora O
+R-DER BY
+ []
+
+
+Underfull \hbox (badness 5681) in paragraph at lines 3572--3575
+\T1/qtm/m/n/10.95 SE-LECT COUNT(ID_Wypozyczenia) as suma FROM Wypozy-czenia GRO
+UP BY
+ []
+
+
+
+[44]
+
+[45] (./sprawozdanie-z-laboratoriow.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
 Package rerunfilecheck Info: File `sprawozdanie-z-laboratoriow.out' has not cha
 nged.
-(rerunfilecheck)             Checksum: 198237C8462D9BD4CBD5B45C9C6B1FC1;37128.
+(rerunfilecheck)             Checksum: 96E5FACE9EEBCE3D083C63C71A57E07D;37294.
  ) 
 Here is how much of TeX's memory you used:
- 20919 strings out of 473197
- 379714 string characters out of 5718606
- 858127 words of memory out of 5000000
- 43456 multiletter control sequences out of 15000+600000
+ 20925 strings out of 473197
+ 379795 string characters out of 5718606
+ 858242 words of memory out of 5000000
+ 43457 multiletter control sequences out of 15000+600000
  628017 words of font info for 105 fonts, out of 8000000 for 9000
  1142 hyphenation exceptions out of 8191
- 72i,12n,82p,1216b,764s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 72i,12n,82p,1216b,715s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/fontawesome5/FontAwesome5Fr
 ee-Solid.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi
 6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><
@@ -1084,10 +1105,10 @@ fonts/type1/public/tex-gyre/qtmri.pfb></usr/share/texlive/texmf-dist/fonts/type
 1/public/txfonts/t1xbtt.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/t
 xfonts/t1xtt.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/t1xt
 t.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/tcxtt.pfb>
-Output written on sprawozdanie-z-laboratoriow.pdf (47 pages, 2597548 bytes).
+Output written on sprawozdanie-z-laboratoriow.pdf (49 pages, 2601220 bytes).
 PDF statistics:
- 1187 PDF objects out of 1200 (max. 8388607)
- 1098 compressed objects within 11 object streams
- 283 named destinations out of 1000 (max. 500000)
+ 1201 PDF objects out of 1440 (max. 8388607)
+ 1109 compressed objects within 12 object streams
+ 288 named destinations out of 1000 (max. 500000)
  1297 words of extra memory for PDF output out of 10000 (max. 10000000)
 

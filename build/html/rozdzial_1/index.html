@@ -45,28 +45,38 @@
 <section id="wstep-do-sprawozdania">
 <h2><span class="section-number">1.1. </span>Wstęp do sprawozdania<a class="headerlink" href="#wstep-do-sprawozdania" title="Link to this heading">¶</a></h2>
 <p>Niniejsze sprawozdanie dokumentuje przebieg prac laboratoryjnych z przedmiotu Bazy Danych. Celem projektu jest praktyczne zastosowanie wiedzy z zakresu projektowania, wdrażania oraz obsługi systemów relacyjnych baz danych.</p>
-<p>Praca obejmuje pełen cykl życia bazy: od analizy teoretycznej, poprzez stworzenie modelu pojęciowego i logicznego, aż po fizyczną implementację w środowiskach PostgreSQL i SQLite, a także realizację procesów wsadowego zasilania danymi.</p>
+<p>Praca obejmuje pełen cykl życia bazy: od analizy teoretycznej systemów i zabezpieczeń, poprzez stworzenie modelu pojęciowego i logicznego, aż po fizyczną implementację w środowiskach PostgreSQL i SQLite. Proces ten dopełnia realizacja skryptów wsadowego zasilania danymi oraz komunikacja z bazą za pomocą dedykowanego interfejsu (Data Access Layer) w języku Python, w którym zaimplementowano zaawansowane, analityczne zapytania SQL.</p>
+</section>
+<section id="wnioski-z-przeprowadzonych-cwiczen">
+<h2><span class="section-number">1.2. </span>Wnioski z przeprowadzonych ćwiczeń<a class="headerlink" href="#wnioski-z-przeprowadzonych-cwiczen" title="Link to this heading">¶</a></h2>
+<p>Zrealizowane ćwiczenia laboratoryjne oraz eksperymenty programistyczne pozwoliły na wyciągnięcie następujących wniosków końcowych:</p>
+<ul class="simple">
+<li><p><strong>Kluczowa rola normalizacji:</strong> Prawidłowo przeprowadzona normalizacja (do 3NF) na etapie projektowania logicznego skutecznie eliminuje redundancję danych oraz zapobiega powstawaniu anomalii podczas późniejszych operacji modyfikujących.</p></li>
+<li><p><strong>Różnice w silnikach bazodanowych:</strong> Implementacja dwóch modeli fizycznych uwidoczniła przewagę PostgreSQL w rygorystycznym typowaniu i obsługi kluczy obcych nad elastyczniejszym, ale uboższym w natywne typy (np. brak formatu DATE) silnikiem SQLite.</p></li>
+<li><p><strong>Wydajność operacji wsadowych:</strong> Wykorzystanie mechanizmów wprowadzania wielowartościowego (np. <code class="docutils literal notranslate"><span class="pre">executemany()</span></code> w Pythonie) jest fundamentalne dla skrócenia czasu zasilania relacyjnych baz danych w środowisku produkcyjnym, znacząco redukując narzut komunikacyjny (overhead).</p></li>
+<li><p><strong>Przenoszenie logiki do silnika bazy:</strong> Zastosowanie zaawansowanych operatorów zbiorowych (UNION, INTERSECT), podzapytań oraz złączeń (JOIN) pozwala na optymalne wykonywanie operacji analitycznych bezpośrednio po stronie silnika bazy danych, zwalniając aplikację warstwy klienta z kosztownego przetwarzania struktur w pamięci RAM.</p></li>
+</ul>
 </section>
 <section id="wykaz-repozytoriow-linki">
-<h2><span class="section-number">1.2. </span>Wykaz repozytoriów (Linki)<a class="headerlink" href="#wykaz-repozytoriow-linki" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">1.3. </span>Wykaz repozytoriów (Linki)<a class="headerlink" href="#wykaz-repozytoriow-linki" title="Link to this heading">¶</a></h2>
 <p>Projekt został podzielony na odpowiednie repozytoria w systemie kontroli wersji Git, zapewniając porządek między dokumentacją a fizycznymi plikami środowiska bazodanowego.</p>
 <section id="glowne-repozytorium-sprawozdania-dokumentacja-sphinx">
-<h3><span class="section-number">1.2.1. </span>1. Główne repozytorium sprawozdania (Dokumentacja Sphinx)<a class="headerlink" href="#glowne-repozytorium-sprawozdania-dokumentacja-sphinx" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">1.3.1. </span>1. Główne repozytorium sprawozdania (Dokumentacja Sphinx)<a class="headerlink" href="#glowne-repozytorium-sprawozdania-dokumentacja-sphinx" title="Link to this heading">¶</a></h3>
 <p>Tutaj znajduje się struktura całej dokumentacji tekstowej, konfiguracja kompilatora Sphinx oraz historia zmian.</p>
 <ul class="simple">
 <li><p><strong>Link:</strong> <a class="reference external" href="https://github.com/baguetedev/Bazy-Danych-1">https://github.com/baguetedev/Bazy-Danych-1</a></p></li>
 </ul>
 </section>
 <section id="repozytorium-z-plikami-projektowymi">
-<h3><span class="section-number">1.2.2. </span>2. Repozytorium z plikami projektowymi<a class="headerlink" href="#repozytorium-z-plikami-projektowymi" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">1.3.2. </span>2. Repozytorium z plikami projektowymi<a class="headerlink" href="#repozytorium-z-plikami-projektowymi" title="Link to this heading">¶</a></h3>
 <p>W tym repozytorium umieszczono kody źródłowe, skrypty DDL dla silników PostgreSQL i SQLite, wygenerowany plik bazy oraz pliki CSV wykorzystywane do zasilania bazy danych.</p>
 <ul class="simple">
 <li><p><strong>Link WWW:</strong> <a class="reference external" href="https://github.com/baguetedev/Bazy-Danych-pliki">https://github.com/baguetedev/Bazy-Danych-pliki</a></p></li>
-<li><p><strong>Klonowanie SSH:</strong> <a class="reference external" href="mailto:git&#37;&#52;&#48;github&#46;com">git<span>&#64;</span>github<span>&#46;</span>com</a>:baguetedev/Bazy-Danych-pliki.git</p></li>
+<li><p><strong>Klonowanie SSH:</strong> <code class="docutils literal notranslate"><span class="pre">git&#64;github.com:baguetedev/Bazy-Danych-pliki.git</span></code></p></li>
 </ul>
 </section>
-<section id="repozytoria-reszty-grupy">
-<h3><span class="section-number">1.2.3. </span>3. Repozytoria reszty grupy<a class="headerlink" href="#repozytoria-reszty-grupy" title="Link to this heading">¶</a></h3>
+<section id="repozytoria-reszty-grupy-badania-literaturowe">
+<h3><span class="section-number">1.3.3. </span>3. Repozytoria reszty grupy (Badania literaturowe)<a class="headerlink" href="#repozytoria-reszty-grupy-badania-literaturowe" title="Link to this heading">¶</a></h3>
 <p>Poniżej znajdują się odnośniki do repozytoriów reszty grupy, które zostały zintegrowane z niniejszym sprawozdaniem w postaci submodułów w Rozdziale 2:</p>
 <ul class="simple">
 <li><p><strong>Grupa 1 (rozdzial_1):</strong> <a class="reference external" href="https://github.com/karaskamil/Sprzet-dla-bazy-danych.git">https://github.com/karaskamil/Sprzet-dla-bazy-danych.git</a></p></li>
