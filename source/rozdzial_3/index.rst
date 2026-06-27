@@ -35,12 +35,44 @@ Prototyp CSV
 ============
 Aby zweryfikować kompletność przetwarzanych informacji, przygotowano "płaską" (nieznormalizowaną) reprezentację danych dla operacji wypożyczenia, bazującą na pierwotnych wytycznych.
 
-::
+.. code-block:: text
 
     Imie,Nazwisko,Ulica,Kod_Pocztowy,Miasto,Data_Zapisu,Tytul_Ksiazki,Imie_Autora,Nazwisko_Autora,Kategoria,Data_Wypozyczenia,Data_Zwrotu
     Jan,Kowalski,Kwiatowa 1,00-001,Warszawa,2024-01-15,Wiedźmin,Andrzej,Sapkowski,Fantastyka,2024-03-01,2024-03-15
     Jan,Kowalski,Kwiatowa 1,00-001,Warszawa,2024-01-15,Pan Tadeusz,Adam,Mickiewicz,Poezja,2024-03-10,
     Anna,Nowak,Polna 2,31-444,Kraków,2023-11-05,Lśnienie,Stephen,King,Horror,2024-02-20,2024-03-05
+
+Prototyp JSON
+=============
+Poniższy dokument JSON przedstawia hierarchiczny układ pojedynczego wiersza danych testowych (zawierającego pełną operację transakcyjną), pozwalający na jednoznaczną weryfikację struktury obiektów przed procesem mapowania relacyjnego.
+
+.. code-block:: json
+
+    {
+      "czytelnik": {
+        "imie": "Jan",
+        "nazwisko": "Kowalski",
+        "adres": {
+          "ulica": "Kwiatowa 1",
+          "kod_pocztowy": "00-001",
+          "miasto": "Warszawa"
+        },
+        "data_zapisu": "2024-01-15"
+      },
+      "wypozyczenie": {
+        "ksiazka": {
+          "tytul": "Wiedźmin",
+          "rok_wydania": 1993,
+          "autor": {
+            "imie": "Andrzej",
+            "nazwisko": "Sapkowski"
+          },
+          "kategoria": "Fantastyka"
+        },
+        "data_wypozyczenia": "2024-03-01",
+        "data_zwrotu": "2024-03-15"
+      }
+    }
 
 Model Konceptualny (Pojęciowy)
 ==============================
@@ -68,6 +100,12 @@ Opis związków
 * **Kategoria – Książka (1:N):** Kategoria zawiera wiele tytułów.
 * **Czytelnik – Wypożyczenie (1:N):** Czytelnik może dokonać wielu wypożyczeń w historii.
 * **Książka – Wypożyczenie (1:N):** Jeden egzemplarz książki może być w swojej historii wypożyczany wielokrotnie różnym czytelnikom.
+
+Określenie związków niepoprawnych (Pułapki połączeń)
+----------------------------------------------------
+W ramach weryfikacji poprawności założeń strukturalnych przeanalizowano model pod kątem występowania semantycznych pułapek połączeń. 
+
+* **Pułapka typu wiatrak (Fan Trap):** Mogłaby ona wystąpić w przypadku błędnego połączenia encji bazowych, np. poprzez powiązanie encji ``Kategoria`` bezpośrednio z encją ``Czytelnik`` (w celu zapisu preferencji czytelniczych) oraz równolegle encji ``Kategoria`` z encją ``Książka``. Taka struktura uniemożliwiłaby jednoznaczne stwierdzenie na poziomie logicznym, który konkretny egzemplarz książki został wypożyczony przez daną osobę. W zaprojektowanym modelu powiązania przechodzą ściśle w sposób liniowy/hierarchiczny, gdzie relacje zbiegają się bezpośrednio w encji asocjacyjnej ``Wypożyczenie``, co całkowicie eliminuje to ryzyko.
 
 Identyfikacja encji słabych
 ---------------------------
