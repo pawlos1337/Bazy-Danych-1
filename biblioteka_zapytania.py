@@ -4,7 +4,7 @@ Zawiera zaawansowane zapytania SQL obsługujące bazy PostgreSQL oraz SQLite.
 """
 
 # ==============================================================================
-# SEKCJA 1: ZAPYTANIA DLA POSTGRESQL (Wymaga psycopg)
+# SEKCJA 1: ZAPYTANIA DLA POSTGRESQL (Wymaga psycopg2)
 # ==============================================================================
 
 def get_aktywni_czytelnicy_powyzej_limitu(conn, limit_wypozyczen):
@@ -12,7 +12,9 @@ def get_aktywni_czytelnicy_powyzej_limitu(conn, limit_wypozyczen):
     Pobiera listę czytelników, którzy w historii wypożyczyli więcej książek niż wynosi podany limit.
     Wykorzystuje funkcje agregujące, złączenia (JOIN) oraz klauzulę HAVING.
 
-    **Zapytanie SQL:**::
+    **Zapytanie SQL:**
+
+    .. code-block:: sql
 
         SELECT c.Imie, c.Nazwisko, COUNT(w.ID_Wypozyczenia) as suma 
         FROM Czytelnicy c 
@@ -40,7 +42,9 @@ def get_czytelnicy_bez_wypozyczen(conn):
     Pobiera dane czytelników, którzy zapisali się do biblioteki, ale nigdy nie wypożyczyli książki.
     Zastosowano operator zbiorowy EXCEPT (odjęcie zbioru aktywnych od wszystkich).
 
-    **Zapytanie SQL:**::
+    **Zapytanie SQL:**
+
+    .. code-block:: sql
 
         SELECT ID_Czytelnika, Imie, Nazwisko FROM Czytelnicy
         EXCEPT
@@ -67,7 +71,9 @@ def get_ksiazki_wypozyczone_w_miescie(conn, nazwa_miasta):
     Wyszukuje tytuły książek, które kiedykolwiek zostały wypożyczone przez mieszkańców określonego miasta.
     Wykorzystuje podzapytanie skorelowane z operatorem EXISTS w klauzuli WHERE.
 
-    **Zapytanie SQL:**::
+    **Zapytanie SQL:**
+
+    .. code-block:: sql
 
         SELECT Tytul FROM Ksiazki k 
         WHERE EXISTS (
@@ -97,7 +103,9 @@ def get_ksiazki_z_iloscia_wypozyczen(conn, rok_od):
     Zwraca szczegółowe dane o książkach wydanych po zadanym roku wraz z ilością ich historycznych wypożyczeń.
     Używa podzapytania w klauzuli SELECT oraz funkcji wierszowej UPPER().
 
-    **Zapytanie SQL:**::
+    **Zapytanie SQL:**
+
+    .. code-block:: sql
 
         SELECT k.Tytul, UPPER(a.Nazwisko) AS Autor, 
             (SELECT COUNT(*) FROM Wypozyczenia w WHERE w.ID_Ksiazki = k.ID_Ksiazki) AS Total 
@@ -125,7 +133,9 @@ def get_wszechstronni_czytelnicy(conn):
     Zwraca czytelników, którzy wypożyczali książki z kategorii 'Fantastyka' oraz z 'Kryminał'.
     Używa operatora zbiorowego INTERSECT (część wspólna zbiorów).
 
-    **Zapytanie SQL:**::
+    **Zapytanie SQL:**
+
+    .. code-block:: sql
 
         SELECT c.Imie, c.Nazwisko FROM Czytelnicy c 
         JOIN Wypozyczenia w ON c.ID_Czytelnika = w.ID_Czytelnika 
@@ -168,7 +178,9 @@ def get_katalog_osob(conn):
     Zwraca ujednoliconą listę wszystkich osób figurujących w systemie (polimorfizm encji).
     Używa operatora zbiorowego UNION.
 
-    **Zapytanie SQL:**::
+    **Zapytanie SQL:**
+
+    .. code-block:: sql
 
         SELECT Imie, Nazwisko, 'Czytelnik' as Rola FROM Czytelnicy 
         UNION 
@@ -191,7 +203,9 @@ def get_najdluzej_przetrzymywane(conn, limit_rekordow):
     Wyszukuje aktualnie trwające wypożyczenia (brak zwrotu) posortowane od najstarszych.
     Wykorzystuje funkcję wierszową DATE().
 
-    **Zapytanie SQL:**::
+    **Zapytanie SQL:**
+
+    .. code-block:: sql
 
         SELECT k.Tytul, c.Imie, c.Nazwisko, DATE(w.Data_Wypozyczenia) as Data 
         FROM Wypozyczenia w 
@@ -223,7 +237,9 @@ def get_puste_kategorie(conn):
     Pobiera nazwy kategorii bez przypisanych książek.
     Demonstruje wykorzystanie LEFT JOIN w celu znalezienia brakujących relacji (IS NULL).
 
-    **Zapytanie SQL:**::
+    **Zapytanie SQL:**
+
+    .. code-block:: sql
 
         SELECT kat.Nazwa_Kategorii FROM Kategorie kat 
         LEFT JOIN Ksiazki k ON kat.ID_Kategorii = k.ID_Kategorii 
@@ -246,7 +262,9 @@ def get_raport_autorow(conn):
     Tworzy zaawansowany raport o autorach, zliczając ich dzieła oraz wskazując tytuł chronologicznie najnowszego dzieła.
     Używa podzapytania nieskorelowanego w klauzuli SELECT.
 
-    **Zapytanie SQL:**::
+    **Zapytanie SQL:**
+
+    .. code-block:: sql
 
         SELECT a.Imie, a.Nazwisko, COUNT(k.ID_Ksiazki) as Suma_dziel, 
             (SELECT Tytul FROM Ksiazki WHERE ID_Autora = a.ID_Autora ORDER BY Rok_Wydania DESC LIMIT 1) as Najnowsza 
@@ -273,7 +291,9 @@ def get_srednia_wypozyczen_na_czytelnika(conn):
     Oblicza średnią liczbę wypożyczonych książek na aktywnego czytelnika.
     Wykorzystuje podzapytanie w klauzuli FROM do zagnieżdżonej agregacji danych.
 
-    **Zapytanie SQL:**::
+    **Zapytanie SQL:**
+
+    .. code-block:: sql
 
         SELECT AVG(suma) FROM (
             SELECT COUNT(ID_Wypozyczenia) as suma 
