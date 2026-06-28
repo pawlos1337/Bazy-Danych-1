@@ -114,9 +114,9 @@ Poniżej przedstawiono fragment skryptu aplikacyjnego odpowiedzialnego za odczyt
     if __name__ == "__main__":
         # Dane logowania do bazy (do uzupełnienia rzeczywistymi danymi z laboratorium)
         konfiguracja_bazy = {
-            "dbname": "student15db4",
-            "user": "student15",
-            "password": "fwbmfhgxqdZNP",
+            "dbname": "student16db4",
+            "user": "student16",
+            "password": "fwbmfhrhqdZNP",
             "host": "localhost", 
             "port": "5432"
         }
