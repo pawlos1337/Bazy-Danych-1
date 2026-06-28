@@ -1,5 +1,5 @@
 ================================================
-Rozdział 5: Komunikacja i operacje na danych
+Komunikacja i operacje na danych
 ================================================
 
 :Autorzy:
@@ -14,7 +14,7 @@ Po zdefiniowaniu znormalizowanego modelu logicznego i zasileniu struktur bazodan
 Wszystkie skrypty i zapytania zostały zaimplementowane, przetestowane oraz uruchomione w środowisku JupyterLab na serwerze laboratoryjnym. 
 
 * **Katalog z funkcjami na serwerze:** ``/home/student15/lab/CLABC01/``
-* **Repozytorium z kodem modułu:** `GitHub - Bazy-Danych-pliki <https://github.com/baguetedev/Bazy-Danych-pliki>`_
+* **Repozytorium z kodem modułu:** `GitHub - Bazy-Danych-pliki <https://github.com/pawlos1337/Bazy-danych-pliki>`_
 
 Zrezygnowano z trywialnych operacji CRUD na rzecz zapytań agregujących i analitycznych, które przenoszą ciężar obliczeniowy z aplikacji na silnik bazy danych. Wykorzystano zaawansowane techniki tworzenia rozbudowanych zapytań SQL, w tym:
 

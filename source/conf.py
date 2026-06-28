@@ -2,16 +2,14 @@
 
 import os
 import sys
-# Dodanie ścieżki do katalogu nadrzędnego, gdzie leży biblioteka_zapytania.py
 sys.path.insert(0, os.path.abspath('..'))
 
 # -- Project information -----------------------------------------------------
 project = 'Sprawozdanie-z-laboratoriów'
-copyright = '2026, Paweł Łoćwin'
-author = 'Paweł Łoćwin'
+copyright = '2026, Paweł Łosowski'
+author = 'Paweł Łosowski'
 
 # -- General configuration ---------------------------------------------------
-# Dodanie rozszerzenia autodoc
 extensions = [
     'sphinx.ext.autodoc'
 ]
@@ -24,7 +22,6 @@ html_theme = 'alabaster'
 html_static_path = ['_static']
 
 # -- Options for LaTeX output ------------------------------------------------
-# Optymalizacja generowania PDF - eliminacja pustych stron między rozdziałami
 latex_elements = {
     'papersize': 'a4paper',
     'pointsize': '11pt',
@@ -55,14 +52,12 @@ latex_documents = [
         'index', 
         'sprawozdanie-z-laboratoriow.tex', 
         'Sprawozdanie z Laboratorium: Bazy Danych',
-        'Paweł Łoćwin, Paweł Łosowski',  # Combined authors into one string
-        'manual'                         # This is now correctly the documentclass
+        'Paweł Łosowski',
+        'manual'
     ),
 ]
 
 latex_show_urls = 'footnote'
 latex_show_pagerefs = False
 latex_max_embed_pages = 0
-
-# KLUCZOWE: Wyłącza generowanie bzdurnego "Python Module Index" w PDF i spisie treści
 latex_domain_indices = False

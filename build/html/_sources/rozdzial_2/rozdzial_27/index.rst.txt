@@ -1,6 +1,6 @@
-=================================
+=========================
 Bezpieczeństwo Baz Danych
-=================================
+=========================
 
 Dział 7 przeglądu literaturowego poświęcony architekturze bezpieczeństwa, mechanizmom ochrony oraz analizie podatności w nowoczesnych systemach zarządzania bazami danych.
 
@@ -8,8 +8,6 @@ Dział 7 przeglądu literaturowego poświęcony architekturze bezpieczeństwa, m
     1. Oskar Mąka
     2. Daniel Szokało
     3. Dawid Szokało
-:Kierunek: Informatyka Techniczna, Politechnika Wrocławska
-:Przedmiot: Bazy Danych / Projekt Laboratoryjny
 
 .. toctree::
    :maxdepth: 2

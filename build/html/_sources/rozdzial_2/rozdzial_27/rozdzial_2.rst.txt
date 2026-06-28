@@ -1,6 +1,6 @@
-======================================================
-2. Ataki na bazy danych i luki w zabezpieczeniach
-======================================================
+==============================================
+Ataki na bazy danych i luki w zabezpieczeniach
+==============================================
 
 Ponieważ bazy danych przechowują najbardziej krytyczne informacje organizacji, stanowią główny cel cyberataków. Według zestawień takich jak OWASP Top 10, podatności związane ze wstrzykiwaniem kodu (Injection) oraz błędną konfiguracją od lat utrzymują się w czołówce zagrożeń. Zrozumienie mechaniki tych ataków jest kluczowe do zaprojektowania skutecznych mechanizmów obronnych w warstwie aplikacyjnej i bazodanowej.
 

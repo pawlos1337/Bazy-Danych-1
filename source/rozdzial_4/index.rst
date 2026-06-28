@@ -1,5 +1,5 @@
 ==========================================================
-Rozdział 4: Implementacja fizyczna i zasilanie bazy danych
+Implementacja fizyczna i zasilanie bazy danych
 ==========================================================
 
 :Autorzy:
@@ -11,7 +11,7 @@ Definicja fizyczna bazy danych (Zadanie 1)
 Na podstawie opracowanych wcześniej modeli logicznych przygotowano skrypty DDL (Data Definition Language) dla dwóch docelowych silników relacyjnych baz danych: PostgreSQL oraz SQLite. Kody te przygotowały solidną fundamentę dla skutecznego przechowywania i zarządzania danymi biblioteki.
 
 Pełny kod źródłowy definicji bazy danych (skrypty DDL) oraz mechanizmy zasilające znajdują się w dedykowanym repozytorium projektu: 
-`GitHub - Bazy-Danych-pliki <https://github.com/baguetedev/Bazy-Danych-pliki>`_
+`GitHub - Bazy-Danych-pliki <https://github.com/pawlos1337/Bazy-danych-pliki>`_
 
 Skrypt dla środowiska PostgreSQL
 --------------------------------

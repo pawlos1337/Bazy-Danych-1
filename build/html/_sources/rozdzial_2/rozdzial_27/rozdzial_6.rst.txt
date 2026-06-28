@@ -1,5 +1,6 @@
-6. Bezpieczeństwo kopii zapasowych i Disaster Recovery
-======================================================
+===================================================
+Bezpieczeństwo kopii zapasowych i Disaster Recovery
+===================================================
 
 Systemy prewencyjne i detekcyjne nie zawsze są w stanie zatrzymać zaawansowane ataki, takie jak ransomware, czy też zapobiec fizycznym awariom infrastruktury. W takich scenariuszach ostateczną linią obrony stają się mechanizmy odtwarzania danych po awarii. Bezpieczeństwo samych kopii zapasowych jest równie krytyczne co bezpieczeństwo głównej instancji bazy danych – skompromitowany backup często ostatecznie przekreśla szanse na powrót organizacji do normalnego funkcjonowania operacyjnego.
 

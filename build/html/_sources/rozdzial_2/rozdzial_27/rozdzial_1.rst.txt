@@ -1,6 +1,6 @@
-======================================================
-1. Model bezpieczeństwa CIA i ochrona infrastruktury
-======================================================
+=================================================
+Model bezpieczeństwa CIA i ochrona infrastruktury
+=================================================
 
 Rozważając bezpieczeństwo systemów bazodanowych, należy spojrzeć na problem warstwowo. Najniższą, a zarazem najbardziej fundamentalną warstwą jest ochrona samej infrastruktury sprzętowej i sieciowej, na której operuje silnik bazy danych (DBMS). Zanim przejdziemy do szczegółowych konfiguracji silnika, konieczne jest zdefiniowanie nadrzędnych celów bezpieczeństwa oraz zapewnienie izolacji środowiska uruchomieniowego.
 

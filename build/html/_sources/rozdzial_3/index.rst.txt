@@ -1,5 +1,5 @@
 ====================================================================
-Rozdział 3: Projektowanie Bazy Danych: System Zarządzania Biblioteką
+Projektowanie Bazy Danych: System Zarządzania Biblioteką
 ====================================================================
 
 :Autorzy:

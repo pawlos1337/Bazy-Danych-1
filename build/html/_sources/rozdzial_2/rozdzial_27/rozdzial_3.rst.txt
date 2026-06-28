@@ -1,5 +1,6 @@
-3. Zarządzanie tożsamością, uwierzytelnianie i autoryzacja
-==========================================================
+=======================================================
+Zarządzanie tożsamością, uwierzytelnianie i autoryzacja
+=======================================================
 
 Po zabezpieczeniu infrastruktury sieciowej oraz aplikacji przed atakami typu Injection, kolejną linią obrony jest ścisła kontrola dostępu do samych danych. W architekturze systemów bazodanowych proces ten opiera się na trzech filarach: zarządzaniu tożsamością (Identity Management), uwierzytelnianiu (Authentication) oraz autoryzacji (Authorization). Prawidłowa implementacja tych mechanizmów gwarantuje, że zasada najmniejszego uprzywilejowania (PoLP - Principle of Least Privilege) może być skutecznie egzekwowana w całym systemie.
 
